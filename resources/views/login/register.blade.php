@@ -65,7 +65,7 @@
                             </button>
 
                             <div class="text-center mt-2">
-                                <a href="#" style="color: #C8B6A6;">Sudah Punya Akun</a>
+                                <a href="{{ url('/sign-in') }}" style="color: #C8B6A6;">Sudah Punya Akun</a>
                             </div>
                         </form>
                     </div>
