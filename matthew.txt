@@ -1,0 +1,55 @@
+DB -> matthew-skripsi
+Table{
+	Users(
+		username
+		daerah
+		email
+		password
+		roles_id
+)
+	Cafes(
+		id
+		users_id
+		nama
+		rating *by collective
+		lokasi
+		wfc_friendly -> binary
+		fasilitas {wifi,charger,makanan dll}
+		range_harga (1-4 bentuk dolar)
+		telepon
+		operational
+		deskripsi
+		maps
+		foto 1-N
+	)
+	Roles(
+		id
+		nama{
+			user
+			cafe
+		}
+	)
+	review_cafe(
+		id
+		user_id
+		cafe_id
+		rating (1-5)
+		komentar
+		foto *nullable
+	)
+	event(
+		id
+		cafe_id
+		nama
+		gambar
+		kategori
+		tanggal
+		waktu_mulai
+		waktu_selesai
+	)
+	review_event(
+		id
+		user_id
+		komentar
+	)
+}
