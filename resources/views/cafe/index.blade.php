@@ -1,18 +1,31 @@
-@extends('user.layouts.assets')
+@extends('cafe.layouts.assets')
 
 @section('content')
-    @include('user.layouts.navbar2')
+    @include('cafe.layouts.navbar2')
 
     <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center">
-                    <h1>Detail Cafe</h1>
+                    <h1>My Cafe</h1>
                 </div>
                 <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-10 col-md-6 col-sm-6">
+                                <h3>Nama</h3>
+                                <h5>Rating</h5>
+                                <h5>Location</h5>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-sm-5">
+                                <h3>WFC Friendly</h3>
+                            </div>
+                        </div>
+                    </div>
                     <div class="container">
-                        <div class="row mb-4 mt-4">
+                        <hr>
+                        <div class="row mb-4">
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                                     style="border-radius: 16px;">
@@ -58,65 +71,47 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
-                                <h3>Promo 11.11 Diskon 11%</h3>
-                                <strong>Lokasi</strong>
+                                <strong>Operational Hours</strong>
                                 <br>
-                                <strong>Alamat</strong>
+                                waktu
                                 <br>
-                                <strong>Kategori</strong>
+                                <strong>Price Range</strong>
                                 <br>
-                                <strong>Tanggal</strong>
+                                harga
                                 <br>
-                                <strong>Waktu</strong>
+                                <strong>Phone</strong>
                                 <br>
+                                nomor
                                 <br>
-                                Deskripsi
+                                <strong>Description</strong>
                                 <br>
-                                <a href="" class="btn btn-light mt-5" style="width: 100%">See Google Maps
+                                text
+                                <br>
+                                <a href="" class="btn btn-light" style="width: 100%">See Google Maps
                                     Details</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card mt-5">
-                    <div class="card-body mb-2">
-                        <strong>Comments</strong>
-                        <br>
                         <hr>
-                        <div class="row mt-2">
-                            <div class="col-lg-10 col-md-10 col-sm-10">
-                                <strong>Nama User</strong>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, quis.
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">
-                                12/03/2022
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-lg-10 col-md-10 col-sm-10">
-                                <strong>Nama User</strong>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, quis.
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">
-                                12/03/2022
-                            </div>
-                        </div>
-                        <div class="row gy-4 mt-3 justify-content-center">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Write a Comment"
-                                        aria-label="Search" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                                            style="color: rgb(0, 0, 0); border-color:rgb(0, 0, 0); border-radius: 0px 5px 5px 0px">Submit</button>
-                                    </div>
+                        <strong>Facilities</strong>
+                        <br>
+                        icon
+                        icon
+                        icon
+                        <hr>
+                        <br>
+                        <br>
+                        <div class="position-relative">
+                            <div class="position-absolute bottom-0 end-0">
+                                <div class="mb-3 ">
+                                    <button class="btn btn-primary">Edit Data</button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
+
                     </div>
                 </div>
         </section>
     </main><!-- End #main -->
 
-    @include('user.layouts.footer')
+    @include('cafe.layouts.footer')
 @endsection
