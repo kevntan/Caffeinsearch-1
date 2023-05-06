@@ -34,3 +34,4 @@ Route::get('/see-all', [homeController::class, "seeAll"]);
 
 Route::get('/cafe', [cafeHomeController::class, "index"]);
 Route::get('/cafe/edit', [cafeHomeController::class, "edit"]);
+Route::put('/cafe/edit/update', [cafeHomeController::class, "update"]);

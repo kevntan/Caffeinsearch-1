@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cafe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class cafeHomeController extends Controller
 {
@@ -28,6 +30,62 @@ class cafeHomeController extends Controller
     }
     public function edit()
     {
-        return view('cafe.edit');
+        $cafe = DB::table('cafes')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        return view('cafe.edit', [
+            'cafe' => $cafe[0],
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $cafe = DB::table('cafes')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+        $cafe = Cafe::findOrFail($cafe[0]->id);
+
+        $update = $cafe->update([
+            'operasional_buka' => $request->operasional_buka,
+            'operasional_tutup' => $request->operasional_tutup,
+            'range_harga' => $request->range_harga,
+            'telepon' => $request->telepon,
+            'deskripsi' => $request->deskripsi,
+            'maps' => $request->maps,
+            'wifi' => $request->wifi,
+            'smoking_area' => $request->smoking_area,
+            'charging_port' => $request->charging_port,
+            'mushola' => $request->mushola,
+            'lahan_parkir' => $request->lahan_parkir,
+            'toilet' => $request->toilet,
+        ]);
+
+        if ($request->file('foto') != null) {
+            $currFile = $request->file('foto');
+            $fileName = time() . '_' . $currFile->getClientOriginalName();
+            // Storage::putFileAs('public/storage/image', $currFile, $fileName);
+            $currFile->move(public_path('storage/image'), $fileName);
+            // hosting
+            // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+            $cafe->update([
+                $request->pilih => $fileName
+            ]);
+        }
+
+
+        if ($update == true) {
+            return redirect('/cafe/edit')
+                ->with([
+                    'success' => 'Post has been updated successfully'
+                ]);
+        } else {
+            return redirect('/cafe/edit')
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
     }
 }

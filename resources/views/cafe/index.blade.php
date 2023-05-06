@@ -30,33 +30,42 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                                     style="border-radius: 16px;">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="<?= asset('user/assets/img/assets1.png') ?>" style="width:100%"
-                                                class="d-block w-100" alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                            <div class="carousel-caption">
-                                                <p>Coffee aku</p>
-                                                <p>* rating/5</p>
-                                                <p>loc Jakarta</p>
+                                        @if ($cafe->foto)
+                                            <div class="carousel-item active">
+                                                <img src="<?= asset('storage/image/' . $cafe->foto) ?>" style="width:100%"
+                                                    class="d-block w-100"
+                                                    alt="<?= asset('storage/image/{{ $cafe->foto }}') ?>">
+                                                <div class="carousel-caption">
+                                                    <p>{{ $cafe->nama }}</p>
+                                                    <p>* rating/5</p>
+                                                    <p>loc Jakarta</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="<?= asset('user/assets/img/assets1.png') ?>" style="width:100%"
-                                                class="d-block w-100" alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                            <div class="carousel-caption">
-                                                <p>Coffee kamu</p>
-                                                <p>* rating/5</p>
-                                                <p>loc Jakarta</p>
+                                        @endif
+                                        @if ($cafe->foto2)
+                                            <div class="carousel-item">
+                                                <img src="<?= asset('storage/image/' . $cafe->foto2) ?>" style="width:100%"
+                                                    class="d-block w-100"
+                                                    alt="<?= asset('storage/image/{{ $cafe->foto2 }}') ?>">
+                                                <div class="carousel-caption">
+                                                    <p>{{ $cafe->nama }}</p>
+                                                    <p>* rating/5</p>
+                                                    <p>loc Jakarta</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="<?= asset('user/assets/img/assets1.png') ?>" style="width:100%"
-                                                class="d-block w-100" alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                            <div class="carousel-caption">
-                                                <p>Coffee Dia</p>
-                                                <p>* rating/5</p>
-                                                <p>loc Jakarta</p>
+                                        @endif
+                                        @if ($cafe->foto3)
+                                            <div class="carousel-item">
+                                                <img src="<?= asset('storage/image/' . $cafe->foto3) ?>" style="width:100%;"
+                                                    class="d-block w-100"
+                                                    alt="<?= asset('storage/image/{{ $cafe->foto3 }}') ?>">
+                                                <div class="carousel-caption">
+                                                    <p>{{ $cafe->nama }}</p>
+                                                    <p>* rating/5</p>
+                                                    <p>loc Jakarta</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     </div>
                                     <button class="carousel-control-prev" type="button"
                                         data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -73,7 +82,8 @@
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <strong>Operational Hours</strong>
                                 <br>
-                                {{ $cafe->operasional_buka }} - {{ $cafe->operasional_tutup }}
+                                {{ date('h:i A', strtotime($cafe->operasional_buka)) }} -
+                                {{ date('h:i A', strtotime($cafe->operasional_tutup)) }}
                                 <br>
                                 <strong>Price Range</strong>
                                 <br>
@@ -87,26 +97,39 @@
                                 <br>
                                 {{ $cafe->deskripsi }}
                                 <br>
-                                <a href="" class="btn btn-light" style="width: 100%">See Google Maps
+                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-light" style="width: 100%">See
+                                    Google Maps
                                     Details</a>
                             </div>
                         </div>
                         <hr>
                         <strong>Facilities</strong>
                         <br>
-                        {{$cafe->wifi}}
-                        {{$cafe->charging_port}}
-                        {{$cafe->lahan_parkir}}
-                        {{$cafe->smoking_area}}
-                        {{$cafe->mushola}}
-                        {{$cafe->toilet}}
+                        @if ($cafe->wifi == 1)
+                            Wifi
+                        @endif
+                        @if ($cafe->charging_port == 1)
+                            Charging Port
+                        @endif
+                        @if ($cafe->lahan_parkir == 1)
+                            Lahan Parkir
+                        @endif
+                        @if ($cafe->smoking_area == 1)
+                            Smoking Area
+                        @endif
+                        @if ($cafe->mushola == 1)
+                            Mushola
+                        @endif
+                        @if ($cafe->toilet == 1)
+                            Toilet
+                        @endif
                         <hr>
                         <br>
                         <br>
                         <div class="position-relative">
                             <div class="position-absolute bottom-0 end-0">
                                 <div class="mb-3 ">
-                                    <button class="btn btn-primary">Edit Data</button>
+                                    <a href="{{ url('cafe/edit') }}" class="btn btn-primary">Edit Data</a>
                                 </div>
                             </div>
                         </div>
