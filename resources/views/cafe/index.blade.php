@@ -14,9 +14,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
-                                <h3>Nama</h3>
+                                <h3>{{ $cafe->nama }}</h3>
                                 <h5>Rating</h5>
-                                <h5>Location</h5>
+                                <h5>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 <h3>WFC Friendly</h3>
@@ -73,19 +73,19 @@
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <strong>Operational Hours</strong>
                                 <br>
-                                waktu
+                                {{ $cafe->operasional_buka }} - {{ $cafe->operasional_tutup }}
                                 <br>
                                 <strong>Price Range</strong>
                                 <br>
-                                harga
+                                {{ $cafe->range_harga }}
                                 <br>
                                 <strong>Phone</strong>
                                 <br>
-                                nomor
+                                {{ $cafe->telepon }}
                                 <br>
                                 <strong>Description</strong>
                                 <br>
-                                text
+                                {{ $cafe->deskripsi }}
                                 <br>
                                 <a href="" class="btn btn-light" style="width: 100%">See Google Maps
                                     Details</a>
@@ -94,9 +94,12 @@
                         <hr>
                         <strong>Facilities</strong>
                         <br>
-                        icon
-                        icon
-                        icon
+                        {{$cafe->wifi}}
+                        {{$cafe->charging_port}}
+                        {{$cafe->lahan_parkir}}
+                        {{$cafe->smoking_area}}
+                        {{$cafe->mushola}}
+                        {{$cafe->toilet}}
                         <hr>
                         <br>
                         <br>

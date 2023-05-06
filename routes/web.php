@@ -20,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/sign-in', [loginController::class, "index"]);
+Route::post('/sign-in/post', [loginController::class, "login"]);
+Route::post('/logout', [loginController::class, "logout"]);
+
 Route::get('/sign-up', [loginController::class, "signup"]);
+Route::post('/sign-up/store', [loginController::class, "store"]);
 
 Route::get('/', [homeController::class, "index"]);
 Route::get('/details', [homeController::class, "details"]);

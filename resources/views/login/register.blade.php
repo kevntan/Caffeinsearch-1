@@ -33,41 +33,46 @@
                             <h3><strong>Sign Up</strong></h3>
                             <h5>Silahkan Isi Data Diri Dengan Lengkap</h5>
                         </div>
-                        <form action="#" method="post">
+                        @if (\Session::has('success'))
+                            <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
+                        @elseif(\Session::has('error'))
+                            <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
+                        @endif
+                        <form action="{{ url('sign-up/store') }}" method="POST" class="login100-form validate-form"
+                            enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group first">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" placeholder="Masukkan Username"
-                                    id="username">
+                                <input type="text" class="form-control" name="username"
+                                    placeholder="Masukkan Username" id="username">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="Daerah">Daerah</label>
-                                <select class="custom-select">
+                                <select class="custom-select" name="daerah">
                                     <option selected>Daerah</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option value="one">One</option>
+                                    <option value="two">Two</option>
+                                    <option value="three">Three</option>
                                 </select>
-
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" placeholder="Masukkan Email" id="email">
+                                <input type="text" class="form-control" name="email" placeholder="Masukkan Email"
+                                    id="email">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" placeholder="Masukkan Password"
-                                    id="password">
+                                <input type="password" class="form-control" name="password"
+                                    placeholder="Masukkan Password" id="password">
                             </div>
-
                             <button type="submit" class="btn btn-block btn-primary"
                                 style="background: #C8B6A6; border-color: #C8B6A6;">
                                 Daftar
                             </button>
-
-                            <div class="text-center mt-2">
-                                <a href="{{ url('/sign-in') }}" style="color: #C8B6A6;">Sudah Punya Akun</a>
-                            </div>
                         </form>
+                        <div class="text-center mt-2">
+                            <a href="{{ url('/sign-in') }}" style="color: #C8B6A6;">Sudah Punya Akun</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,10 +84,10 @@
 
 
 
-    <script src="<?= asset('login/js/jquery-3.3.1.min.js')?>"></script>
-    <script src="<?= asset('login/js/popper.min.js')?>"></script>
-    <script src="<?= asset('login/js/bootstrap.min.js')?>"></script>
-    <script src="<?= asset('login/js/main.js')?>"></script>
+    <script src="<?= asset('login/js/jquery-3.3.1.min.js') ?>"></script>
+    <script src="<?= asset('login/js/popper.min.js') ?>"></script>
+    <script src="<?= asset('login/js/bootstrap.min.js') ?>"></script>
+    <script src="<?= asset('login/js/main.js') ?>"></script>
 </body>
 
 </html>

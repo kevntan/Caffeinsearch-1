@@ -38,7 +38,6 @@
             </div>
         </div>
         <div class="contents">
-
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12">
@@ -48,15 +47,22 @@
                                 <h5>Silahkan Login</h5>
                                 <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                             </div>
-                            <form action="#" method="post">
+                            @if (\Session::has('success'))
+                                <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
+                            @elseif(\Session::has('error'))
+                                <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
+                            @endif
+                            <form action="{{ url('sign-in/post') }}" method="POST" class="login100-form validate-form"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group first">
                                     <label for="username">Username/Email</label>
-                                    <input type="text" class="form-control" placeholder="Masukkan Username/Email"
+                                    <input type="text" class="form-control" name="username" placeholder="Masukkan Username/Email"
                                         id="username">
                                 </div>
                                 <div class="form-group last mb-3">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="Masukkan Password"
+                                    <input type="password" class="form-control" name="password" placeholder="Masukkan Password"
                                         id="password">
                                 </div>
 
@@ -65,11 +71,11 @@
                 ">
                                     Login
                                 </button>
-                                <button type="submit" class="btn btn-block btn-primary"
+                                {{-- <button type="submit" class="btn btn-block btn-primary"
                                     style="background: #C8B6A6; border-color: #C8B6A6;
                 ">
                                     Login As Cafe Management
-                                </button>
+                                </button> --}}
                                 <div class="text-center mt-2">
                                     <a href="{{ url('/sign-up') }}" style="color: #C8B6A6;">Tidak Punya Akun?</a>
                                 </div>

@@ -53,3 +53,13 @@ Table{
 		komentar
 	)
 }
+
+  				'wfc_friendly' => '0',
+                'wifi' => '0',
+                'charging_port' => '0',
+                'lahan_parkir' => '0',
+                'smoking_area' => '0',
+                'mushola' => '0',
+                'toilet' => '0',
+                'range_harga' => '0',
+                'telepon' => '0',
