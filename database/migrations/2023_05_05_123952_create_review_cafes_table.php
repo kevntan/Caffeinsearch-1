@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('review_cafes', function (Blueprint $table) {
             $table->id();
             $table->integer('rating');
-            $table->string('komentar');
-            $table->string('foto');
+            $table->text('komentar');
+            $table->string('foto')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('cafe_id')->constrained('cafes');
             $table->timestamps();

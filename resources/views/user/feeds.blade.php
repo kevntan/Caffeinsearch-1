@@ -50,82 +50,35 @@
                                 All Cafe
                             </strong>
                         </h1>
-                        <div class="card mb-5" style="border-radius: 20px;">
-                            <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Judul</h5>
-                                Lokasi
-                                <br>
-                                Kategori
-                                <br>
-                                Tanggal
-                                <br>
-                                Waktu
-                                <br>
-                                <br>
-                                Deskripsi
-                                <br>
-                                <a href="#" class="btn btn-primary text-center mt-4" style="width: 100%;">See
-                                    Details</a>
+                        @if ($event->count() > 0)
+                            @foreach ($event as $v)
+                                <div class="card mb-5" style="border-radius: 20px;">
+                                    <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"
+                                        alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $v->nama }}</h5>
+                                        Lokasi
+                                        <br>
+                                        {{ $v->kategori }}
+                                        <br>
+                                        {{ $v->tanggal }}
+                                        <br>
+                                        {{ $v->waktu_mulai }} - {{ $v->waktu_selesai }}
+                                        <br>
+                                        <br>
+                                        {{ $v->keterangan }}
+                                        <br>
+                                        <a href="{{ url('details-feeds/' . $v->id) }}"
+                                            class="btn btn-primary text-center mt-4" style="width: 100%;">See
+                                            Details</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="text-center">
+                                tidak ada event
                             </div>
-                        </div>
-                        <div class="card mb-5" style="border-radius: 20px;">
-                            <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Judul</h5>
-                                Lokasi
-                                <br>
-                                Kategori
-                                <br>
-                                Tanggal
-                                <br>
-                                Waktu
-                                <br>
-                                <br>
-                                Deskripsi
-                                <br>
-                                <a href="#" class="btn btn-primary text-center mt-4" style="width: 100%;">See
-                                    Details</a>
-                            </div>
-                        </div>
-                        <div class="card mb-5" style="border-radius: 20px;">
-                            <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Judul</h5>
-                                Lokasi
-                                <br>
-                                Kategori
-                                <br>
-                                Tanggal
-                                <br>
-                                Waktu
-                                <br>
-                                <br>
-                                Deskripsi
-                                <br>
-                                <a href="#" class="btn btn-primary text-center mt-4" style="width: 100%;">See
-                                    Details</a>
-                            </div>
-                        </div>
-                        <div class="card mb-5" style="border-radius: 20px;">
-                            <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Judul</h5>
-                                Lokasi
-                                <br>
-                                Kategori
-                                <br>
-                                Tanggal
-                                <br>
-                                Waktu
-                                <br>
-                                <br>
-                                Deskripsi
-                                <br>
-                                <a href="#" class="btn btn-primary text-center mt-4" style="width: 100%;">See
-                                    Details</a>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

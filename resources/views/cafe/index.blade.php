@@ -15,7 +15,9 @@
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
                                 <h3>{{ $cafe->nama }}</h3>
-                                <h5>Rating</h5>
+                                @if ($rating_cafe)
+                                    <h5>{{ number_format($rating_cafe, 1, '.', '') }}/5</h5>
+                                @endif
                                 <h5>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
@@ -37,8 +39,10 @@
                                                     alt="<?= asset('storage/image/{{ $cafe->foto }}') ?>">
                                                 <div class="carousel-caption">
                                                     <p>{{ $cafe->nama }}</p>
-                                                    <p>* rating/5</p>
-                                                    <p>loc Jakarta</p>
+                                                    @if ($rating_cafe)
+                                                        <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
+                                                    @endif
+                                                    <p>{{ $cafe->lokasi }}</p>
                                                 </div>
                                             </div>
                                         @endif
@@ -49,8 +53,10 @@
                                                     alt="<?= asset('storage/image/{{ $cafe->foto2 }}') ?>">
                                                 <div class="carousel-caption">
                                                     <p>{{ $cafe->nama }}</p>
-                                                    <p>* rating/5</p>
-                                                    <p>loc Jakarta</p>
+                                                    @if ($rating_cafe)
+                                                        <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
+                                                    @endif
+                                                    <p>{{ $cafe->lokasi }}</p>
                                                 </div>
                                             </div>
                                         @endif
@@ -61,8 +67,10 @@
                                                     alt="<?= asset('storage/image/{{ $cafe->foto3 }}') ?>">
                                                 <div class="carousel-caption">
                                                     <p>{{ $cafe->nama }}</p>
-                                                    <p>* rating/5</p>
-                                                    <p>loc Jakarta</p>
+                                                    @if ($rating_cafe)
+                                                        <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
+                                                    @endif
+                                                    <p>{{ $cafe->lokasi }}</p>
                                                 </div>
                                             </div>
                                         @endif

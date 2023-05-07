@@ -104,124 +104,43 @@
                         <br>
                         <h1>Popular Cafe</h1>
                         <div class="row mt-3">
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <div class="card mat-card">
-                                    <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top"
-                                        alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Judul</h5>
-                                        Rating
-                                        <br>
-                                        Location
-                                        <br>
-                                        <a href="#" class="btn btn-primary text-center" style="width: 100%;">See
-                                            Details</a>
+                            @if ($cafe->count() > 0)
+                                @foreach ($cafe as $v)
+                                    <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
+                                        <div class="card mat-card">
+                                            <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $v->nama }}</h5>
+                                                Rating
+                                                <br>
+                                                {{ $v->lokasi }}
+                                                <br>
+                                                <a href="{{ url('details/' . $v->id) }}" class="btn btn-primary text-center"
+                                                    style="width: 100%;">See
+                                                    Details</a>
+                                            </div>
+                                        </div>
                                     </div>
+                                @endforeach
+                                <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
+                                    <a href="{{ url('see-all') }}">
+                                        <div class="card mat-card">
+                                            <img src="<?= asset('user/assets/img/see-all.png') ?>" class="card-img-top"
+                                                alt="..." style="width: 100%; border-radius: 5px;">
+                                            <p class="carousel-caption">
+                                                ...
+                                                <br>
+                                                See All Cafe
+                                            </p>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <div class="card mat-card">
-                                    <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top"
-                                        alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Judul</h5>
-                                        Rating
-                                        <br>
-                                        Location
-                                        <br>
-                                        <a href="#" class="btn btn-primary text-center" style="width: 100%;">See
-                                            Details</a>
-                                    </div>
+                            @else
+                                <div class="text-center">
+                                    tidak ada cafe
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <div class="card mat-card">
-                                    <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top"
-                                        alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Judul</h5>
-                                        Rating
-                                        <br>
-                                        Location
-                                        <br>
-                                        <a href="#" class="btn btn-primary text-center" style="width: 100%;">See
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <div class="card mat-card">
-                                    <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top"
-                                        alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Judul</h5>
-                                        Rating
-                                        <br>
-                                        Location
-                                        <br>
-                                        <a href="#" class="btn btn-primary text-center" style="width: 100%;">See
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <div class="card mat-card">
-                                    <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top"
-                                        alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Judul</h5>
-                                        Rating
-                                        <br>
-                                        Location
-                                        <br>
-                                        <a href="#" class="btn btn-primary text-center" style="width: 100%;">See
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <div class="card mat-card">
-                                    <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top"
-                                        alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Judul</h5>
-                                        Rating
-                                        <br>
-                                        Location
-                                        <br>
-                                        <a href="#" class="btn btn-primary text-center" style="width: 100%;">See
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <div class="card mat-card">
-                                    <img src="<?= asset('user/assets/img/assets1.png') ?>" class="card-img-top"
-                                        alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Judul</h5>
-                                        Rating
-                                        <br>
-                                        Location
-                                        <br>
-                                        <a href="#" class="btn btn-primary text-center" style="width: 100%;">See
-                                            Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                <a href="#">
-                                    <div class="card mat-card">
-                                        <img src="<?= asset('user/assets/img/see-all.png') ?>" class="card-img-top"
-                                            alt="..." style="width: 100%; border-radius: 5px;">
-                                        <p class="carousel-caption">
-                                            ...
-                                            <br>
-                                            See All Cafe
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

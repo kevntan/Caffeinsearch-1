@@ -27,9 +27,17 @@ class cafeHomeController extends Controller
             ]);
         }
 
+        $cafe = DB::table('cafes')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        $rating_cafe = DB::table('review_cafes')
+            ->where('cafe_id', $cafe[0]->id)
+            ->avg('rating');
 
         return view('cafe.index', [
             'cafe' => $cafe[0],
+            'rating_cafe' => $rating_cafe
         ]);
     }
     public function edit()

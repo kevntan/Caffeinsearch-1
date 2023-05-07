@@ -14,9 +14,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
-                                <h3>Nama</h3>
-                                <h5>Rating</h5>
-                                <h5>Location</h5>
+                                <h3>{{ $cafe->nama }}</h3>
+                                <h5>
+                                    @if ($rating_cafe)
+                                        {{ number_format($rating_cafe, 1, '.', '') }}/5
+                                    @endif
+                                </h5>
+                                <h5>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 <h3>WFC Friendly</h3>
@@ -31,32 +35,38 @@
                                     style="border-radius: 16px;">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="<?= asset('user/assets/img/assets1.png') ?>" style="width:100%"
-                                                class="d-block w-100" alt="<?= asset('user/assets/img/assets1.png') ?>">
+                                            <img src="<?= asset('storage/image/' . $cafe->foto) ?>" style="width:100%"
+                                                class="d-block w-100" alt="<?= asset('storage/image/' . $cafe->foto) ?>">
                                             <div class="carousel-caption">
-                                                <p>Coffee aku</p>
+                                                <p>{{ $cafe->nama }}</p>
                                                 <p>* rating/5</p>
-                                                <p>loc Jakarta</p>
+                                                <p>{{ $cafe->lokasi }}</p>
                                             </div>
                                         </div>
-                                        <div class="carousel-item">
-                                            <img src="<?= asset('user/assets/img/assets1.png') ?>" style="width:100%"
-                                                class="d-block w-100" alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                            <div class="carousel-caption">
-                                                <p>Coffee kamu</p>
-                                                <p>* rating/5</p>
-                                                <p>loc Jakarta</p>
+                                        @if ($cafe->foto2)
+                                            <div class="carousel-item">
+                                                <img src="<?= asset('storage/image/' . $cafe->foto2) ?>" style="width:100%"
+                                                    class="d-block w-100"
+                                                    alt="<?= asset('storage/image/' . $cafe->foto2) ?>">
+                                                <div class="carousel-caption">
+                                                    <p>{{ $cafe->nama }}</p>
+                                                    <p>* rating/5</p>
+                                                    <p>{{ $cafe->lokasi }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="<?= asset('user/assets/img/assets1.png') ?>" style="width:100%"
-                                                class="d-block w-100" alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                            <div class="carousel-caption">
-                                                <p>Coffee Dia</p>
-                                                <p>* rating/5</p>
-                                                <p>loc Jakarta</p>
+                                        @endif
+                                        @if ($cafe->foto3)
+                                            <div class="carousel-item">
+                                                <img src="<?= asset('storage/image/' . $cafe->foto3) ?>" style="width:100%"
+                                                    class="d-block w-100"
+                                                    alt="<?= asset('storage/image/' . $cafe->foto3) ?>">
+                                                <div class="carousel-caption">
+                                                    <p>{{ $cafe->nama }}</p>
+                                                    <p>* rating/5</p>
+                                                    <p>{{ $cafe->lokasi }}</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     </div>
                                     <button class="carousel-control-prev" type="button"
                                         data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -73,81 +83,134 @@
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <strong>Operational Hours</strong>
                                 <br>
-                                waktu
+                                {{ date('h:i A', strtotime($cafe->operasional_buka)) }} -
+                                {{ date('h:i A', strtotime($cafe->operasional_tutup)) }}
                                 <br>
                                 <strong>Price Range</strong>
                                 <br>
-                                harga
+                                {{ $cafe->range_harga }}
                                 <br>
                                 <strong>Phone</strong>
                                 <br>
-                                nomor
+                                {{ $cafe->telepon }}
                                 <br>
                                 <strong>Description</strong>
                                 <br>
-                                text
+                                {{ $cafe->deskripsi }}
                                 <br>
-                                <a href="" class="btn btn-light" style="width: 100%">See Google Maps
+                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-light" style="width: 100%">See
+                                    Google Maps
                                     Details</a>
                             </div>
                         </div>
                         <hr>
                         <strong>Facilities</strong>
                         <br>
-                        icon
-                        icon
-                        icon
+                        @if ($cafe->wifi == 1)
+                            Wifi
+                        @endif
+                        @if ($cafe->charging_port == 1)
+                            Charging Port
+                        @endif
+                        @if ($cafe->lahan_parkir == 1)
+                            Lahan Parkir
+                        @endif
+                        @if ($cafe->smoking_area == 1)
+                            Smoking Area
+                        @endif
+                        @if ($cafe->mushola == 1)
+                            Mushola
+                        @endif
+                        @if ($cafe->toilet == 1)
+                            Toilet
+                        @endif
                     </div>
                 </div>
                 <div class="card mt-5">
                     <div class="card-body mb-5">
+                        <strong>Event</strong>
+                        <br>
+                        <hr>
+                        @if ($event->count() == 0)
+                            <div class="text-center">
+                                Tidak ada event
+                            </div>
+                        @else
+                            @foreach ($event as $v)
+                                <a href="{{ url('details-feeds/' . $v->id) }}"
+                                    style=" text-decoration: none; color: inherit;">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-12 col-sm-12">
+                                                    <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
+                                                        style="width: 200px;">
+                                                </div>
+                                                <div class="col-lg-7 col-md-12 col-sm-12">
+                                                    <h4>{{ $v->nama }}</h4>
+                                                    {{ $cafe->nama }}
+                                                    <br>
+                                                    {{ $v->kategori }}
+                                                    <br>
+                                                    {{ $v->tanggal }}
+                                                    <br>
+                                                    {{ date('h:i A', strtotime($v->waktu_mulai)) }} -
+                                                    {{ date('h:i A', strtotime($v->waktu_selesai)) }}
+                                                    <br>
+                                                    <br>
+                                                    {{ $v->keterangan }}
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    WFC FRIENDLY
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+                <div class="card mt-5">
+                    <div class="card-body mb-5">
+                        @if (\Session::has('success'))
+                            <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
+                        @elseif(\Session::has('error'))
+                            <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
+                        @endif
                         <strong>Reviews</strong>
                         <br>
                         <hr>
-                        <div class="row">
-                            <div class="col-lg-10 col-md-10 col-sm-10">
-                                <strong>Nama User</strong>
-                                <br>
-                                rating
-                                <br>
-                                text
-                                <br>
-                                <div class="row mt-3">
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                            style="width:100%">
+                        @if ($review_cafe->count() == 0)
+                            <div class="text-center">
+                                tidak ada komentar
+                            </div>
+                        @else
+                            <div class="row">
+                                @foreach ($review_cafe as $v)
+                                    <div class="col-lg-10 col-md-10 col-sm-10">
+                                        <strong>{{ $v->username }}</strong>
+                                        <br>
+                                        {{ $v->rating }}
+                                        <br>
+                                        {{ $v->komentar }}
+                                        <br>
+                                        <div class="row mt-3">
+                                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                                <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
+                                                    style="width:100%">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                            style="width:100%">
+                                    <div class="col-lg-2 col-md-2 col-sm-2">
+                                        {{ $v->created_at }}
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                            style="width:100%">
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">
-                                12/03/2022
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-10 col-md-10 col-sm-10">
-                                <strong>Nama User</strong>
-                                <br>
-                                rating
-                                <br>
-                                text
-                                <br>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">
-                                12/03/2022
-                            </div>
-                        </div>
+                        @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                review</a> -->
+                                                                                                                                                                        review</a> -->
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -155,34 +218,51 @@
                         </button>
 
                         <!-- Modal -->
-                        <form action="">
+                        <form action="{{ url('details/store-review/' . $cafe->id) }}" method="post"
+                            enctype="multipart/form-data">
+                            @csrf
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Reviews</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="text-center">
-                                                rating
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        rating
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <select name="rating" id="" class="" required>
+                                                            <option value="5">5</option>
+                                                            <option value="4">4</option>
+                                                            <option value="3">3</option>
+                                                            <option value="2">2</option>
+                                                            <option value="1">1</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-floating mt-3">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                                                <textarea class="form-control" name="komentar" placeholder="Leave a comment here" id="floatingTextarea2"
+                                                    style="height: 100px" required></textarea>
                                                 <label for="floatingTextarea2">Comments</label>
                                             </div>
                                             <div class="input-group mt-3">
-                                                <input type="file" class="form-control" id="inputGroupFile04"
-                                                    aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                                <input type="file" name="foto" class="form-control"
+                                                    id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                                                    aria-label="Upload">
                                             </div>
 
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </div>
                                 </div>

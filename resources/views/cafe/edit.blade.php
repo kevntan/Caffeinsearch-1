@@ -377,7 +377,6 @@
                                                     <input class="form-control" name="waktu_selesai" type="time"
                                                         placeholder="Default input">
                                                 </div>
-
                                             </div>
                                             <div class="form-floating mt-3">
                                                 <textarea class="form-control" placeholder="Leave a comment here" name="keterangan" id="floatingTextarea2"
@@ -394,7 +393,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 

@@ -2,25 +2,141 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cafe;
+use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class homeController extends Controller
 {
-    public function index(){
-        return view('user.index');
+    public function index()
+    {
+        $cafe = DB::table('cafes')
+            ->limit(9)
+            ->get();
+        //     ->inRandomOrder()
+        //    ->limit(5)
+        //    ->get();
+        return view('user.index', [
+            'cafe' => $cafe
+        ]);
     }
 
-    public function details(){
-        return view('user.details');
+    public function details($id)
+    {
+        $cafe = Cafe::findOrFail($id);
+        $event = DB::table('events')->where('cafe_id', $cafe->id)->get();
+        $review_cafe = DB::table('review_cafes')
+            ->where('cafe_id', $cafe->id)
+            ->join('users', 'user_id', 'users.id')
+            ->get();
+        $rating_cafe = DB::table('review_cafes')
+            ->where('cafe_id', $id)
+            ->avg('rating');
+
+        return view('user.details', [
+            'cafe' => $cafe,
+            'event' => $event,
+            'review_cafe' => $review_cafe,
+            'rating_cafe' => $rating_cafe
+        ]);
     }
 
-    public function feeds(){
-        return view('user.feeds');
+    public function feeds()
+    {
+        $event = DB::table('events')->get();
+        return view('user.feeds', [
+            'event' => $event,
+        ]);
     }
-    public function detailsFeeds(){
-        return view('user.details-feeds');
+    public function detailsFeeds($id)
+    {
+        $event = Event::findOrFail($id);
+        $cafe = Cafe::find($event->cafe_id);
+        $user = User::find($cafe->user_id);
+        $review_event = DB::table('review_events')
+            ->where('event_id', $event->id)
+            ->join('users', 'user_id', 'users.id')
+            ->get();
+        $review_cafe = DB::table('review_cafes')
+            ->where('cafe_id', $cafe->id)
+            ->avg('rating');
+
+        return view('user.details-feeds', [
+            'event' => $event,
+            'cafe' => $cafe,
+            'user' => $user,
+            'review_cafe' => $review_cafe,
+            'review_event' => $review_event,
+        ]);
     }
-    public function seeAll(){
-        return view('user.see-all');
+
+    public function storeReviewEvent(Request $request, $id)
+    {
+        $review = DB::table('review_events')->insert([
+            'komentar' => $request->komentar,
+            'user_id' => Auth::user()->id,
+            'event_id' => $id
+        ]);
+        if ($review == true) {
+            return redirect('/details-feeds/' . $id)
+                ->with([
+                    'success' => 'Post has been added successfully'
+                ]);
+        } else {
+            return redirect('/details-feeds/' . $id)
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
+    }
+    public function seeAll()
+    {
+        $cafe = DB::table('cafes')->get();
+        $review_cafe = DB::table('review_cafes')
+            ->where('cafe_id', $cafe[0]->id)
+            ->avg('rating');
+        return view('user.see-all', [
+            'cafe' => $cafe,
+            'review_cafe' => $review_cafe
+        ]);
+    }
+    public function storeReviewCafe(Request $request, $id)
+    {
+        $fileName = null;
+        if ($request->file('foto') != null) {
+            $currFile = $request->file('foto');
+            $fileName = time() . '_' . $currFile->getClientOriginalName();
+            // Storage::putFileAs('public/storage/image', $currFile, $fileName);
+            $currFile->move(public_path('storage/image'), $fileName);
+        }
+
+        $review = DB::table('review_cafes')->insert([
+            'rating' => $request->rating,
+            'foto' => $fileName,
+            'komentar' => $request->komentar,
+            'cafe_id' => $id,
+            'user_id' => Auth::user()->id,
+            "created_at" =>  \Carbon\Carbon::now(),
+            "updated_at" => \Carbon\Carbon::now()
+        ]);
+
+        if ($review == true) {
+            return redirect('/details/' . $id)
+                ->with([
+                    'success' => 'Post has been updated successfully'
+                ]);
+        } else {
+            return redirect('/details/' . $id)
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
     }
 }

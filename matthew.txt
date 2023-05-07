@@ -63,3 +63,7 @@ Table{
                 'toilet' => '0',
                 'range_harga' => '0',
                 'telepon' => '0',
+
+@if ($review_cafe)
+	<p>{{ number_format($review_cafe, 1, '.', '') }}/5</p>
+@endif

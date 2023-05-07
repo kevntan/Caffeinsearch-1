@@ -27,9 +27,11 @@ Route::get('/sign-up', [loginController::class, "signup"]);
 Route::post('/sign-up/store', [loginController::class, "store"]);
 
 Route::get('/', [homeController::class, "index"]);
-Route::get('/details', [homeController::class, "details"]);
+Route::get('/details/{id}', [homeController::class, "details"]);
+Route::post('/details/store-review/{id}', [homeController::class, "storeReviewCafe"]);
 Route::get('/feeds', [homeController::class, "feeds"]);
-Route::get('/details-feeds', [homeController::class, "detailsFeeds"]);
+Route::get('/details-feeds/{id}', [homeController::class, "detailsFeeds"]);
+Route::post('/details-feeds/store/{id}', [homeController::class, "storeReviewEvent"]);
 Route::get('/see-all', [homeController::class, "seeAll"]);
 
 Route::get('/cafe', [cafeHomeController::class, "index"]);
