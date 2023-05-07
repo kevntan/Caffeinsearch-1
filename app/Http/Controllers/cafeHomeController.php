@@ -16,6 +16,7 @@ class cafeHomeController extends Controller
             ->where('user_id', Auth::user()->id)
             ->get();
         $cafes =  $cafe->count();
+
         if ($cafes == 0) {
             DB::table('cafes')->insert([
                 'nama' => 'Cafe ' . Auth::user()->username,
@@ -26,7 +27,10 @@ class cafeHomeController extends Controller
             ]);
         }
 
-        return view('cafe.index', ['cafe' => $cafe[0]]);
+
+        return view('cafe.index', [
+            'cafe' => $cafe[0],
+        ]);
     }
     public function edit()
     {
@@ -34,8 +38,14 @@ class cafeHomeController extends Controller
             ->where('user_id', Auth::user()->id)
             ->get();
 
+        $event = DB::table('events')
+            ->where('cafe_id', $cafe[0]->id)
+            ->get();
+
+
         return view('cafe.edit', [
             'cafe' => $cafe[0],
+            'event' => $event
         ]);
     }
 
@@ -78,6 +88,44 @@ class cafeHomeController extends Controller
             return redirect('/cafe/edit')
                 ->with([
                     'success' => 'Post has been updated successfully'
+                ]);
+        } else {
+            return redirect('/cafe/edit')
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
+    }
+
+    public function eventStore(Request $request, $id)
+    {
+        $currFile = $request->file('foto');
+        $fileName = time() . '_' . $currFile->getClientOriginalName();
+        // Storage::putFileAs('public/storage/image', $currFile, $fileName);
+        $currFile->move(public_path('storage/image'), $fileName);
+        // hosting
+        // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+
+
+        $post = DB::table('events')->insert([
+            'nama' => $request->nama,
+            'foto' => $fileName,
+            'kategori' => $request->kategori,
+            'tanggal' => $request->tanggal,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
+            'cafe_id' => $id,
+            'keterangan' => $request->keterangan,
+            "created_at" =>  \Carbon\Carbon::now(),
+            "updated_at" => \Carbon\Carbon::now()
+        ]);
+
+        if ($post == true) {
+            return redirect('/cafe/edit')
+                ->with([
+                    'success' => 'Event has been Added successfully'
                 ]);
         } else {
             return redirect('/cafe/edit')

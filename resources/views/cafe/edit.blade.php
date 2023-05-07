@@ -279,60 +279,40 @@
                         <strong>Event</strong>
                         <br>
                         <hr>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-12 col-sm-12">
-                                        <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                            style="width: 200px;">
-                                    </div>
-                                    <div class="col-lg-7 col-md-12 col-sm-12">
-                                        <h4>Judul</h4>
-                                        Nama Cafe
-                                        <br>
-                                        Kategori
-                                        <br>
-                                        Tanggal
-                                        <br>
-                                        Jam
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus libero animi
-                                        aspernatur incidunt atque. Porro at sint cupiditate officiis nobis?
-                                    </div>
-                                    <div class="col-lg-2">
-                                        WFC FRIENDLY
+                        @if ($event->count() == 0)
+                        <div class="text-center">
+                            Tidak ada event
+                        </div>
+                        @else
+                            @foreach ($event as $v)
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                                <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
+                                                    style="width: 200px;">
+                                            </div>
+                                            <div class="col-lg-7 col-md-12 col-sm-12">
+                                                <h4>{{ $v->nama }}</h4>
+                                                {{ $cafe->nama }}
+                                                <br>
+                                                {{ $v->kategori }}
+                                                <br>
+                                                {{ $v->tanggal }}
+                                                <br>
+                                                {{ $v->waktu_mulai }} - {{ $v->waktu_selesai }}
+                                                <br>
+                                                <br>
+                                                {{ $v->keterangan }}
+                                            </div>
+                                            <div class="col-lg-2">
+                                                WFC FRIENDLY
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-12 col-sm-12">
-                                        <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                            style="width: 200px;">
-                                    </div>
-                                    <div class="col-lg-7 col-md-12 col-sm-12">
-                                        <h4>Judul</h4>
-                                        Nama Cafe
-                                        <br>
-                                        Kategori
-                                        <br>
-                                        Tanggal
-                                        <br>
-                                        Jam
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus libero animi
-                                        aspernatur incidunt atque. Porro at sint cupiditate officiis nobis?
-                                    </div>
-                                    <div class="col-lg-2">
-                                        WFC FRIENDLY
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                         <hr>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
@@ -341,74 +321,80 @@
                         </button>
 
                         <!-- Modal -->
-                        <form action="">
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Tambahkan Event/Promo</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Tambahkan Event/Promo</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ url('cafe/event/store/' . $cafe->id) }}" method="post"
+                                        enctype="multipart/form-data">
+                                        @csrf
                                         <div class="modal-body">
-                                            <label for="exampleFormControlFile1">Gambar</label>
+                                            <label for="exampleFormControlFile1">Gambar*</label>
                                             <br>
-                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                            <input type="file" class="form-control-file" name="foto"
+                                                id="exampleFormControlFile1" required>
                                             <br>
-                                            <label for="">Nama Event</label>
-                                            <input class="form-control" type="text" placeholder="Default input"
-                                                aria-label="default input example">
-                                            <label for="">Kategori</label>
+                                            <label for="">Nama Event*</label>
+                                            <input class="form-control" type="text" name="nama"
+                                                placeholder="Nama Event" aria-label="default input example" required>
+                                            <label for="">Kategori*</label>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 col-sm-3">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <input class="form-check-input" name="kategori" type="radio"
+                                                            value="Event" id="flexRadioDefault1" checked>
                                                         <label class="form-check-label" for="flexRadioDefault1">
-                                                            Default radio
+                                                            Event
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-4 col-sm-3">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                        <input class="form-check-input" name="kategori" type="radio"
+                                                            value="Promo" id="flexRadioDefault2">
                                                         <label class="form-check-label" for="flexRadioDefault2">
-                                                            Default checked radio
+                                                            Promo
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <label for="">Date</label>
-                                            <input class="form-control" type="date" placeholder="Default input"
-                                                aria-label="default input example">
-                                            <label for="">Time</label>
+                                            <label for="">Date*</label>
+                                            <input class="form-control" type="date" name="tanggal"
+                                                placeholder="Default input" aria-label="default input example">
+                                            <label for="">Time*</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <input class="form-control" type="time"
+                                                    <input class="form-control" name="waktu_mulai" type="time"
                                                         placeholder="Default input">
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <input class="form-control" type="time"
+                                                    <input class="form-control" name="waktu_selesai" type="time"
                                                         placeholder="Default input">
                                                 </div>
 
                                             </div>
                                             <div class="form-floating mt-3">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                                <label for="floatingTextarea2">Description</label>
+                                                <textarea class="form-control" placeholder="Leave a comment here" name="keterangan" id="floatingTextarea2"
+                                                    style="height: 100px"></textarea>
+                                                <label for="floatingTextarea2">Keterangan</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+
                     </div>
                 </div>
 
