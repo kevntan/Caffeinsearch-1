@@ -16,7 +16,7 @@
                      <li class="dropdown"><a href="#"><span>{{ Auth::user()->username }}</span> <i
                                  class="bi bi-chevron-down"></i></a>
                          <ul>
-                             <li><a href="#">Profile</a></li>
+                             <li><a href="{{ url('cafe/profile') }}">Profile</a></li>
                              <li>
                                  <form action="{{ url('logout') }}" method="POST" enctype="multipart/form-data">
                                      @csrf

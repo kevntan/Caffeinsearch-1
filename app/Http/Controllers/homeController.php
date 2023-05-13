@@ -13,6 +13,9 @@ class homeController extends Controller
 {
     public function index()
     {
+        if (Auth::user()->role_id == 2) {
+            return redirect('cafe');
+        }
         $cafe = DB::table('cafes')
             ->limit(9)
             ->get();
@@ -132,6 +135,67 @@ class homeController extends Controller
                 ]);
         } else {
             return redirect('/details/' . $id)
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
+    }
+
+    public function profile()
+    {
+        return view('user.profile');
+    }
+    public function profileEdit()
+    {
+        return view('user.profile-edit');
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        $update = $user->update([
+            'username' => $request->username,
+            'bio' => $request->bio
+        ]);
+
+        if ($update == true) {
+
+            if ($request->file('foto') != null) {
+                $currFile = $request->file('foto');
+                $fileName = time() . '_' . $currFile->getClientOriginalName();
+                // Storage::putFileAs('public/storage/image', $currFile, $fileName);
+                $currFile->move(public_path('storage/image'), $fileName);
+                // hosting
+                // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+                $user->update([
+                    'foto' => $fileName
+                ]);
+                if (Auth::user()->role_id == 2) {
+                    return redirect('/cafe/profile')
+                        ->with([
+                            'success' => 'Profile has been updated successfully'
+                        ]);
+                }
+                return redirect('/profile')
+                    ->with([
+                        'success' => 'Profile has been updated successfully'
+                    ]);
+            }
+            return redirect('/profile')
+                ->with([
+                    'success' => 'Profile has been updated successfully'
+                ]);
+        } else {
+            if (Auth::user()->role_id == 2) {
+                return redirect('/cafe/profile')
+                    ->with([
+                        'error' => 'Some problem has occured, please try again'
+                    ]);
+            }
+            return redirect('/profile')
                 ->back()
                 ->withInput()
                 ->with([

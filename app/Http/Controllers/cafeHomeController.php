@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cafe;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,9 +36,19 @@ class cafeHomeController extends Controller
             ->where('cafe_id', $cafe[0]->id)
             ->avg('rating');
 
+        $event = DB::table('events')
+            ->where('cafe_id', $cafe[0]->id)
+            ->get();
+
+        $review_cafe = DB::table('review_cafes')
+            ->where('cafe_id', $cafe[0]->id)
+            ->get();
+
         return view('cafe.index', [
             'cafe' => $cafe[0],
-            'rating_cafe' => $rating_cafe
+            'rating_cafe' => $rating_cafe,
+            'event' => $event,
+            'review_cafe' => $review_cafe
         ]);
     }
     public function edit()
@@ -93,12 +104,12 @@ class cafeHomeController extends Controller
 
 
         if ($update == true) {
-            return redirect('/cafe/edit')
+            return redirect('/cafe')
                 ->with([
                     'success' => 'Post has been updated successfully'
                 ]);
         } else {
-            return redirect('/cafe/edit')
+            return redirect('/cafe')
                 ->back()
                 ->withInput()
                 ->with([
@@ -139,6 +150,58 @@ class cafeHomeController extends Controller
             return redirect('/cafe/edit')
                 ->back()
                 ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
+    }
+
+    public function profile()
+    {
+        return view('cafe.profile');
+    }
+    public function profileEdit()
+    {
+        $cafe = DB::table('cafes')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+        return view('cafe.profile-edit', [
+            'cafe' => $cafe[0]
+        ]);
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $user = User::findOrFail(Auth::user()->id);
+
+        $update = $user->update([
+            'username' => $request->username,
+            'bio' => $request->bio
+        ]);
+
+        if ($update == true) {
+
+            if ($request->file('foto') != null) {
+                $currFile = $request->file('foto');
+                $fileName = time() . '_' . $currFile->getClientOriginalName();
+                // Storage::putFileAs('public/storage/image', $currFile, $fileName);
+                $currFile->move(public_path('storage/image'), $fileName);
+                // hosting
+                // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+                $user->update([
+                    'foto' => $fileName
+                ]);
+                return redirect('/cafe/profile')
+                    ->with([
+                        'success' => 'Profile has been updated successfully'
+                    ]);
+            }
+            return redirect('/cafe/profile')
+                ->with([
+                    'success' => 'Profile has been updated successfully'
+                ]);
+        } else {
+            return redirect('/cafe/profile')
                 ->with([
                     'error' => 'Some problem has occured, please try again'
                 ]);

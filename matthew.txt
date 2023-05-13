@@ -67,3 +67,5 @@ Table{
 @if ($review_cafe)
 	<p>{{ number_format($review_cafe, 1, '.', '') }}/5</p>
 @endif
+
+// bkin searcgh dan filter dan pagination   

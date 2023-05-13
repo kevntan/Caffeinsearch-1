@@ -60,146 +60,42 @@
                             </strong>
                         </h1>
                         <div class="card">
-                            @foreach ($cafe as $v)
-                                <a href="{{ url('details/' . $v->id) }}"
-                                    style="text-decoration: none;
+                            @if ($cafe->count() > 0)
+                                @foreach ($cafe as $v)
+                                    <a href="{{ url('details/' . $v->id) }}"
+                                        style="text-decoration: none;
                                     color: inherit;">
-                                    <div class="card-body">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-12 col-sm-12">
-                                                        <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
-                                                            style="width: 200px;">
-                                                    </div>
-                                                    <div class="col-lg-7 col-md-12 col-sm-12">
-                                                        {{ $v->nama }}
-                                                        <br>
-                                                        @if ($review_cafe)
-                                                            {{ number_format($review_cafe, 1, '.', '') }}
-                                                        @endif
-                                                        <br>
-                                                        {{ $v->lokasi }}
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        WFC FRIENDLY
+                                        <div class="card-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-12 col-sm-12">
+                                                            <img src="<?= asset('storage/image/' . $v->foto) ?>"
+                                                                alt="" style="width: 200px;">
+                                                        </div>
+                                                        <div class="col-lg-7 col-md-12 col-sm-12">
+                                                            {{ $v->nama }}
+                                                            <br>
+                                                            @if ($review_cafe)
+                                                                {{ number_format($review_cafe, 1, '.', '') }}
+                                                            @endif
+                                                            <br>
+                                                            {{ $v->lokasi }}
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            WFC FRIENDLY
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            @endforeach
-                            <div class="card-body">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                                    style="width: 200px;">
-                                            </div>
-                                            <div class="col-lg-7 col-md-12 col-sm-12">
-                                                Nama
-                                                <br>
-                                                Rating
-                                                <br>
-                                                Lokasi
-                                            </div>
-                                            <div class="col-lg-2">
-                                                WFC FRIENDLY
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </a>
+                                @endforeach
+                            @else
+                                <div class="text-center">
+                                    tidak ada cafe
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                                    style="width: 200px;">
-                                            </div>
-                                            <div class="col-lg-7 col-md-12 col-sm-12">
-                                                Nama
-                                                <br>
-                                                Rating
-                                                <br>
-                                                Lokasi
-                                            </div>
-                                            <div class="col-lg-2">
-                                                WFC FRIENDLY
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                                    style="width: 200px;">
-                                            </div>
-                                            <div class="col-lg-7 col-md-12 col-sm-12">
-                                                Nama
-                                                <br>
-                                                Rating
-                                                <br>
-                                                Lokasi
-                                            </div>
-                                            <div class="col-lg-2">
-                                                WFC FRIENDLY
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                                    style="width: 200px;">
-                                            </div>
-                                            <div class="col-lg-7 col-md-12 col-sm-12">
-                                                Nama
-                                                <br>
-                                                Rating
-                                                <br>
-                                                Lokasi
-                                            </div>
-                                            <div class="col-lg-2">
-                                                WFC FRIENDLY
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" alt=""
-                                                    style="width: 200px;">
-                                            </div>
-                                            <div class="col-lg-7 col-md-12 col-sm-12">
-                                                Nama
-                                                <br>
-                                                Rating
-                                                <br>
-                                                Lokasi
-                                            </div>
-                                            <div class="col-lg-2">
-                                                WFC FRIENDLY
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
                             <div class="position-relative mt-5">
                                 <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                     <nav aria-label="Page navigation example">
