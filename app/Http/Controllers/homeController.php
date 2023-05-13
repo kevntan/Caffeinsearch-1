@@ -13,8 +13,10 @@ class homeController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->role_id == 2) {
-            return redirect('cafe');
+        if(Auth::user()){
+            if (Auth::user()->role_id == 2) {
+                return redirect('cafe');
+            }
         }
         $cafe = DB::table('cafes')
             ->limit(9)
