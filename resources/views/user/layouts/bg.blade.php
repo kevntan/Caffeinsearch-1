@@ -12,14 +12,14 @@
           <div class="row gy-4 mt-3 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
               <form action="">
                   <div class="input-group mb-3">
-                      <form action="{{ url('search') }}" method="GET">
-                          <input type="text" class="form-control" name="query" placeholder="Search"
-                              aria-label="Search" aria-describedby="button-addon2">
-                          <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
-                                  style="color: white; border-color:white; border-radius: 0px 5px 5px 0px">Search</button>
-                          </div>
-                      </form>
+
+                      <input type="text" class="form-control" name="query" placeholder="Search" aria-label="Search"
+                          aria-describedby="button-addon2">
+                      <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
+                              style="color: white; border-color:white; border-radius: 0px 5px 5px 0px">Search</button>
+                      </div>
+
                   </div>
               </form>
           </div>

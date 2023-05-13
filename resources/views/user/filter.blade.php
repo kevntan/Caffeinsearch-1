@@ -1,13 +1,11 @@
 @extends('user.layouts.assets')
 
 @section('content')
-    @include('user.layouts.navbar')
-    @include('user.layouts.bg')
-
+    @include('user.layouts.navbar2')
     <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
-            <div class="container">
+            <div class="container" style="margin-top: 30px;">
                 <div class="row">
                     @include('user.layouts.filter')
                     <div class="col-lg-9 col-md-12 col-sm-12">
@@ -61,8 +59,8 @@
                         <br>
                         <h1>Popular Cafe</h1>
                         <div class="row mt-3">
-                            @if (count($results) > 0)
-                                @foreach ($results as $v)
+                            @if (count($filter) > 0)
+                                @foreach ($filter as $v)
                                     <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
                                         <div class="card mat-card">
                                             <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"

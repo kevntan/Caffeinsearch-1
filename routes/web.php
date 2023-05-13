@@ -37,6 +37,7 @@ Route::get('/profile', [homeController::class, "profile"])->middleware('auth', '
 Route::get('/profile/edit', [homeController::class, "profileEdit"])->middleware('auth', 'auth.role:user');
 Route::put('/profile/update', [homeController::class, "profileUpdate"])->middleware('auth', 'auth.role:user');
 Route::get('/search', [homeController::class, "search"])->middleware('auth', 'auth.role:user');
+Route::get('/filter', [homeController::class, "filter"])->middleware('auth', 'auth.role:user');
 
 Route::get('/cafe', [cafeHomeController::class, "index"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe/edit', [cafeHomeController::class, "edit"])->middleware('auth', 'auth.role:cafe');

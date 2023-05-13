@@ -216,7 +216,21 @@ class homeController extends Controller
 
         $results = DB::table('cafes')
             ->where('nama', 'LIKE', '%' . $query . '%')
+            ->limit(9)
             ->get();
         return $results;
+    }
+    public function filter(Request $request)
+    {
+        $filter = DB::table('cafes')
+            ->join('review_cafes', 'cafes.id', 'review_cafes.cafe_id')
+            ->where('lokasi', $request->input('lokasi'))
+            ->orWhere('range_harga', $request->input('range_harga'))
+            ->orWhere('rating', $request->input('rating'))
+            ->get();
+        dd($filter);
+        return view('user.filter', [
+            'filter' => $filter
+        ]);
     }
 }
