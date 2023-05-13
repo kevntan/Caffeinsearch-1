@@ -104,8 +104,9 @@
                         <br>
                         <h1>Popular Cafe</h1>
                         <div class="row mt-3">
-                            @if ($cafe->count() > 0)
-                                @foreach ($cafe as $v)
+                            {{-- @if ($cafe->count() > 0) --}}
+                            @if (count($results) > 0)
+                                @foreach ($results as $v)
                                     <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
                                         <div class="card mat-card">
                                             <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"
@@ -141,6 +142,14 @@
                                     tidak ada cafe
                                 </div>
                             @endif
+                            {{-- @if (count($results) > 0)
+                                @foreach ($results as $result)
+                                    <h3>{{ $result->nama }}</h3>
+                                    <p>{{ $result->content }}</p>
+                                @endforeach
+                            @else
+                                <p>No results found.</p>
+                            @endif --}}
                         </div>
                     </div>
                 </div>
