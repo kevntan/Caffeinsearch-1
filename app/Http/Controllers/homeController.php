@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\DB;
 
 class homeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        if(Auth::user()){
+        if (Auth::user()) {
             if (Auth::user()->role_id == 2) {
                 return redirect('cafe');
             }
@@ -24,8 +24,12 @@ class homeController extends Controller
         //     ->inRandomOrder()
         //    ->limit(5)
         //    ->get();
+        $results = 0;
+        $results = $this->search($request);
+
         return view('user.index', [
-            'cafe' => $cafe
+            'cafe' => $cafe,
+            'results' => $results,
         ]);
     }
 
@@ -204,5 +208,29 @@ class homeController extends Controller
                     'error' => 'Some problem has occured, please try again'
                 ]);
         }
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $results = DB::table('cafes')
+            ->where('nama', 'LIKE', '%' . $query . '%')
+            ->limit(9)
+            ->get();
+        return $results;
+    }
+    public function filter(Request $request)
+    {
+        $filter = DB::table('cafes')
+            ->join('review_cafes', 'cafes.id', 'review_cafes.cafe_id')
+            ->where('lokasi', $request->input('lokasi'))
+            ->orWhere('range_harga', $request->input('range_harga'))
+            ->orWhere('rating', $request->input('rating'))
+            ->get();
+        dd($filter);
+        return view('user.filter', [
+            'filter' => $filter
+        ]);
     }
 }
