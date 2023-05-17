@@ -43,11 +43,11 @@
                                                     <img src="<?= asset('storage/image/' . $cafe->foto) ?>"
                                                         style="width:100%" class="d-block w-100"
                                                         alt="<?= asset('storage/image/{{ $cafe->foto }}') ?>">
-                                                    <div class="carousel-caption">
+                                                    {{-- <div class="carousel-caption">
                                                         <p>{{ $cafe->nama }}</p>
                                                         <p>* rating/5</p>
                                                         <p>loc Jakarta</p>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             @endif
                                             @if ($cafe->foto2)
@@ -55,11 +55,11 @@
                                                     <img src="<?= asset('storage/image/' . $cafe->foto2) ?>"
                                                         style="width:100%" class="d-block w-100"
                                                         alt="<?= asset('storage/image/{{ $cafe->foto2 }}') ?>">
-                                                    <div class="carousel-caption">
+                                                    {{-- <div class="carousel-caption">
                                                         <p>{{ $cafe->nama }}</p>
                                                         <p>* rating/5</p>
                                                         <p>loc Jakarta</p>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             @endif
                                             @if ($cafe->foto3)
@@ -67,11 +67,11 @@
                                                     <img src="<?= asset('storage/image/' . $cafe->foto3) ?>"
                                                         style="width:100%;" class="d-block w-100"
                                                         alt="<?= asset('storage/image/{{ $cafe->foto3 }}') ?>">
-                                                    <div class="carousel-caption">
+                                                    {{-- <div class="carousel-caption">
                                                         <p>{{ $cafe->nama }}</p>
                                                         <p>* rating/5</p>
                                                         <p>loc Jakarta</p>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             @endif
                                         </div>
@@ -96,9 +96,18 @@
                                         id="exampleFormControlFile1">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12">
+                                    <strong>nama cafe</strong>
+                                    <br>
+                                    <input type="text" class="form-control" name="nama" id="inlineFormInputGroup"
+                                        placeholder="alamat" value="{{ $cafe->nama }}">
+                                    <br>
+                                    <strong>Alamat</strong>
+                                    <br>
+                                    <input type="text" class="form-control" name="alamat" id="inlineFormInputGroup"
+                                        placeholder="alamat" value="{{ $cafe->alamat }}">
+                                    <br>
                                     <strong>Operational Hours</strong>
                                     <br>
-
                                     <div class="row">
                                         <div class="col-lg-6 col-md-12 col-sm-12">
                                             <input class="form-control" type="time" name="operasional_buka"
@@ -108,10 +117,7 @@
                                             <input class="form-control" type="time" name="operasional_tutup"
                                                 placeholder="Default input" value="{{ $cafe->operasional_tutup }}">
                                         </div>
-
                                     </div>
-
-
                                     <strong>Price Range</strong>
                                     <br>
                                     <select name="range_harga" class="form-control">
@@ -266,7 +272,7 @@
                             <div class="position-relative">
                                 <div class="position-absolute bottom-0 end-0">
                                     <div class="mb-3 ">
-                                        <a href="#" class="btn btn-light ">Cancel</a>
+                                        <a href="{{ url('/') }}" class="btn btn-light ">Cancel</a>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>

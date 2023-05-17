@@ -17,15 +17,25 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="text-center">
-                                    <img src="<?= asset('user/assets/img/Vector.png') ?>" alt="">
-                                    <input class="form-control" type="file" name="foto" id="formFile">
-                                    <input type="text" class="form-control mt-5" name="username"
-                                        value="{{ Auth::user()->username }}">
-                                    <p>User / Cafe Admin at Nama Cafe</p>
-                                    <br>
-                                    <input type="text" class="form-control mt-5" name="bio"
-                                        value="{{ Auth::user()->bio }}">
+                                    @if (Auth::user()->foto)
+                                        <img src="<?= asset('storage/image/' . Auth::user()->foto) ?>" alt=""
+                                            style="max-width: 50%">
+                                    @else
+                                        <img src="<?= asset('user/assets/img/Vector.png') ?>" alt="">
+                                    @endif
                                 </div>
+                                {{-- <br> --}}
+                                <label for="">Foto</label>
+                                <input class="form-control" type="file" name="foto" id="formFile">
+                                <label for="">username</label>
+                                <input type="text" class="form-control" name="username"
+                                    value="{{ Auth::user()->username }}" disabled>
+                                {{-- <p>User / Cafe Admin at Nama Cafe</p> --}}
+
+                                <label for="">bio</label>
+                                <input type="text" class="form-control" name="bio" value="{{ Auth::user()->bio }}">
+                                <label for="">New Password</label>
+                                <input type="password" class="form-control" name="password" value="">
                                 <hr>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

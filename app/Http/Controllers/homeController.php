@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class homeController extends Controller
 {
@@ -27,9 +28,13 @@ class homeController extends Controller
         $results = 0;
         $results = $this->search($request);
 
+        $old = $request->query;
+
+
         return view('user.index', [
             'cafe' => $cafe,
             'results' => $results,
+            'old' => $old->get('query')
         ]);
     }
 
@@ -163,9 +168,14 @@ class homeController extends Controller
         $user = User::findOrFail(Auth::user()->id);
 
         $update = $user->update([
-            'username' => $request->username,
+            // 'username' => $request->username,
             'bio' => $request->bio
         ]);
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
 
         if ($update == true) {
 

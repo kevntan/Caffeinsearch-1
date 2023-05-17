@@ -43,11 +43,11 @@
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/{{ $cafe->foto }}') ?>">
                                                 <div class="carousel-caption">
-                                                    <p>{{ $cafe->nama }}</p>
+                                                    {{-- <p>{{ $cafe->nama }}</p>
                                                     @if ($rating_cafe)
                                                         <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
                                                     @endif
-                                                    <p>{{ $cafe->lokasi }}</p>
+                                                    <p>{{ $cafe->lokasi }}</p> --}}
                                                 </div>
                                             </div>
                                         @endif
@@ -57,11 +57,11 @@
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/{{ $cafe->foto2 }}') ?>">
                                                 <div class="carousel-caption">
-                                                    <p>{{ $cafe->nama }}</p>
+                                                    {{-- <p>{{ $cafe->nama }}</p>
                                                     @if ($rating_cafe)
                                                         <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
                                                     @endif
-                                                    <p>{{ $cafe->lokasi }}</p>
+                                                    <p>{{ $cafe->lokasi }}</p> --}}
                                                 </div>
                                             </div>
                                         @endif
@@ -71,11 +71,11 @@
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/{{ $cafe->foto3 }}') ?>">
                                                 <div class="carousel-caption">
-                                                    <p>{{ $cafe->nama }}</p>
+                                                    {{-- <p>{{ $cafe->nama }}</p>
                                                     @if ($rating_cafe)
                                                         <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
                                                     @endif
-                                                    <p>{{ $cafe->lokasi }}</p>
+                                                    <p>{{ $cafe->lokasi }}</p> --}}
                                                 </div>
                                             </div>
                                         @endif
@@ -93,6 +93,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
+                                <strong>Address</strong>
+                                <br>
+                                {{ $cafe->alamat }}
+                                <br>
                                 <strong>Operational Hours</strong>
                                 <br>
                                 {{ date('h:i A', strtotime($cafe->operasional_buka)) }} -
@@ -104,7 +108,8 @@
                                 <br>
                                 <strong>Phone</strong>
                                 <br>
-                                {{ $cafe->telepon }}
+                                <a href="https://wa.me/62{{ $cafe->telepon }}" target="_blank"
+                                    style="color:black">+62{{ $cafe->telepon }}</a>
                                 <br>
                                 <strong>Description</strong>
                                 <br>
@@ -240,16 +245,16 @@
                                             </div>
                                             <label for="">Date*</label>
                                             <input class="form-control" type="date" name="tanggal"
-                                                placeholder="Default input" aria-label="default input example">
+                                                placeholder="Default input" aria-label="default input example" required>
                                             <label for="">Time*</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <input class="form-control" name="waktu_mulai" type="time"
-                                                        placeholder="Default input">
+                                                        placeholder="Default input" required>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <input class="form-control" name="waktu_selesai" type="time"
-                                                        placeholder="Default input">
+                                                        placeholder="Default input" required>
                                                 </div>
                                             </div>
                                             <div class="form-floating mt-3">

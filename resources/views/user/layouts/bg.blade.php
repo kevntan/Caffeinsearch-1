@@ -14,10 +14,11 @@
                   <div class="input-group mb-3">
 
                       <input type="text" class="form-control" name="query" placeholder="Search" aria-label="Search"
-                          aria-describedby="button-addon2">
+                          aria-describedby="button-addon2" value="{{ $old }}">
                       <div class="input-group-append">
                           <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
-                              style="color: white; border-color:white; border-radius: 0px 5px 5px 0px">Search</button>
+                              style="color: white; border-color:white; border-radius: 0px 5px 5px 0px"
+                              >Search</button>
                       </div>
 
                   </div>

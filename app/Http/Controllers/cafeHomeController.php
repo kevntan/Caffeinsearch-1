@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class cafeHomeController extends Controller
@@ -41,9 +42,11 @@ class cafeHomeController extends Controller
             ->get();
 
         $review_cafe = DB::table('review_cafes')
+            ->join('users', 'user_id', 'users.id')
             ->where('cafe_id', $cafe[0]->id)
             ->get();
 
+        // dd($review_cafe);
         return view('cafe.index', [
             'cafe' => $cafe[0],
             'rating_cafe' => $rating_cafe,
@@ -76,6 +79,8 @@ class cafeHomeController extends Controller
         $cafe = Cafe::findOrFail($cafe[0]->id);
 
         $update = $cafe->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
             'operasional_buka' => $request->operasional_buka,
             'operasional_tutup' => $request->operasional_tutup,
             'range_harga' => $request->range_harga,
@@ -142,12 +147,12 @@ class cafeHomeController extends Controller
         ]);
 
         if ($post == true) {
-            return redirect('/cafe/edit')
+            return redirect('/cafe')
                 ->with([
                     'success' => 'Event has been Added successfully'
                 ]);
         } else {
-            return redirect('/cafe/edit')
+            return redirect('/cafe')
                 ->back()
                 ->withInput()
                 ->with([
@@ -158,13 +163,22 @@ class cafeHomeController extends Controller
 
     public function profile()
     {
-        return view('cafe.profile');
+        $cafe = DB::table('cafes')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+        return view(
+            'cafe.profile',
+            [
+                'cafe' => $cafe[0]
+            ]
+        );
     }
     public function profileEdit()
     {
         $cafe = DB::table('cafes')
             ->where('user_id', Auth::user()->id)
             ->get();
+
         return view('cafe.profile-edit', [
             'cafe' => $cafe[0]
         ]);
@@ -175,9 +189,14 @@ class cafeHomeController extends Controller
         $user = User::findOrFail(Auth::user()->id);
 
         $update = $user->update([
-            'username' => $request->username,
+            // 'username' => $request->username,
             'bio' => $request->bio
         ]);
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
 
         if ($update == true) {
 
