@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class homeController extends Controller
 {
@@ -21,15 +22,16 @@ class homeController extends Controller
         $cafe = DB::table('cafes')
             ->limit(9)
             ->get();
-        //     ->inRandomOrder()
-        //    ->limit(5)
-        //    ->get();
         $results = 0;
         $results = $this->search($request);
+
+        $old = $request->query;
+
 
         return view('user.index', [
             'cafe' => $cafe,
             'results' => $results,
+            'old' => $old->get('query')
         ]);
     }
 
@@ -103,15 +105,28 @@ class homeController extends Controller
                 ]);
         }
     }
-    public function seeAll()
+    public function seeAll(Request $request)
     {
+
+        if (!Auth::user()) {
+            return redirect('sign-in');
+        }
+
         $cafe = DB::table('cafes')->get();
         $review_cafe = DB::table('review_cafes')
             ->where('cafe_id', $cafe[0]->id)
             ->avg('rating');
+
+        $results = 0;
+        $results = $this->search($request);
+
+        $old = $request->query;
+        // dd($old);
         return view('user.see-all', [
             'cafe' => $cafe,
-            'review_cafe' => $review_cafe
+            'review_cafe' => $review_cafe,
+            'results' => $results,
+            'old' => $old->get('query')
         ]);
     }
     public function storeReviewCafe(Request $request, $id)
@@ -163,9 +178,14 @@ class homeController extends Controller
         $user = User::findOrFail(Auth::user()->id);
 
         $update = $user->update([
-            'username' => $request->username,
+            // 'username' => $request->username,
             'bio' => $request->bio
         ]);
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
 
         if ($update == true) {
 
@@ -222,15 +242,54 @@ class homeController extends Controller
     }
     public function filter(Request $request)
     {
-        $filter = DB::table('cafes')
+        $lokasi = $request->input('lokasi');
+        $harga = $request->input('harga');
+        $rating = $request->input('rating');
+        $wfcfriendly = $request->input('wfcfriendly');
+
+
+
+        $query = Cafe::query();
+
+        $review_cafe = $query
             ->join('review_cafes', 'cafes.id', 'review_cafes.cafe_id')
-            ->where('lokasi', $request->input('lokasi'))
-            ->orWhere('range_harga', $request->input('range_harga'))
-            ->orWhere('rating', $request->input('rating'))
-            ->get();
-        dd($filter);
+            ->avg('rating');
+        if ($lokasi) {
+            $query->where('lokasi', $lokasi);
+        }
+
+        if ($harga) {
+            $query->where('range_harga', $harga);
+        }
+
+        if ($rating) {
+            $review_cafe
+                ->where('rating', $rating);
+        }
+
+        if ($wfcfriendly) {
+            $query->where('wfc_friendly', $wfcfriendly);
+        }
+
+
+        $results = $query->get();
+
+        // dd($results);
+        // $cafe = DB::table('cafes')->get();
+
+        // $review_cafe = DB::table('review_cafes')
+
+
+
         return view('user.filter', [
-            'filter' => $filter
+            'results' => $results,
+            'old' => null,
+            'review_cafe' => $review_cafe,
+            'lokasi' => $lokasi,
+            'harga' => $harga,
+            'rating' => $rating,
+            'wfcfriendly' => $wfcfriendly,
         ]);
+        // return redirect('see-all');
     }
 }

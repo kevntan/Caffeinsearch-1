@@ -12,6 +12,7 @@ class Cafe extends Model
     protected $fillable = [
         'nama',
         'lokasi',
+        'alamat',
         'wfc_friendly',
         'wifi',
         'charging_port',

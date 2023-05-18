@@ -5,7 +5,7 @@
          <h1 class="logo me-auto me-lg-0"><a href="{{ url('cafe/') }}">Caffein<span>Search</span></a></h1>
          <nav id="navbar" class="navbar order-last order-lg-0">
              <ul>
-                 <li><a class="nav-link scrollto active" href="#hero">My Cafe</a></li>
+                 <li><a class="nav-link scrollto active" href="#">My Cafe</a></li>
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->

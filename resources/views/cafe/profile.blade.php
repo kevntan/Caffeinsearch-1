@@ -15,13 +15,13 @@
                         <div class="container">
                             <div class="text-center">
                                 @if (Auth::user()->foto)
-                                    <img src="<?= asset('storage/image/' . Auth::user()->foto) ?>" style="max-width:100%;"
+                                    <img src="<?= asset('storage/image/' . Auth::user()->foto) ?>" style="max-width:50%;"
                                         alt="">
                                 @else
                                     <img src="<?= asset('user/assets/img/Vector.png') ?>" alt="">
                                 @endif
                                 <h2><strong>{{ Auth::user()->username }}</strong></h2>
-                                <p>User / Cafe Admin at Nama Cafe</p>
+                                <p>Cafe Admin at {{ $cafe->nama }}</p>
                                 <br>
                                 @if (Auth::user()->bio)
                                     <p>{{ Auth::user()->bio }}</p>

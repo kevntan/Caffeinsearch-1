@@ -22,29 +22,29 @@
                                 <div class="carousel-item active">
                                     <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
                                         alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                    <div class="carousel-caption">
+                                    {{-- <div class="carousel-caption">
                                         <p>Coffee aku</p>
                                         <p>* rating/5</p>
                                         <p>loc Jakarta</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="carousel-item">
                                     <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
                                         alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                    <div class="carousel-caption">
+                                    {{-- <div class="carousel-caption">
                                         <p>Coffee kamu</p>
                                         <p>* rating/5</p>
                                         <p>loc Jakarta</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="carousel-item">
                                     <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
                                         alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                    <div class="carousel-caption">
+                                    {{-- <div class="carousel-caption">
                                         <p>Coffee Dia</p>
                                         <p>* rating/5</p>
                                         <p>loc Jakarta</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"

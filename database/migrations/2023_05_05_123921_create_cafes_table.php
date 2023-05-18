@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('lokasi');
+            $table->string('alamat');
             $table->integer('wfc_friendly')->nullable();
             $table->integer('wifi')->nullable();
             $table->integer('charging_port')->nullable();
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->integer('mushola')->nullable();
             $table->integer('toilet')->nullable();
             $table->integer('range_harga')->nullable();
-            $table->integer('telepon')->nullable();
+            $table->bigInteger('telepon')->nullable();
             $table->time('operasional_buka')->nullable();
             $table->time('operasional_tutup')->nullable();
             $table->string('deskripsi')->nullable();
