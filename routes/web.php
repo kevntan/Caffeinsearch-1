@@ -32,7 +32,7 @@ Route::post('/details/store-review/{id}', [homeController::class, "storeReviewCa
 Route::get('/feeds', [homeController::class, "feeds"])->middleware('auth', 'auth.role:user');
 Route::get('/details-feeds/{id}', [homeController::class, "detailsFeeds"])->middleware('auth', 'auth.role:user');
 Route::post('/details-feeds/store/{id}', [homeController::class, "storeReviewEvent"])->middleware('auth', 'auth.role:user');
-Route::get('/see-all', [homeController::class, "seeAll"])->middleware('auth', 'auth.role:user');
+Route::get('/see-all', [homeController::class, "seeAll"]);
 Route::get('/profile', [homeController::class, "profile"])->middleware('auth', 'auth.role:user');
 Route::get('/profile/edit', [homeController::class, "profileEdit"])->middleware('auth', 'auth.role:user');
 Route::put('/profile/update', [homeController::class, "profileUpdate"])->middleware('auth', 'auth.role:user');

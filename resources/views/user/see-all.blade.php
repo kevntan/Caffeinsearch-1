@@ -9,50 +9,7 @@
         <section id="about" class="about">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <h1>
-                            <strong>
-                                Filter
-                            </strong>
-                        </h1>
-                        <div class="card">
-                            <div class="card-body">
-                                Location
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                Price Range
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                Rating
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                WFC Friendly
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <button type="button" class="btn btn-warning" style="width: 100%">Apply Filter</button>
-                            <button type="button" class="btn btn-light mt-2" style="width: 100%">Clear
-                                Filter</button>
-                        </div>
-                    </div>
+                    @include('user.layouts.filter')
                     <div class="col-lg-9 col-md-12 col-sm-12">
                         <h1 class="text-center">
                             <strong>
@@ -60,8 +17,8 @@
                             </strong>
                         </h1>
                         <div class="card">
-                            @if ($cafe->count() > 0)
-                                @foreach ($cafe as $v)
+                            @if (count($results) > 0)
+                                @foreach ($results as $v)
                                     <a href="{{ url('details/' . $v->id) }}"
                                         style="text-decoration: none;
                                     color: inherit;">
@@ -81,6 +38,8 @@
                                                             @endif
                                                             <br>
                                                             {{ $v->lokasi }}
+                                                            <br>
+                                                            {{ $v->alamat }}
                                                         </div>
                                                         <div class="col-lg-2">
                                                             WFC FRIENDLY
