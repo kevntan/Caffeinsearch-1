@@ -37,22 +37,22 @@
                                         <div class="carousel-item active">
                                             <img src="<?= asset('storage/image/' . $cafe->foto) ?>" style="width:100%"
                                                 class="d-block w-100" alt="<?= asset('storage/image/' . $cafe->foto) ?>">
-                                            <div class="carousel-caption">
+                                            {{-- <div class="carousel-caption">
                                                 <p>{{ $cafe->nama }}</p>
                                                 <p>* rating/5</p>
                                                 <p>{{ $cafe->lokasi }}</p>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         @if ($cafe->foto2)
                                             <div class="carousel-item">
                                                 <img src="<?= asset('storage/image/' . $cafe->foto2) ?>" style="width:100%"
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/' . $cafe->foto2) ?>">
-                                                <div class="carousel-caption">
+                                                {{-- <div class="carousel-caption">
                                                     <p>{{ $cafe->nama }}</p>
                                                     <p>* rating/5</p>
                                                     <p>{{ $cafe->lokasi }}</p>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         @endif
                                         @if ($cafe->foto3)
@@ -60,11 +60,11 @@
                                                 <img src="<?= asset('storage/image/' . $cafe->foto3) ?>" style="width:100%"
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/' . $cafe->foto3) ?>">
-                                                <div class="carousel-caption">
+                                                {{-- <div class="carousel-caption">
                                                     <p>{{ $cafe->nama }}</p>
                                                     <p>* rating/5</p>
                                                     <p>{{ $cafe->lokasi }}</p>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         @endif
                                     </div>

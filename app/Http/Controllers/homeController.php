@@ -57,14 +57,23 @@ class homeController extends Controller
 
     public function feeds()
     {
-        $event = DB::table('events')->get();
+        $event = DB::table('events')
+            ->join('cafes', 'events.cafe_id', 'cafes.id')
+            ->select('events.*', 'cafes.alamat')
+            ->get();
         return view('user.feeds', [
             'event' => $event,
         ]);
     }
     public function detailsFeeds($id)
     {
-        $event = Event::findOrFail($id);
+        $event = DB::table('events')
+            ->join('cafes', 'events.cafe_id', 'cafes.id')
+            ->where('events.id', $id)
+            ->select('events.*', 'cafes.alamat')
+            ->get();
+        $event = $event[0];
+
         $cafe = Cafe::find($event->cafe_id);
         $user = User::find($cafe->user_id);
         $review_event = DB::table('review_events')
@@ -263,8 +272,7 @@ class homeController extends Controller
         }
 
         if ($rating) {
-            $review_cafe
-                ->where('rating', $rating);
+            $review_cafe->where('rating', $rating);
         }
 
         if ($wfcfriendly) {

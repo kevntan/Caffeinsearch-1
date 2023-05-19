@@ -22,13 +22,6 @@
                                                 <img src="<?= asset('storage/image/' . $event->foto) ?>" style="width:100%"
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/' . $event->foto) ?>">
-                                                <div class="carousel-caption">
-                                                    <p>{{ $cafe->nama }}</p>
-                                                    @if ($review_cafe)
-                                                        <p>{{ number_format($review_cafe, 1, '.', '') }}/5</p>
-                                                    @endif
-                                                    <p>{{ $cafe->lokasi }}</p>
-                                                </div>
                                             </div>
                                         @endif
                                     </div>
@@ -46,7 +39,7 @@
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <h3>{{ $event->nama }}</h3>
-                                <strong>Lokasi</strong>
+                                <strong>{{$event->alamat}}</strong>
                                 <br>
                                 <strong>{{ $event->kategori }}</strong>
                                 <br>

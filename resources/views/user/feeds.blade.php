@@ -57,7 +57,7 @@
                                         alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $v->nama }}</h5>
-                                        Lokasi
+                                        {{ $v->alamat }}
                                         <br>
                                         {{ $v->kategori }}
                                         <br>
