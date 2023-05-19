@@ -18,7 +18,7 @@
                         </h1>
                         <div class="card">
                             @if (count($results) > 0)
-                                @foreach ($results as $v)
+                                @foreach ($results as $i => $v)
                                     <a href="{{ url('details/' . $v->id) }}"
                                         style="text-decoration: none;
                                     color: inherit;">
@@ -33,8 +33,8 @@
                                                         <div class="col-lg-7 col-md-12 col-sm-12">
                                                             {{ $v->nama }}
                                                             <br>
-                                                            @if ($review_cafe)
-                                                                {{ number_format($review_cafe, 1, '.', '') }}
+                                                            @if ($review_cafe[$i])
+                                                                {{ number_format($review_cafe[$i]->rating, 1, '.', '') }}
                                                             @endif
                                                             <br>
                                                             {{ $v->lokasi }}

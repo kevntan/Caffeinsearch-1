@@ -251,9 +251,9 @@ class homeController extends Controller
 
         $query = Cafe::query();
 
-        $review_cafe = $query
-            ->join('review_cafes', 'cafes.id', 'review_cafes.cafe_id')
-            ->avg('rating');
+        $query2 = DB::table('review_cafes');
+        $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->get();
+
         if ($lokasi) {
             $query->where('lokasi', $lokasi);
         }
@@ -275,10 +275,10 @@ class homeController extends Controller
         $results = $query->get();
 
         // dd($results);
+        // dd($review_cafe);
         // $cafe = DB::table('cafes')->get();
 
         // $review_cafe = DB::table('review_cafes')
-
 
 
         return view('user.filter', [
