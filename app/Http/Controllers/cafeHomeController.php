@@ -23,6 +23,7 @@ class cafeHomeController extends Controller
             DB::table('cafes')->insert([
                 'nama' => 'Cafe ' . Auth::user()->username,
                 'lokasi' => Auth::user()->daerah,
+                'alamat' => 'Alamat belum dilengkapi',
                 'user_id' => Auth::user()->id,
                 "created_at" =>  \Carbon\Carbon::now(),
                 "updated_at" => \Carbon\Carbon::now()
