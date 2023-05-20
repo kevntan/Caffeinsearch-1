@@ -55,7 +55,7 @@
         </div>
         <div class="mt-3">
             <button type="submit" class="btn btn-warning" style="width: 100%">Apply Filter</button>
-            <a href="{{ url('filter') }}" class="btn btn-light mt-2" style="width: 100%">Clear
+            <a href="{{ url('see-all') }}" class="btn btn-light mt-2" style="width: 100%">Clear
                 Filter</a>
         </div>
     </form>
