@@ -46,3 +46,5 @@ Route::post('/cafe/event/store/{id}', [cafeHomeController::class, "eventStore"])
 Route::get('/cafe/profile', [cafeHomeController::class, "profile"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe/profile/edit', [cafeHomeController::class, "profileEdit"])->middleware('auth', 'auth.role:cafe');
 Route::put('/cafe/profile/update', [cafeHomeController::class, "profileUpdate"])->middleware('auth', 'auth.role:cafe');
+Route::get('/cafe/event-edit/{id}', [cafeHomeController::class, "eventEdit"])->middleware('auth', 'auth.role:cafe');
+Route::put('/cafe/event-edit/update/{id}', [cafeHomeController::class, "eventUpdate"])->middleware('auth', 'auth.role:cafe');

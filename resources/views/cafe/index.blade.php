@@ -173,6 +173,7 @@
                                                 <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
                                                     style="width: 200px;">
                                             </div>
+
                                             <div class="col-lg-7 col-md-12 col-sm-12">
                                                 <h4>{{ $v->nama }}</h4>
                                                 {{ $cafe->nama }}
@@ -185,7 +186,13 @@
                                                 <br>
                                                 <br>
                                                 {{ $v->keterangan }}
+                                                <br>
+                                                <a href="{{ url('cafe/event-edit/' . $v->id) }}"
+                                                    class="btn btn-primary px-4">Edit</a>
+                                                <a href="{{ url('cafe/event-delte/' . $v->id) }}"
+                                                    class="btn btn-danger px-4">Delete</a>
                                             </div>
+
                                             <div class="col-lg-2">
                                                 @if ($cafe->wfc_friendly == 1)
                                                     WFC FRIENDLY

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cafe;
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -222,6 +223,50 @@ class cafeHomeController extends Controller
                 ]);
         } else {
             return redirect('/cafe/profile')
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
+    }
+    public function eventEdit($id)
+    {
+        $event = Event::findOrFail($id);
+        return view('cafe.event-edit', [
+            'event' => $event
+        ]);
+    }
+    public function eventUpdate(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
+        $update = $event->update([
+            'nama' => $request->nama,
+            'kategori' => $request->kategori,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
+            'keterangan' => $request->keterangan,
+        ]);
+
+        if ($request->file('foto') != null) {
+            $currFile = $request->file('foto');
+            $fileName = time() . '_' . $currFile->getClientOriginalName();
+            // Storage::putFileAs('public/storage/image', $currFile, $fileName);
+            $currFile->move(public_path('storage/image'), $fileName);
+            // hosting
+            // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+            $update->update([
+                'foto' => $fileName
+            ]);
+        }
+
+        if ($update == true) {
+            return redirect('/cafe/event-edit/' . $event->id)
+                ->with([
+                    'success' => 'Post has been updated successfully'
+                ]);
+        } else {
+            return redirect('/cafe/event-edit/' . $event->id)
+                ->back()
+                ->withInput()
                 ->with([
                     'error' => 'Some problem has occured, please try again'
                 ]);
