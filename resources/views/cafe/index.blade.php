@@ -26,7 +26,9 @@
                                 <h5>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
-                                <h3>WFC Friendly</h3>
+                                @if ($cafe->wfc_friendly == 1)
+                                    <h3>WFC Friendly</h3>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -185,7 +187,9 @@
                                                 {{ $v->keterangan }}
                                             </div>
                                             <div class="col-lg-2">
-                                                WFC FRIENDLY
+                                                @if ($cafe->wfc_friendly == 1)
+                                                    WFC FRIENDLY
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

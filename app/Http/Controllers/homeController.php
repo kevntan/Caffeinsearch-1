@@ -55,15 +55,34 @@ class homeController extends Controller
         ]);
     }
 
-    public function feeds()
+    public function feeds(Request $request)
     {
-        $event = DB::table('events')
-            ->join('cafes', 'events.cafe_id', 'cafes.id')
-            ->select('events.*', 'cafes.alamat')
-            ->get();
+        $lokasi = $request->input('lokasi');
+        $kategori = $request->input('kategori');
+
+        $query = Event::query();
+
+        if ($lokasi) {
+            $query->join('cafes', 'events.cafe_id', 'cafes.id')->where('lokasi', $lokasi)->select('events.*', 'cafes.alamat');
+        }
+        if ($kategori) {
+            $query->where('kategori', $kategori);
+        }
+
+        $results = $query->get();
+
         return view('user.feeds', [
-            'event' => $event,
+            'result' => $results,
+            'lokasi' => $lokasi,
+            'kategori' => $kategori
         ]);
+        // $event = DB::table('events')
+        //     ->join('cafes', 'events.cafe_id', 'cafes.id')
+        //     ->select('events.*', 'cafes.alamat')
+        //     ->get();
+        // return view('user.feeds', [
+        //     'event' => $event,
+        // ]);
     }
     public function detailsFeeds($id)
     {
@@ -255,8 +274,6 @@ class homeController extends Controller
         $harga = $request->input('harga');
         $rating = $request->input('rating');
         $wfcfriendly = $request->input('wfcfriendly');
-
-
 
         $query = Cafe::query();
 

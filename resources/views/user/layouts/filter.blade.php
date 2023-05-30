@@ -14,9 +14,11 @@
                     @else
                         <option value="">Open this select menu</option>
                     @endif
-                    <option value="one">One</option>
-                    <option value="two">Two</option>
-                    <option value="three">Three</option>
+                    <option value="Central Jakarta">Central Jakarta</option>
+                    <option value="East Jakarta">East Jakarta</option>
+                    <option value="North Jakarta">North Jakarta</option>
+                    <option value="South Jakarta">South Jakarta</option>
+                    <option value="West Jakarta">West Jakarta</option>
                 </select>
                 Price Range
                 <select class="form-select" aria-label="Default select example" name="harga">
@@ -47,9 +49,8 @@
                     @else
                         <option value="">Open this select menu</option>
                     @endif
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
                 </select>
             </div>
         </div>

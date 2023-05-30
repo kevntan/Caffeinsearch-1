@@ -27,7 +27,9 @@
                                     <h5>{{ $cafe->lokasi }}</h5>
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-5">
-                                    <h3>WFC Friendly</h3>
+                                    @if ($cafe->wfc_friendly == 1)
+                                        <h3>WFC Friendly</h3>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -139,8 +141,9 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">+62</div>
                                         </div>
-                                        <input name="telepon" type="number" class="form-control" id="inlineFormInputGroup"
-                                            placeholder="Phone Number" value="{{ $cafe->telepon }}">
+                                        <input name="telepon" type="number" class="form-control"
+                                            id="inlineFormInputGroup" placeholder="Phone Number"
+                                            value="{{ $cafe->telepon }}">
                                     </div>
                                     <br>
                                     <strong>Description</strong>

@@ -15,9 +15,11 @@
                         <div class="container">
                             <div class="text-center">
                                 @if (Auth::user()->foto)
-                                    <img src="<?= asset('storage/image/' . Auth::user()->foto) ?>" alt="" style="max-width: 50%">
+                                    <img src="<?= asset('storage/image/' . Auth::user()->foto) ?>" alt=""
+                                        class="rounded-circle " style="max-width:50%; max-height:50%;">
                                 @else
-                                    <img src="<?= asset('user/assets/img/Vector.png') ?>" alt="">
+                                    <img src="<?= asset('user/assets/img/Vector.png') ?>" class="rounded-circle"
+                                        alt="">
                                 @endif
                                 <h2><strong>{{ Auth::user()->username }}</strong></h2>
                                 {{-- <p>User Cafe Admin at Nama Cafe</p> --}}

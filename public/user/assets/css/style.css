@@ -1104,11 +1104,29 @@ section {
   opacity: 1;
 }
 
+.square-image {
+  max-width: 50%;
+  padding-bottom: 50%;
+  /* Menghasilkan rasio 1:1 */
+  position: relative;
+  overflow: hidden;
+}
+
+.square-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: cover;
+}
+
 @media (min-width: 992px) {
   .mat-card {
     max-width: 14rem;
   }
 }
+
 @media (min-width: 992px) {
   .mat-card {
     width: 100%;

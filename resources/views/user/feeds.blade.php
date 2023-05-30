@@ -15,34 +15,45 @@
                             </strong>
                         </h1>
                         <div class="card">
-                            <div class="card-body">
-                                Location
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                Categories
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Event
-                                    </label>
+                            <form action="{{ url('feeds') }}" method="get">
+                                <div class="card-body">
+                                    Location
+                                    <select name="lokasi" class="form-select" aria-label="Default select example">
+                                        @if (isset($lokasi))
+                                            <option value="{{ $lokasi }}">{{ $lokasi }}</option>
+                                        @else
+                                            <option value="">Open this select menu</option>
+                                        @endif
+                                        <option value="Central Jakarta">Central Jakarta</option>
+                                        <option value="East Jakarta">East Jakarta</option>
+                                        <option value="North Jakarta">North Jakarta</option>
+                                        <option value="South Jakarta">South Jakarta</option>
+                                        <option value="West Jakarta">West Jakarta</option>
+                                    </select>
+                                    Categories
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="Event" name="kategori"
+                                            id="kategori1" <?php $checked = ($kategori === "Event") ? "checked" : ""; echo $checked;?>>
+                                        <label class="form-check-label" for="kategori1">
+                                            Event
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="Promo" name="kategori"
+                                            id="kategori2" <?php $checked = ($kategori === "Promo") ? "checked" : ""; echo $checked;?>>
+                                        <label class="form-check-label" for="kategori2">
+                                            Promo
+                                        </label>
+                                    </div>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        Promo
-                                    </label>
-                                </div>
-                            </div>
                         </div>
                         <div class="mt-3">
-                            <button type="button" class="btn btn-warning" style="width: 100%">Apply Filter</button>
-                            <button type="button" class="btn btn-light mt-2" style="width: 100%">Clear
-                                Filter</button>
+                            <button type="submit" class="btn btn-warning" style="width: 100%">Apply Filter</button>
+                            <a type="button" href="{{ url('feeds') }}" class="btn btn-light mt-2"
+                                style="width: 100%">Clear
+                                Filter</a>
                         </div>
+                        </form>
                     </div>
                     <div class="col-lg-9 col-md-12 col-sm-12">
                         <h1 class="text-center">
@@ -50,8 +61,8 @@
                                 All Cafe
                             </strong>
                         </h1>
-                        @if ($event->count() > 0)
-                            @foreach ($event as $v)
+                        @if ($result->count() > 0)
+                            @foreach ($result as $v)
                                 <div class="card mb-5" style="border-radius: 20px;">
                                     <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"
                                         alt="...">

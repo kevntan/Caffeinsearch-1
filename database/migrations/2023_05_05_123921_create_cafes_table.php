@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('lokasi');
             $table->string('alamat')->nullable();
-            $table->integer('wfc_friendly')->nullable();
+            $table->integer('wfc_friendly')->default(0);
             $table->integer('wifi')->nullable();
             $table->integer('charging_port')->nullable();
             $table->integer('lahan_parkir')->nullable();

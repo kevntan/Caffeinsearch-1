@@ -23,7 +23,9 @@
                                 <h5>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
-                                <h3>WFC Friendly</h3>
+                                @if ($cafe->wfc_friendly == 1)
+                                    <h3>WFC Friendly</h3>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -81,6 +83,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
+                                <strong>Address</strong>
+                                <br>
+                                {{ $cafe->alamat }}
+                                <br>
                                 <strong>Operational Hours</strong>
                                 <br>
                                 {{ date('h:i A', strtotime($cafe->operasional_buka)) }} -
@@ -92,7 +98,7 @@
                                 <br>
                                 <strong>Phone</strong>
                                 <br>
-                                {{ $cafe->telepon }}
+                                +62{{ $cafe->telepon }}
                                 <br>
                                 <strong>Description</strong>
                                 <br>
@@ -161,7 +167,9 @@
                                                     {{ $v->keterangan }}
                                                 </div>
                                                 <div class="col-lg-2">
-                                                    WFC FRIENDLY
+                                                    @if ($cafe->wfc_friendly == 1)
+                                                        WFC FRIENDLY
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -210,7 +218,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                        review</a> -->
+                                                                                                                                                                                        review</a> -->
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">

@@ -50,7 +50,7 @@
                                 <br>
                                 {{ $event->keterangan }}
                                 <br>
-                                <a href="{{ $cafe->maps }}" class="btn btn-light mt-5" style="width: 100%">See Google
+                                <a href="{{ $cafe->maps }}" target="_blank" class="btn btn-light mt-5" style="width: 100%">See Google
                                     Maps
                                     Details</a>
                             </div>
