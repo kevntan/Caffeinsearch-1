@@ -42,7 +42,7 @@
                                                             {{ $v->alamat }}
                                                         </div>
                                                         <div class="col-lg-2">
-                                                            @if ($cafe->wfc_friendly == 1)
+                                                            @if ($wfcfriendly == 1)
                                                                 WFC FRIENDLY
                                                             @endif
                                                         </div>
