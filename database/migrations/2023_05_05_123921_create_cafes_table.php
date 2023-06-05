@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('smoking_area')->nullable();
             $table->integer('mushola')->nullable();
             $table->integer('toilet')->nullable();
-            $table->integer('range_harga')->nullable();
+            $table->string('range_harga')->nullable();
             $table->bigInteger('telepon')->nullable();
             $table->time('operasional_buka')->nullable();
             $table->time('operasional_tutup')->nullable();
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->string('foto2')->nullable();
             $table->string('foto3')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->nullable();
             $table->timestamps();
         });
     }

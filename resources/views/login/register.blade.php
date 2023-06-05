@@ -50,9 +50,11 @@
                                 <label for="Daerah">Daerah</label>
                                 <select class="custom-select" name="daerah">
                                     <option selected>Daerah</option>
-                                    <option value="one">One</option>
-                                    <option value="two">Two</option>
-                                    <option value="three">Three</option>
+                                    <option value="Central Jakarta">Central Jakarta</option>
+                                    <option value="East Jakarta">East Jakarta</option>
+                                    <option value="North Jakarta">North Jakarta</option>
+                                    <option value="South Jakarta">South Jakarta</option>
+                                    <option value="West Jakarta">West Jakarta</option>
                                 </select>
                             </div>
                             <div class="form-group last mb-3">

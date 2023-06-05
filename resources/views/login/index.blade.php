@@ -56,8 +56,8 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group first">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" name="username" placeholder="Masukkan Email"
+                                    <label for="Username">Username</label>
+                                    <input type="text" class="form-control" name="username" placeholder="Masukkan Username"
                                         id="username">
                                 </div>
                                 <div class="form-group last mb-3">

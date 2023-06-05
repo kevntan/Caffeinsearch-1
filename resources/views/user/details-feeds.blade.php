@@ -39,7 +39,10 @@
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <h3>{{ $event->nama }}</h3>
-                                <strong>{{$event->alamat}}</strong>
+                                <br>
+                                <strong>{{ $event->nama_cafe }}</strong>
+                                <br>
+                                <strong>{{ $event->alamat }}</strong>
                                 <br>
                                 <strong>{{ $event->kategori }}</strong>
                                 <br>
@@ -50,7 +53,8 @@
                                 <br>
                                 {{ $event->keterangan }}
                                 <br>
-                                <a href="{{ $cafe->maps }}" target="_blank" class="btn btn-light mt-5" style="width: 100%">See Google
+                                <a href="{{ $cafe->maps }}" target="_blank" class="btn btn-light mt-5"
+                                    style="width: 100%">See Google
                                     Maps
                                     Details</a>
                             </div>

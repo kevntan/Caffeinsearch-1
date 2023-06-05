@@ -17,12 +17,14 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="{{ url('cafe/event-edit/update/' . $event->id) }}">
+                        <form method="post" action="{{ url('cafe/event-edit/update/' . $event->id) }}"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
                                 <div class="col-6">
-                                    <img src=" <?= asset('storage/image/' . $event->foto) ?>" alt="">
+                                    <img src=" <?= asset('storage/image/' . $event->foto) ?>" alt=""
+                                        style="max-width:100%">
                                     <input type="file" value="{{ $event->nama }}" name="foto" class="form-control"
                                         id="foto" aria-describedby="foto">
                                 </div>
@@ -57,6 +59,7 @@
                                         <textarea name="keterangan" class="form-control" id="">{{ $event->keterangan }}</textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="{{ url('cafe') }}" class="btn btn-link">Back</a>
                                 </div>
                             </div>
                         </form>

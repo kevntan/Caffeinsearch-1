@@ -27,9 +27,11 @@
                     @else
                         <option value="">Open this select menu</option>
                     @endif
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="$">$</option>
+                    <option value="$$">$$</option>
+                    <option value="$$$">$$$</option>
+                    <option value="$$$$">$$$$</option>
+                    <option value="$$$$$">$$$$$</option>
                 </select>
                 Rating
                 <select class="form-select" aria-label="Default select example" name="rating">
@@ -38,14 +40,17 @@
                     @else
                         <option value="">Open this select menu</option>
                     @endif
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">Lowest To Highest</option>
+                    <option value="2">Highest To Lowest</option>
                 </select>
                 WFC Friendly
                 <select class="form-select" aria-label="Default select example" name="wfcfriendly">
                     @if (isset($wfcfriendly))
-                        <option value="{{ $wfcfriendly }}">{{ $wfcfriendly }}</option>
+                        @if ($wfcfriendly == 1)
+                            <option value="1">Yes</option>
+                        @else
+                            <option value="0">No</option>
+                        @endif
                     @else
                         <option value="">Open this select menu</option>
                     @endif

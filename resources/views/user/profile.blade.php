@@ -22,6 +22,7 @@
                                         alt="">
                                 @endif
                                 <h2><strong>{{ Auth::user()->username }}</strong></h2>
+                                <p>{{ Auth::user()->daerah }}</p>
                                 {{-- <p>User Cafe Admin at Nama Cafe</p> --}}
                                 <br>
                                 @if (Auth::user()->bio)

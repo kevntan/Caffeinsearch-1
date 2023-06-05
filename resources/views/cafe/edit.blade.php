@@ -124,15 +124,13 @@
                                     <br>
                                     <select name="range_harga" class="form-control">
                                         <option value="{{ $cafe->range_harga }}">
-                                            <?php for ($i = 1; $i <= $cafe->range_harga; $i++) {
-                                                echo "$";
-                                            }
-                                            ?>
+                                            {{ $cafe->range_harga }}
                                         </option>
-                                        <option value="1">$</option>
-                                        <option value="2">$$</option>
-                                        <option value="3">$$$</option>
-                                        <option value="4">$$$$</option>
+                                        <option value="$">$</option>
+                                        <option value="$$">$$</option>
+                                        <option value="$$$">$$$</option>
+                                        <option value="$$$$">$$$$</option>
+                                        <option value="$$$$$">$$$$$</option>
                                     </select>
                                     <br>
                                     <strong>Phone</strong>

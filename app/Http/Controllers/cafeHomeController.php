@@ -253,13 +253,13 @@ class cafeHomeController extends Controller
             $currFile->move(public_path('storage/image'), $fileName);
             // hosting
             // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
-            $update->update([
+            $event->update([
                 'foto' => $fileName
             ]);
         }
 
         if ($update == true) {
-            return redirect('/cafe/event-edit/' . $event->id)
+            return redirect('/cafe')
                 ->with([
                     'success' => 'Post has been updated successfully'
                 ]);

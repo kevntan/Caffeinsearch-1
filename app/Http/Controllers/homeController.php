@@ -89,7 +89,7 @@ class homeController extends Controller
         $event = DB::table('events')
             ->join('cafes', 'events.cafe_id', 'cafes.id')
             ->where('events.id', $id)
-            ->select('events.*', 'cafes.alamat')
+            ->select('events.*', 'cafes.alamat', 'cafes.nama as nama_cafe')
             ->get();
         $event = $event[0];
 
@@ -207,7 +207,8 @@ class homeController extends Controller
 
         $update = $user->update([
             // 'username' => $request->username,
-            'bio' => $request->bio
+            'bio' => $request->bio,
+            'daerah' => $request->daerah
         ]);
 
         if ($request->password) {
