@@ -58,7 +58,7 @@
                     <div class="col-lg-9 col-md-12 col-sm-12">
                         <h1 class="text-center">
                             <strong>
-                                All Cafe
+                                All Feeds
                             </strong>
                         </h1>
                         @if ($result->count() > 0)

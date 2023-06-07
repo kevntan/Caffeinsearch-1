@@ -189,7 +189,7 @@
                                                 <br>
                                                 <a href="{{ url('cafe/event-edit/' . $v->id) }}"
                                                     class="btn btn-primary px-4">Edit</a>
-                                                <a href="{{ url('cafe/event-delte/' . $v->id) }}"
+                                                <a href="{{ url('cafe/event-delete/' . $v->id) }}"
                                                     class="btn btn-danger px-4">Delete</a>
                                             </div>
 

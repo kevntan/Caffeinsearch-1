@@ -139,11 +139,10 @@ class homeController extends Controller
         if (!Auth::user()) {
             return redirect('sign-in');
         }
-
+        
+        $query2 = DB::table('review_cafes');
         $cafe = DB::table('cafes')->get();
-        $review_cafe = DB::table('review_cafes')
-            ->where('cafe_id', $cafe[0]->id)
-            ->avg('rating');
+        $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->get();
 
         $results = 0;
         $results = $this->search($request);
@@ -290,7 +289,12 @@ class homeController extends Controller
         }
 
         if ($rating) {
-            $review_cafe->where('rating', $rating);
+            // $review_cafe->where('rating', $rating);
+            if ($rating == 1) {
+                $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->orderBy('rating', 'ASC')->get();
+            } else if ($rating == 2) {
+                $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->orderBy('rating', 'DESC')->get();
+            }
         }
 
         if ($wfcfriendly) {
@@ -299,6 +303,16 @@ class homeController extends Controller
 
 
         $results = $query->get();
+
+        // dd($review_cafe);
+
+        // dd($review_cafe[0]);
+
+        // dd($results);
+
+        // dd($query->join('review_cafes', 'cafes.id', '=', 'review_cafes.cafe_id')->select('cafes.*','review_cafes.cafe_id', DB::raw('AVG(review_cafes.rating) as rating'))->groupBy('cafes.id')->get());
+
+        // dd($query->join('review_cafes', 'cafes.id', '=', 'review_cafes.cafe_id')->select(DB::raw('AVG(rating) as rating'), 'cafes.*', 'review_cafes.cafe_id')->groupBy('review_cafes.cafe_id')->get());
 
         // dd($results);
         // dd($review_cafe);

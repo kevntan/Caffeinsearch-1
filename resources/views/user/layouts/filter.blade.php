@@ -36,12 +36,17 @@
                 Rating
                 <select class="form-select" aria-label="Default select example" name="rating">
                     @if (isset($rating))
-                        <option value="{{ $rating }}">{{ $rating }}</option>
+                        @if ($rating == 1)
+                            <option value="1">Lowest To Highest</option>
+                        @else
+                            <option value="2">Highest To Lowest</option>
+                        @endif
                     @else
                         <option value="">Open this select menu</option>
                     @endif
                     <option value="1">Lowest To Highest</option>
                     <option value="2">Highest To Lowest</option>
+
                 </select>
                 WFC Friendly
                 <select class="form-select" aria-label="Default select example" name="wfcfriendly">

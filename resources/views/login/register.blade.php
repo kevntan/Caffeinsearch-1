@@ -45,6 +45,9 @@
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" name="username"
                                     placeholder="Masukkan Username" id="username">
+                                @error('username')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="Daerah">Daerah</label>
@@ -61,6 +64,9 @@
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" name="email" placeholder="Masukkan Email"
                                     id="email">
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Password</label>

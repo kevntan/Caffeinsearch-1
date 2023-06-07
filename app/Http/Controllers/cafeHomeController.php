@@ -272,4 +272,21 @@ class cafeHomeController extends Controller
                 ]);
         }
     }
+    public function eventDelete($id)
+    {
+        $event = Event::findOrFail($id);
+        $event->delete();
+
+        if ($event) {
+            return redirect('cafe')
+                ->with([
+                    'success' => 'Post has been deleted successfully'
+                ]);
+        } else {
+            return redirect('cafe')
+                ->with([
+                    'error' => 'Some problem has occurred, please try again'
+                ]);
+        }
+    }
 }
