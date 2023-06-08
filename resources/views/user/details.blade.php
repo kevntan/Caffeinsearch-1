@@ -104,6 +104,12 @@
                                 <br>
                                 {{ $cafe->deskripsi }}
                                 <br>
+                                @if ($cafe->ambience != null)
+                                    <strong>Ambience</strong>
+                                    <br>
+                                    {{ $cafe->ambience }}
+                                    <br>
+                                @endif
                                 <a href="{{ $cafe->maps }}" target="blank" class="btn btn-light" style="width: 100%">See
                                     Google Maps
                                     Details</a>
@@ -218,7 +224,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                        review</a> -->
+                                                                                                                                                                                            review</a> -->
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">

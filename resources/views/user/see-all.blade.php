@@ -42,6 +42,12 @@
                                                                     {{ $v->lokasi }}
                                                                     <br>
                                                                     {{ $v->alamat }}
+                                                                    <br>
+                                                                    @if ($v->ambience != null)
+                                                                        <strong>Ambience: </strong>
+                                                                        {{ $v->ambience }}
+                                                                        <br>
+                                                                    @endif
                                                                 </div>
                                                                 <div class="col-lg-2">
                                                                     @if ($v->wfc_friendly == 1)

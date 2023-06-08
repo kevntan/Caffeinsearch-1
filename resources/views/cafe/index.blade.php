@@ -117,6 +117,12 @@
                                 <br>
                                 {{ $cafe->deskripsi }}
                                 <br>
+                                @if ($cafe->ambience != null)
+                                    <strong>Ambience</strong>
+                                    <br>
+                                    {{ $cafe->ambience }}
+                                    <br>
+                                @endif
                                 <a href="{{ $cafe->maps }}" target="blank" class="btn btn-light" style="width: 100%">See
                                     Google Maps
                                     Details</a>
@@ -260,12 +266,12 @@
                                             <label for="">Time*</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <input class="form-control" name="waktu_mulai" type="time"
+                                                    <input class="form-control" name="waktu_mulai" type="datetime-local"
                                                         placeholder="Default input" required>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <input class="form-control" name="waktu_selesai" type="time"
-                                                        placeholder="Default input" required>
+                                                    <input class="form-control" name="waktu_selesai"
+                                                        type="datetime-local" placeholder="Default input" required>
                                                 </div>
                                             </div>
                                             <div class="form-floating mt-3">

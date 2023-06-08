@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('foto');
             $table->string('kategori');
             $table->date('tanggal');
-            $table->time('waktu_mulai');
-            $table->time('waktu_selesai');
+            $table->dateTime('waktu_mulai');
+            $table->dateTime('waktu_selesai');
             $table->text('keterangan')->nullable();
             $table->foreignId('cafe_id')->constrained('cafes');
             $table->timestamps();

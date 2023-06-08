@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->string('foto2')->nullable();
             $table->string('foto3')->nullable();
+            $table->string('ambience')->nullable();
             $table->foreignId('user_id')->constrained('users')->nullable();
             $table->timestamps();
         });
