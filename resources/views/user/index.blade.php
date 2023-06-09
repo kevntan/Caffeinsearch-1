@@ -18,24 +18,26 @@
                         </h1>
                         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                             style="border-radius: 16px;">
-                            @for ($n = 0; $n < 3; $n++)
-                                <?php $x = rand(0, $results->count() - 1); ?>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        @if ($results[$x]->foto != NULL)
-                                            <img src="<?= asset('user/assets/img/' . $results[$x]->foto) ?>"
-                                                class="d-block w-100"
-                                                alt="<?= asset('user/assets/img/' . $results[$x]->foto) ?>">
-                                        @else
-                                            <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
-                                                alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                        @endif
-                                        <div class="carousel-caption">
-                                            <p>{{ $results[$x]->nama }}</p>
-                                            <p>{{ $results[$x]->lokasi }}</p>
+                            @if ($results->count() > 0)
+                                @for ($n = 0; $n < 3; $n++)
+                                    <?php $x = rand(0, $results->count() - 1); ?>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            @if ($results[$x]->foto != null)
+                                                <img src="<?= asset('user/assets/img/' . $results[$x]->foto) ?>"
+                                                    class="d-block w-100"
+                                                    alt="<?= asset('user/assets/img/' . $results[$x]->foto) ?>">
+                                            @else
+                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
+                                                    alt="<?= asset('user/assets/img/assets1.png') ?>">
+                                            @endif
+                                            <div class="carousel-caption">
+                                                <p>{{ $results[$x]->nama }}</p>
+                                                <p>{{ $results[$x]->lokasi }}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                            @endfor
+                                @endfor
+                            @endif
                         </div>
                         {{-- <div class="carousel-item">
                                     <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"

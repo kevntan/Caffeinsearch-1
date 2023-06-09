@@ -22,6 +22,7 @@ class homeController extends Controller
         $cafe = DB::table('cafes')
             ->limit(9)
             ->get();
+            
         $results = 0;
         $results = $this->search($request);
 
