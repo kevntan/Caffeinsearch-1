@@ -17,45 +17,43 @@
                             </strong>
                         </h1>
                         <div class="card">
-                            @if (count($results) > 0)
-                                @for ($n = 0; $n < $review_cafe->count(); $n++)
-                                    @foreach ($results as $i => $v)
-                                        @if ($review_cafe[$n]->cafe_id == $v->id)
-                                            <a href="{{ url('details/' . $v->id) }}"
-                                                style="text-decoration: none;
+                            @if ($results->count() > 0)
+                                @foreach ($results as $i => $v)
+                                    <a href="{{ url('details/' . $v->id) }}"
+                                        style="text-decoration: none;
                                     color: inherit;">
+                                        <div class="card-body">
+                                            <div class="card">
                                                 <div class="card-body">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                                                    <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                                        alt="" style="width: 200px;">
-                                                                </div>
-                                                                <div class="col-lg-7 col-md-12 col-sm-12">
-                                                                    {{ $v->nama }}
-                                                                    <br>
-
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-12 col-sm-12">
+                                                            <img src="<?= asset('storage/image/' . $v->foto) ?>"
+                                                                alt="" style="width: 200px;">
+                                                        </div>
+                                                        <div class="col-lg-7 col-md-12 col-sm-12">
+                                                            {{ $v->nama }}
+                                                            @for ($n = 0; $n < $review_cafe->count(); $n++)
+                                                                @if ($review_cafe[$n]->cafe_id == $v->id)
+                                                            <br>
                                                                     {{ number_format($review_cafe[$n]->rating, 1, '.', '') }}
-
-                                                                    <br>
-                                                                    {{ $v->lokasi }}
-                                                                    <br>
-                                                                    {{ $v->alamat }}
-                                                                </div>
-                                                                <div class="col-lg-2">
-                                                                    @if ($v->wfc_friendly == 1)
-                                                                        WFC FRIENDLY
-                                                                    @endif
-                                                                </div>
-                                                            </div>
+                                                                @endif
+                                                            @endfor
+                                                            <br>
+                                                            {{ $v->lokasi }}
+                                                            <br>
+                                                            {{ $v->alamat }}
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            @if ($v->wfc_friendly == 1)
+                                                                WFC FRIENDLY
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>
-                                        @endif
-                                    @endforeach
-                                @endfor
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endforeach
                             @else
                                 <div class="text-center">
                                     tidak ada cafe
