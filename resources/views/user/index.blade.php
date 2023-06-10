@@ -28,7 +28,7 @@
                                                     <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
                                                         class="d-block w-100"
                                                         alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
-                                                    <?php continue; ?>
+                                                    {{-- <?php continue; ?> --}}
                                                 @else
                                                     <img src="<?= asset('user/assets/img/assets1.png') ?>"
                                                         class="d-block w-100"
@@ -45,7 +45,7 @@
                                                     <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
                                                         class="d-block w-100"
                                                         alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
-                                                    <?php continue; ?>
+                                                    {{-- <?php continue; ?> --}}
                                                 @else
                                                     <img src="<?= asset('user/assets/img/assets1.png') ?>"
                                                         class="d-block w-100"
