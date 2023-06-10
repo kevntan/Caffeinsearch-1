@@ -45,11 +45,11 @@
                                         <label for="">Waktu</label>
                                         <div class="row">
                                             <div class="col-6">
-                                                <input type="time" class="form-control" value="{{ $event->waktu_mulai }}"
+                                                <input type="datetime-local" class="form-control" value="{{ $event->waktu_mulai }}"
                                                     name="waktu_mulai" id="">
                                             </div>
                                             <div class="col-6">
-                                                <input type="time" class="form-control"
+                                                <input type="datetime-local" class="form-control"
                                                     value="{{ $event->waktu_selesai }}" name="waktu_selesai" id="">
                                             </div>
                                         </div>
