@@ -27,6 +27,7 @@
                                                 <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                <?php continue; ?>
                                             @else
                                                 <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
                                                     alt="<?= asset('user/assets/img/assets1.png') ?>">
@@ -36,6 +37,7 @@
                                                 <p>{{ $results[$x]->lokasi }}</p>
                                             </div>
                                         </div>
+                                    </div>
                                 @endfor
                             @endif
                         </div>
