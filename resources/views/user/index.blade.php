@@ -24,9 +24,9 @@
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             @if ($results[$x]->foto != null)
-                                                <img src="<?= asset('user/assets/img/' . $results[$x]->foto) ?>"
+                                                <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
                                                     class="d-block w-100"
-                                                    alt="<?= asset('user/assets/img/' . $results[$x]->foto) ?>">
+                                                    alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
                                             @else
                                                 <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
                                                     alt="<?= asset('user/assets/img/assets1.png') ?>">
