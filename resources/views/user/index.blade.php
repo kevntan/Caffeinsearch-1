@@ -18,10 +18,10 @@
                         </h1>
                         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                             style="border-radius: 16px;">
+                            <div class="carousel-inner">
                             @if ($results->count() > 0)
                                 @for ($n = 0; $n < 3; $n++)
                                     <?php $x = rand(0, $results->count() - 1); ?>
-                                    <div class="carousel-inner">
                                         @if ($n == 0)
                                             <div class="carousel-item active">
                                                 @if ($results[$x]->foto != null)
@@ -57,7 +57,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                    </div>
+                                    
                                 @endfor
                             @endif
                         </div>
