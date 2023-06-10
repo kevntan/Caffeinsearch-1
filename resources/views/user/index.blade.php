@@ -22,21 +22,41 @@
                                 @for ($n = 0; $n < 3; $n++)
                                     <?php $x = rand(0, $results->count() - 1); ?>
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            @if ($results[$x]->foto != null)
-                                                <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
-                                                    class="d-block w-100"
-                                                    alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
-                                                <?php continue; ?>
-                                            @else
-                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
-                                                    alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                            @endif
-                                            <div class="carousel-caption">
-                                                <p>{{ $results[$x]->nama }}</p>
-                                                <p>{{ $results[$x]->lokasi }}</p>
+                                        @if ($n == 0)
+                                            <div class="carousel-item active">
+                                                @if ($results[$x]->foto != null)
+                                                    <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                        class="d-block w-100"
+                                                        alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                    <?php continue; ?>
+                                                @else
+                                                    <img src="<?= asset('user/assets/img/assets1.png') ?>"
+                                                        class="d-block w-100"
+                                                        alt="<?= asset('user/assets/img/assets1.png') ?>">
+                                                @endif
+                                                <div class="carousel-caption">
+                                                    <p>{{ $results[$x]->nama }}</p>
+                                                    <p>{{ $results[$x]->lokasi }}</p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @else
+                                            <div class="carousel-item">
+                                                @if ($results[$x]->foto != null)
+                                                    <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                        class="d-block w-100"
+                                                        alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                    <?php continue; ?>
+                                                @else
+                                                    <img src="<?= asset('user/assets/img/assets1.png') ?>"
+                                                        class="d-block w-100"
+                                                        alt="<?= asset('user/assets/img/assets1.png') ?>">
+                                                @endif
+                                                <div class="carousel-caption">
+                                                    <p>{{ $results[$x]->nama }}</p>
+                                                    <p>{{ $results[$x]->lokasi }}</p>
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                 @endfor
                             @endif
