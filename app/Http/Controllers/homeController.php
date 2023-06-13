@@ -301,6 +301,7 @@ class homeController extends Controller
             $query->where('wfc_friendly', $wfcfriendly);
         }
 
+        // dd($review_cafe);
 
         $results = $query->get();
 
