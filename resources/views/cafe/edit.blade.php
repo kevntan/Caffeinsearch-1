@@ -24,7 +24,14 @@
                                 <div class="col-lg-10 col-md-6 col-sm-6">
                                     <h3>{{ $cafe->nama }}</h3>
                                     <h5>Rating</h5>
-                                    <h5>{{ $cafe->lokasi }}</h5>
+                                    <select name="lokasi" class="custom-select" id="">
+                                        <option selected>{{ $cafe->lokasi }}</option>
+                                        <option value="Central Jakarta">Central Jakarta</option>
+                                        <option value="East Jakarta">East Jakarta</option>
+                                        <option value="North Jakarta">North Jakarta</option>
+                                        <option value="South Jakarta">South Jakarta</option>
+                                        <option value="West Jakarta">West Jakarta</option>
+                                    </select>
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-5">
                                     @if ($cafe->wfc_friendly == 1)
@@ -126,13 +133,20 @@
                                         <option value="{{ $cafe->range_harga }}">
                                             {{ $cafe->range_harga }}
                                         </option>
-                                        <option value="$">$</option>
-                                        <option value="$$">$$</option>
-                                        <option value="$$$">$$$</option>
-                                        <option value="$$$$">$$$$</option>
-                                        <option value="$$$$$">$$$$$</option>
+                                        <option value="$ (< 25.000 untuk 1 orang)">$ (< 25.000 untuk 1 orang)</option>
+                                        <option value="$$ (25.000 - 50.000 IDR untuk 1 orang)">$$ (25.000 - 50.000 IDR untuk 1 orang)</option>
+                                        <option value="$$$ (51.000 - 75.000 IDR untuk 1 orang)">$$$ (51.000 - 75.000 IDR untuk 1 orang)</option>
+                                        <option value="$$$$ (> 75.000 IDR untuk 1 orang)">$$$$ (> 75.000 IDR untuk 1 orang)</option>
                                     </select>
+                                    <strong>Suasana Cafe</strong>
                                     <br>
+                                    <select name="ambience" class="form-control">
+                                        <option value="{{ $cafe->ambience }}">
+                                            {{ $cafe->ambience }}
+                                        </option>
+                                        <option value="Ramai">Ramai</option>
+                                        <option value="Tenang">Tenang</option>
+                                    </select>
                                     <strong>Phone</strong>
                                     <br>
                                     <div class="input-group">
@@ -262,6 +276,25 @@
                                                 value="1" id="defaultCheck1" checked>
                                             <label class="form-check-label" for="defaultCheck1">
                                                 Toilet
+                                            </label>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    @if ($cafe->meeting_room == 0)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="meeting_room"
+                                                value="1" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Meeting room
+                                            </label>
+                                        </div>
+                                    @else
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="meeting_room"
+                                                value="1" id="defaultCheck1" checked>
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Meeting room
                                             </label>
                                         </div>
                                     @endif

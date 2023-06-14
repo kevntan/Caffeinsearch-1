@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('smoking_area')->nullable();
             $table->integer('mushola')->nullable();
             $table->integer('toilet')->nullable();
+            $table->integer('meeting_room')->nullable();
             $table->string('range_harga')->nullable();
             $table->bigInteger('telepon')->nullable();
             $table->time('operasional_buka')->nullable();

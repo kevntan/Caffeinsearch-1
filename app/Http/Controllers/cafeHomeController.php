@@ -83,8 +83,10 @@ class cafeHomeController extends Controller
         $update = $cafe->update([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
+            'lokasi' => $request->lokasi,
             'operasional_buka' => $request->operasional_buka,
             'operasional_tutup' => $request->operasional_tutup,
+            'ambience' => $request->ambience,
             'range_harga' => $request->range_harga,
             'telepon' => $request->telepon,
             'deskripsi' => $request->deskripsi,

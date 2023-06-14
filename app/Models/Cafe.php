@@ -13,6 +13,8 @@ class Cafe extends Model
         'nama',
         'lokasi',
         'alamat',
+        'meeting_room',
+        'ambience',
         'wfc_friendly',
         'wifi',
         'charging_port',

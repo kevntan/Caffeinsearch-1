@@ -39,6 +39,11 @@
                                                                     {{ $v->lokasi }}
                                                                     <br>
                                                                     {{ $v->alamat }}
+                                                                    @if ($v->ambience != null)
+                                                                        <strong>Ambience: </strong>
+                                                                        {{ $v->ambience }}
+                                                                        <br>
+                                                                    @endif
                                                                 </div>
                                                                 <div class="col-lg-2">
                                                                     @if ($v->wfc_friendly == 1)
@@ -56,35 +61,34 @@
                             @elseif($results->count() > 0)
                                 @foreach ($results as $i => $v)
                                     {{-- @if ($r->cafe_id == $v->id) --}}
-                                        <a href="{{ url('details/' . $v->id) }}"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="card-body">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                                <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                                    alt="" style="width: 200px;">
-                                                            </div>
-                                                            <div class="col-lg-7 col-md-12 col-sm-12">
-                                                                {{ $v->nama }}
-                                                                {{-- <br> --}}
-                                                                {{-- {{ number_format($r->rating, 1, '.', '') }} --}}
-                                                                <br>
-                                                                {{ $v->lokasi }}
-                                                                <br>
-                                                                {{ $v->alamat }}
-                                                            </div>
-                                                            <div class="col-lg-2">
-                                                                @if ($v->wfc_friendly == 1)
-                                                                    WFC FRIENDLY
-                                                                @endif
-                                                            </div>
+                                    <a href="{{ url('details/' . $v->id) }}" style="text-decoration: none; color: inherit;">
+                                        <div class="card-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-md-12 col-sm-12">
+                                                            <img src="<?= asset('storage/image/' . $v->foto) ?>"
+                                                                alt="" style="width: 200px;">
+                                                        </div>
+                                                        <div class="col-lg-7 col-md-12 col-sm-12">
+                                                            {{ $v->nama }}
+                                                            {{-- <br> --}}
+                                                            {{-- {{ number_format($r->rating, 1, '.', '') }} --}}
+                                                            <br>
+                                                            {{ $v->lokasi }}
+                                                            <br>
+                                                            {{ $v->alamat }}
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            @if ($v->wfc_friendly == 1)
+                                                                WFC FRIENDLY
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
+                                    </a>
                                     {{-- @endif --}}
                                 @endforeach
                             @else

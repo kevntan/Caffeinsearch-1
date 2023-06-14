@@ -27,11 +27,10 @@
                     @else
                         <option value="">Open this select menu</option>
                     @endif
-                    <option value="$">$</option>
-                    <option value="$$">$$</option>
-                    <option value="$$$">$$$</option>
-                    <option value="$$$$">$$$$</option>
-                    <option value="$$$$$">$$$$$</option>
+                    <option value="$ (< 25.000 untuk 1 orang)">$ (< 25.000 untuk 1 orang)</option>
+                    <option value="$$ (25.000 - 50.000 IDR untuk 1 orang)">$$ (25.000 - 50.000 IDR untuk 1 orang)</option>
+                    <option value="$$$ (51.000 - 75.000 IDR untuk 1 orang)">$$$ (51.000 - 75.000 IDR untuk 1 orang)</option>
+                    <option value="$$$$ (> 75.000 IDR untuk 1 orang)">$$$$ (> 75.000 IDR untuk 1 orang)</option>
                 </select>
                 Rating
                 <select class="form-select" aria-label="Default select example" name="rating">
