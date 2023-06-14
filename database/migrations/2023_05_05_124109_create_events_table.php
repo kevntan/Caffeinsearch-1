@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('foto');
             $table->string('kategori');
-            $table->date('tanggal');
+            $table->date('tanggal')->nullable();
             $table->dateTime('waktu_mulai');
             $table->dateTime('waktu_selesai');
             $table->text('keterangan')->nullable();

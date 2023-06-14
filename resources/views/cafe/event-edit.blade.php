@@ -8,7 +8,7 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center">
-                    <h1>My Cafe</h1>
+                    <h1>Edit Event</h1>
                 </div>
                 @if (\Session::has('success'))
                     <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>

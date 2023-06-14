@@ -260,9 +260,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <label for="">Date*</label>
-                                            <input class="form-control" type="date" name="tanggal"
-                                                placeholder="Default input" aria-label="default input example" required>
+                                     
                                             <label for="">Time*</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
