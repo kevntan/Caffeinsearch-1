@@ -25,10 +25,15 @@
                                         @if ($n == 0)
                                             <div class="carousel-item active">
                                                 @if ($results[$x]->foto != null)
-                                                    <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
-                                                        class="d-block w-100"
-                                                        alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
-                                                    {{-- <?php continue; ?> --}}
+                                                    @if (substr($results[$x]->foto, 0, 5) === 'https')
+                                                        <img src="<?= asset($results[$x]->foto) ?>" class="d-block w-100"
+                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                    @else
+                                                        <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                            class="d-block w-100"
+                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                        {{-- <?php continue; ?> --}}
+                                                    @endif
                                                 @else
                                                     <img src="<?= asset('user/assets/img/assets1.png') ?>"
                                                         class="d-block w-100"
@@ -42,10 +47,15 @@
                                         @else
                                             <div class="carousel-item">
                                                 @if ($results[$x]->foto != null)
-                                                    <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
-                                                        class="d-block w-100"
-                                                        alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
-                                                    {{-- <?php continue; ?> --}}
+                                                    @if (substr($results[$x]->foto, 0, 5) === 'https')
+                                                        <img src="<?= asset($results[$x]->foto) ?>" class="d-block w-100"
+                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                    @else
+                                                        <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                            class="d-block w-100"
+                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                        {{-- <?php continue; ?> --}}
+                                                    @endif
                                                 @else
                                                     <img src="<?= asset('user/assets/img/assets1.png') ?>"
                                                         class="d-block w-100"

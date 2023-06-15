@@ -28,8 +28,16 @@
                                                         <div class="card-body">
                                                             <div class="row">
                                                                 <div class="col-lg-3 col-md-12 col-sm-12">
-                                                                    <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                                        alt="" style="width: 200px;">
+                                                                    @if (substr($v->foto, 0, 5) === 'https')
+                                                                        <img src="<?= asset($v->foto) ?>"
+                                                                            class="d-block w-100"
+                                                                            alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                                    @else
+                                                                        <img src="<?= asset('storage/image/' . $v->foto) ?>"
+                                                                            class="d-block w-100"
+                                                                            alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                                        {{-- <?php continue; ?> --}}
+                                                                    @endif
                                                                 </div>
                                                                 <div class="col-lg-7 col-md-12 col-sm-12">
                                                                     {{ $v->nama }}

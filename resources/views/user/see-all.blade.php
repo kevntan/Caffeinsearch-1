@@ -27,8 +27,16 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-lg-3 col-md-12 col-sm-12">
-                                                            <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                                alt="" style="width: 200px;">
+                                                            @if (substr($v->foto, 0, 5) === 'https')
+                                                                <img src="<?= asset($v->foto) ?>"
+                                                                    class="d-block w-100"
+                                                                    alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                            @else
+                                                                <img src="<?= asset('storage/image/' . $v->foto) ?>"
+                                                                    class="d-block w-100"
+                                                                    alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                                {{-- <?php continue; ?> --}}
+                                                            @endif
                                                         </div>
                                                         <div class="col-lg-7 col-md-12 col-sm-12">
                                                             {{ $v->nama }}
@@ -60,15 +68,23 @@
                                         </div>
                                     </a>
                                 @endforeach
+                             
                             @else
                                 <div class="text-center">
                                     tidak ada cafe
                                 </div>
                             @endif
+
+                    <div class="container px-5">
+
+                        {{ $results->links() }}
+                    </div>
+                      
+                          
                             <div class="position-relative mt-5">
                                 <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                     <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
+                                        {{-- <ul class="pagination">
                                             <li class="page-item">
                                                 <a class="page-link" href="#" aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
@@ -82,13 +98,14 @@
                                                     <span aria-hidden="true">&raquo;</span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+             
             </div>
         </section>
     </main><!-- End #main -->

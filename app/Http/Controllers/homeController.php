@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cafe;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -147,6 +148,8 @@ class homeController extends Controller
         $results = 0;
         $results = $this->search($request);
 
+        // dd($results);
+
         $old = $request->query;
         // dd($old);
         return view('user.see-all', [
@@ -261,11 +264,13 @@ class homeController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
+        Paginator::useBootstrapFive();
 
         $results = DB::table('cafes')
             ->where('nama', 'LIKE', '%' . $query . '%')
-            ->limit(9)
-            ->get();
+            // ->limit(9)
+            // ->get();
+            ->paginate(10);
         return $results;
     }
     public function filter(Request $request)
