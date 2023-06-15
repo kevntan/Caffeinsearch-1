@@ -13,7 +13,7 @@
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->
 
-         <a href="#" class="get-started-btn scrollto">Sign Up</a>
+         <a href="#" class="get-started-btn scrollto">Login</a>
 
      </div>
  </header><!-- End Header -->

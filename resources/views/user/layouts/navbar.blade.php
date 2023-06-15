@@ -32,7 +32,7 @@
                  </ul>
              </nav>
          @else
-             <a href="{{ url('sign-in') }}" class="get-started-btn scrollto">signup</a>
+             <a href="{{ url('sign-in') }}" class="get-started-btn scrollto">Login</a>
          @endif
      </div>
  </header><!-- End Header -->

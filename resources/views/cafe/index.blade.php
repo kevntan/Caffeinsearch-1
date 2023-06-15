@@ -95,33 +95,59 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
-                                <strong>Address</strong>
-                                <br>
-                                {{ $cafe->alamat }}
+                                @if ($cafe->alamat != null)
+                                    <strong>Address</strong>
+                                    <br>
+                                    {{ $cafe->alamat }}
+                                @else
+                                    <strong>Address</strong>
+                                    <br>
+                                    -
+                                @endif
                                 <br>
                                 <strong>Operational Hours</strong>
                                 <br>
                                 {{ date('h:i A', strtotime($cafe->operasional_buka)) }} -
                                 {{ date('h:i A', strtotime($cafe->operasional_tutup)) }}
                                 <br>
-                                <strong>Price Range</strong>
+                                @if ($cafe->range_harga != null)
+                                    <strong>Price Range</strong>
+                                    <br>
+                                    {{ $cafe->range_harga }}
+                                @else
+                                    <strong>Price Range</strong>
+                                    <br>
+                                    -
+                                @endif
                                 <br>
-                                {{ $cafe->range_harga }}
-                                <br>
-                                <strong>Phone</strong>
-                                <br>
-                                <a href="https://wa.me/62{{ $cafe->telepon }}" target="_blank"
-                                    style="color:black">+62{{ $cafe->telepon }}</a>
-                                <br>
-                                <strong>Description</strong>
-                                <br>
-                                {{ $cafe->deskripsi }}
+                                @if ($cafe->telepon != null)
+                                    <strong>Phone</strong>
+                                    <br>
+                                    (+62) {{ $cafe->telepon }}
+                                @else
+                                    <strong>Phone</strong>
+                                    <br>
+                                    -
+                                @endif
                                 <br>
                                 @if ($cafe->ambience != null)
                                     <strong>Ambience</strong>
                                     <br>
                                     {{ $cafe->ambience }}
+                                @else
+                                    <strong>Ambience</strong>
                                     <br>
+                                    -
+                                @endif
+                                <br>
+                                @if ($cafe->deskripsi != null)
+                                    <strong>Description</strong>
+                                    <br>
+                                    {{ $cafe->deskripsi }}
+                                @else
+                                    <strong>Description</strong>
+                                    <br>
+                                    -
                                 @endif
                                 <a href="{{ $cafe->maps }}" target="blank" class="btn btn-light" style="width: 100%">See
                                     Google Maps
@@ -132,7 +158,7 @@
                         <strong>Facilities</strong>
                         <br>
                         @if ($cafe->wifi == 1)
-                            Wifi
+                            Wi-Fi
                         @endif
                         @if ($cafe->charging_port == 1)
                             Charging Port
@@ -199,11 +225,6 @@
                                                     class="btn btn-danger px-4">Delete</a>
                                             </div>
 
-                                            <div class="col-lg-2">
-                                                @if ($cafe->wfc_friendly == 1)
-                                                    WFC FRIENDLY
-                                                @endif
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +281,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                     
+
                                             <label for="">Time*</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-sm-12">

@@ -134,9 +134,12 @@
                                             {{ $cafe->range_harga }}
                                         </option>
                                         <option value="$ (< 25.000 untuk 1 orang)">$ (< 25.000 untuk 1 orang)</option>
-                                        <option value="$$ (25.000 - 50.000 IDR untuk 1 orang)">$$ (25.000 - 50.000 IDR untuk 1 orang)</option>
-                                        <option value="$$$ (51.000 - 75.000 IDR untuk 1 orang)">$$$ (51.000 - 75.000 IDR untuk 1 orang)</option>
-                                        <option value="$$$$ (> 75.000 IDR untuk 1 orang)">$$$$ (> 75.000 IDR untuk 1 orang)</option>
+                                        <option value="$$ (25.000 - 50.000 IDR untuk 1 orang)">$$ (25.000 - 50.000 IDR
+                                            untuk 1 orang)</option>
+                                        <option value="$$$ (51.000 - 75.000 IDR untuk 1 orang)">$$$ (51.000 - 75.000 IDR
+                                            untuk 1 orang)</option>
+                                        <option value="$$$$ (> 75.000 IDR untuk 1 orang)">$$$$ (> 75.000 IDR untuk 1 orang)
+                                        </option>
                                     </select>
                                     <strong>Suasana Cafe</strong>
                                     <br>
@@ -182,13 +185,13 @@
                                             <input class="form-check-input" type="checkbox" name="wifi"
                                                 value="1" id="defaultCheck1">
                                             <label class="form-check-label" for="defaultCheck1">
-                                                Wifis
+                                                Wi-Fi
                                             </label>
                                         @else
                                             <input class="form-check-input" type="checkbox" name="wifi"
                                                 value="1" id="defaultCheck1" checked>
                                             <label class="form-check-label" for="defaultCheck1">
-                                                Wifi
+                                                Wi-Fi
                                             </label>
                                         @endif
                                     </div>
@@ -199,7 +202,7 @@
                                             <input class="form-check-input" type="checkbox" name="charging_port"
                                                 value="1" id="defaultCheck1">
                                             <label class="form-check-label" for="defaultCheck1">
-                                                Charging Ports
+                                                Charging Port
                                             </label>
                                         @else
                                             <input class="form-check-input" type="checkbox" name="charging_port"
@@ -276,25 +279,6 @@
                                                 value="1" id="defaultCheck1" checked>
                                             <label class="form-check-label" for="defaultCheck1">
                                                 Toilet
-                                            </label>
-                                        </div>
-                                    @endif
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    @if ($cafe->meeting_room == 0)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="meeting_room"
-                                                value="1" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Meeting room
-                                            </label>
-                                        </div>
-                                    @else
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="meeting_room"
-                                                value="1" id="defaultCheck1" checked>
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Meeting room
                                             </label>
                                         </div>
                                     @endif
