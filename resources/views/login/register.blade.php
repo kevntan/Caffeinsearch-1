@@ -62,7 +62,7 @@
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" name="email" placeholder="Masukkan Email"
+                                <input type="email" class="form-control" name="email" placeholder="Masukkan Email"
                                     id="email">
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
