@@ -37,13 +37,22 @@
                                     style="border-radius: 16px;">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="<?= asset('storage/image/' . $cafe->foto) ?>" style="width:100%"
-                                                class="d-block w-100" alt="<?= asset('storage/image/' . $cafe->foto) ?>">
-                                            {{-- <div class="carousel-caption">
+                                            @if ($cafe->foto != null)
+                                                @if (substr($cafe->foto, 0, 4) === 'http')
+                                                    <img src="{{ $cafe->foto }}" style="width:100%" class="d-block w-100"
+                                                        alt="{{ $cafe->foto }}">
+                                                @else
+                                                    <img src="<?= asset('storage/image/' . $cafe->foto) ?>"
+                                                        style="width:100%" class="d-block w-100"
+                                                        alt="<?= asset('storage/image/' . $cafe->foto) ?>">
+                                                    {{-- <?php continue; ?> --}}
+                                                @endif
+                                                {{-- <div class="carousel-caption">
                                                 <p>{{ $cafe->nama }}</p>
                                                 <p>* rating/5</p>
                                                 <p>{{ $cafe->lokasi }}</p>
                                             </div> --}}
+                                            @endif
                                         </div>
                                         @if ($cafe->foto2)
                                             <div class="carousel-item">
@@ -252,7 +261,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                    review</a> -->
+                                                                                                                                                                                                                                                                                            review</a> -->
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
