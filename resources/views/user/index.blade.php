@@ -121,8 +121,7 @@
                                                 <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
                                                     alt="<?= asset('user/assets/img/assets1.png') ?>">
                                             @endif
-                                            <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"
-                                                alt="...">
+
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $v->nama }}</h5>
                                                 Rating
