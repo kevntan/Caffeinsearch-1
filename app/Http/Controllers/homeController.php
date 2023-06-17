@@ -21,7 +21,7 @@ class homeController extends Controller
             }
         }
         $cafe = DB::table('cafes')
-            ->limit(9)
+            ->limit(7)
             ->get();
         $results = 0;
         $results = $this->search($request);
@@ -43,6 +43,7 @@ class homeController extends Controller
         $review_cafe = DB::table('review_cafes')
             ->where('cafe_id', $cafe->id)
             ->join('users', 'user_id', 'users.id')
+            ->select('review_cafes.*', 'users.username')
             ->get();
         $rating_cafe = DB::table('review_cafes')
             ->where('cafe_id', $id)
@@ -161,12 +162,14 @@ class homeController extends Controller
     }
     public function storeReviewCafe(Request $request, $id)
     {
-        $fileName = null;
+       
         if ($request->file('foto') != null) {
             $currFile = $request->file('foto');
             $fileName = time() . '_' . $currFile->getClientOriginalName();
             // Storage::putFileAs('public/storage/image', $currFile, $fileName);
             $currFile->move(public_path('storage/image'), $fileName);
+            // hosting
+            // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
         }
 
         $review = DB::table('review_cafes')->insert([
@@ -226,7 +229,7 @@ class homeController extends Controller
                 // Storage::putFileAs('public/storage/image', $currFile, $fileName);
                 $currFile->move(public_path('storage/image'), $fileName);
                 // hosting
-                // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+                // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
                 $user->update([
                     'foto' => $fileName
                 ]);
@@ -280,6 +283,8 @@ class homeController extends Controller
         $rating = $request->input('rating');
         $wfcfriendly = $request->input('wfcfriendly');
 
+        Paginator::useBootstrapFive();
+
         $query = Cafe::query();
 
         $query2 = DB::table('review_cafes');
@@ -308,7 +313,7 @@ class homeController extends Controller
 
         // dd($review_cafe);
 
-        $results = $query->get();
+        $results = $query->paginate(10);
 
         // dd($review_cafe);
 

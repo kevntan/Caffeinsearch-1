@@ -103,10 +103,24 @@
                         <br>
                         <h1>Popular Cafe</h1>
                         <div class="row mt-3">
-                            @if (count($results) > 0)
-                                @foreach ($results as $v)
+                            @if (count($cafe) > 0)
+                                @foreach ($cafe as $v)
                                     <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
                                         <div class="card mat-card">
+                                            @if ($v->foto != null)
+                                                @if (substr($v->foto, 0, 5) === 'https')
+                                                    <img src="<?= asset($v->foto) ?>" class="d-block w-100"
+                                                        alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                @else
+                                                    <img src="<?= asset('storage/image/' . $v->foto) ?>"
+                                                        class="d-block w-100"
+                                                        alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                    
+                                                @endif
+                                            @else
+                                                <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
+                                                    alt="<?= asset('user/assets/img/assets1.png') ?>">
+                                            @endif
                                             <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"
                                                 alt="...">
                                             <div class="card-body">

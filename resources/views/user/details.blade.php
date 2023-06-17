@@ -23,7 +23,8 @@
                                 <h5>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
-                                @if ($cafe->wfc_friendly == 1)
+                                {{-- @if ($cafe->wfc_friendly == 1) --}}
+                                @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
                                     <h3>WFC Friendly</h3>
                                 @endif
                             </div>
@@ -209,11 +210,11 @@
                                                     <br>
                                                     {{ $v->keterangan }}
                                                 </div>
-                                                {{-- <div class="col-lg-2">
-                                                    @if ($cafe->wfc_friendly == 1)
+                                                <div class="col-lg-2">
+                                                    @if ($v->wifi == 1 && $v->charging_port == 1 && $v->toilet == 1 && ($v->ambience = 'Tenang'))
                                                         WFC FRIENDLY
                                                     @endif
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -261,7 +262,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                            review</a> -->
+                                                                                                                                                                                                                                                                                                review</a> -->
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">

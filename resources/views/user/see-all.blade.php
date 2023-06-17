@@ -58,7 +58,8 @@
                                                             @endif
                                                         </div>
                                                         <div class="col-lg-2">
-                                                            @if ($v->wfc_friendly == 1)
+                                                            {{-- @if ($v->wfc_friendly == 1) --}}
+                                                            @if($v->wifi == 1 && $v->charging_port == 1 && $v->toilet == 1 && $v->ambience = 'Tenang')
                                                                 WFC FRIENDLY
                                                             @endif
                                                         </div>

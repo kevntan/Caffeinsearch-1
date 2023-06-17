@@ -54,7 +54,8 @@
                                                                     @endif
                                                                 </div>
                                                                 <div class="col-lg-2">
-                                                                    @if ($v->wfc_friendly == 1)
+                                                                    {{-- @if ($v->wfc_friendly == 1) --}}
+                                                                    @if($v->wifi == 1 && $v->charging_port == 1 && $v->toilet == 1 && $v->ambience = 'Tenang')
                                                                         WFC FRIENDLY
                                                                     @endif
                                                                 </div>
@@ -88,7 +89,8 @@
                                                             {{ $v->alamat }}
                                                         </div>
                                                         <div class="col-lg-2">
-                                                            @if ($v->wfc_friendly == 1)
+                                                            {{-- @if ($v->wfc_friendly == 1) --}}
+                                                            @if($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && $cafe->ambience = 'Tenang')
                                                                 WFC FRIENDLY
                                                             @endif
                                                         </div>
@@ -104,7 +106,8 @@
                                     tidak ada cafe
                                 </div>
                             @endif
-                            <div class="position-relative mt-5">
+                            {{$results->links()}}
+                            {{-- <div class="position-relative mt-5">
                                 <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination">
@@ -124,7 +127,7 @@
                                         </ul>
                                     </nav>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

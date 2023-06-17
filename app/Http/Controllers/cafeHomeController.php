@@ -99,13 +99,19 @@ class cafeHomeController extends Controller
             'toilet' => $request->toilet,
         ]);
 
+        if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && $cafe->ambience = 'Tenang') {
+            $cafe->update(['wfc_friendly' => 1]);
+        } else {
+            $cafe->update(['wfc_friendly' => 0]);
+        }
+
         if ($request->file('foto') != null) {
             $currFile = $request->file('foto');
             $fileName = time() . '_' . $currFile->getClientOriginalName();
             // Storage::putFileAs('public/storage/image', $currFile, $fileName);
             $currFile->move(public_path('storage/image'), $fileName);
             // hosting
-            // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+            // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
             $cafe->update([
                 $request->pilih => $fileName
             ]);
@@ -134,7 +140,7 @@ class cafeHomeController extends Controller
         // Storage::putFileAs('public/storage/image', $currFile, $fileName);
         $currFile->move(public_path('storage/image'), $fileName);
         // hosting
-        // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+        // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
 
 
         $post = DB::table('events')->insert([
@@ -210,7 +216,7 @@ class cafeHomeController extends Controller
                 // Storage::putFileAs('public/storage/image', $currFile, $fileName);
                 $currFile->move(public_path('storage/image'), $fileName);
                 // hosting
-                // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+                // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
                 $user->update([
                     'foto' => $fileName
                 ]);
@@ -254,7 +260,7 @@ class cafeHomeController extends Controller
             // Storage::putFileAs('public/storage/image', $currFile, $fileName);
             $currFile->move(public_path('storage/image'), $fileName);
             // hosting
-            // $currFile->move(public_path('../../public_html/hibahmbkm/storage/image'), $fileName);
+            // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
             $event->update([
                 'foto' => $fileName
             ]);
