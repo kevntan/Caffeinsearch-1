@@ -46,6 +46,7 @@ class cafeHomeController extends Controller
         $review_cafe = DB::table('review_cafes')
             ->join('users', 'user_id', 'users.id')
             ->where('cafe_id', $cafe[0]->id)
+            ->select('review_cafes.*', 'users.username')
             ->get();
 
         // dd($review_cafe);
