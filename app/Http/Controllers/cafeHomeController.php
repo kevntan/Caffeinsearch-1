@@ -284,6 +284,11 @@ class cafeHomeController extends Controller
     public function eventDelete($id)
     {
         $event = Event::findOrFail($id);
+        $review_events = DB::table('review_events')
+            ->where('event_id', $event->id);
+        if ($review_events->count() > 0) {
+            $review_events->delete();
+        }
         $event->delete();
 
         if ($event) {

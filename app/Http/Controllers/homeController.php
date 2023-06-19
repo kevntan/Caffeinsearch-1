@@ -22,6 +22,7 @@ class homeController extends Controller
         }
         $cafe = DB::table('cafes')
             ->limit(7)
+            ->orderBy('nama', 'ASC')
             ->get();
         $results = 0;
         $results = $this->search($request);
@@ -71,7 +72,7 @@ class homeController extends Controller
             $query->where('kategori', $kategori);
         }
 
-        $results = $query->get();
+        $results = $query->orderBy('nama', 'ASC')->get();
 
         return view('user.feeds', [
             'result' => $results,
@@ -162,7 +163,7 @@ class homeController extends Controller
     }
     public function storeReviewCafe(Request $request, $id)
     {
-       
+            $fileName = NULL;
         if ($request->file('foto') != null) {
             $currFile = $request->file('foto');
             $fileName = time() . '_' . $currFile->getClientOriginalName();
@@ -273,6 +274,7 @@ class homeController extends Controller
             ->where('nama', 'LIKE', '%' . $query . '%')
             // ->limit(9)
             // ->get();
+            ->orderBy('nama', 'ASC')
             ->paginate(10);
         return $results;
     }
