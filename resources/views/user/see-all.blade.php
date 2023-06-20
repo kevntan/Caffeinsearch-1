@@ -51,6 +51,8 @@
                                                             <br>
                                                             {{ $v->alamat }}
                                                             <br>
+                                                            <strong>Rating</strong> {{ $v->rating }}
+                                                            <br>
                                                             @if ($v->ambience != null)
                                                                 <strong>Ambience: </strong>
                                                                 {{ $v->ambience }}

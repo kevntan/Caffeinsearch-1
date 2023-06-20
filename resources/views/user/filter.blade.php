@@ -17,80 +17,50 @@
                             </strong>
                         </h1>
                         <div class="card">
-                            @if ($review_cafe->count() > 0)
-                                @foreach ($review_cafe as $n => $r)
-                                    @foreach ($results as $i => $v)
-                                        @if ($r->cafe_id == $v->id)
-                                            <a href="{{ url('details/' . $v->id) }}"
-                                                style="text-decoration: none; color: inherit;">
-                                                <div class="card-body">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                                                    @if (substr($v->foto, 0, 5) === 'https')
-                                                                        <img src="<?= asset($v->foto) ?>"
-                                                                            class="d-block w-100"
-                                                                            alt="<?= asset('storage/image/' . $v->foto) ?>">
-                                                                    @else
-                                                                        <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                                            class="d-block w-100"
-                                                                            alt="<?= asset('storage/image/' . $v->foto) ?>">
-                                                                        {{-- <?php continue; ?> --}}
-                                                                    @endif
-                                                                </div>
-                                                                <div class="col-lg-7 col-md-12 col-sm-12">
-                                                                    {{ $v->nama }}
-                                                                    <br>
-                                                                    {{ number_format($r->rating, 1, '.', '') }}
-                                                                    <br>
-                                                                    {{ $v->lokasi }}
-                                                                    <br>
-                                                                    {{ $v->alamat }}
-                                                                    @if ($v->ambience != null)
-                                                                        <strong>Ambience: </strong>
-                                                                        {{ $v->ambience }}
-                                                                        <br>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="col-lg-2">
-                                                                    {{-- @if ($v->wfc_friendly == 1) --}}
-                                                                    @if($v->wifi == 1 && $v->charging_port == 1 && $v->toilet == 1 && $v->ambience = 'Tenang')
-                                                                        WFC FRIENDLY
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        @endif
-                                    @endforeach
-                                @endforeach
-                            @elseif($results->count() > 0)
+                            @if (count($results) > 0)
                                 @foreach ($results as $i => $v)
-                                    {{-- @if ($r->cafe_id == $v->id) --}}
-                                    <a href="{{ url('details/' . $v->id) }}" style="text-decoration: none; color: inherit;">
+                                    <a href="{{ url('details/' . $v->id) }}"
+                                        style="text-decoration: none;
+                                    color: inherit;">
                                         <div class="card-body">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-lg-3 col-md-12 col-sm-12">
-                                                            <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                                alt="" style="width: 200px;">
+                                                            @if (substr($v->foto, 0, 5) === 'https')
+                                                                <img src="<?= asset($v->foto) ?>" class="d-block w-100"
+                                                                    alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                            @else
+                                                                <img src="<?= asset('storage/image/' . $v->foto) ?>"
+                                                                    class="d-block w-100"
+                                                                    alt="<?= asset('storage/image/' . $v->foto) ?>">
+                                                                {{-- <?php continue; ?> --}}
+                                                            @endif
                                                         </div>
                                                         <div class="col-lg-7 col-md-12 col-sm-12">
                                                             {{ $v->nama }}
-                                                            {{-- <br> --}}
-                                                            {{-- {{ number_format($r->rating, 1, '.', '') }} --}}
+                                                            @for ($n = 0; $n < $review_cafe->count(); $n++)
+                                                                @if ($review_cafe[$n]->cafe_id == $v->id)
+                                                                    <br>
+                                                                    {{ number_format($review_cafe[$n]->rating, 1, '.', '') }}
+                                                                @endif
+                                                            @endfor
                                                             <br>
                                                             {{ $v->lokasi }}
                                                             <br>
                                                             {{ $v->alamat }}
+                                                            <br>
+                                                            <strong>Rating</strong> {{ $v->rating }}
+                                                            <br>
+                                                            @if ($v->ambience != null)
+                                                                <strong>Ambience: </strong>
+                                                                {{ $v->ambience }}
+                                                                <br>
+                                                            @endif
                                                         </div>
                                                         <div class="col-lg-2">
                                                             {{-- @if ($v->wfc_friendly == 1) --}}
-                                                            @if($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && $cafe->ambience = 'Tenang')
+                                                            @if ($v->wifi == 1 && $v->charging_port == 1 && $v->toilet == 1 && ($v->ambience = 'Tenang'))
                                                                 WFC FRIENDLY
                                                             @endif
                                                         </div>
@@ -99,14 +69,13 @@
                                             </div>
                                         </div>
                                     </a>
-                                    {{-- @endif --}}
                                 @endforeach
                             @else
                                 <div class="text-center">
                                     tidak ada cafe
                                 </div>
                             @endif
-                            {{$results->links()}}
+                            {{ $results->appends(request()->input())->links() }}
                             {{-- <div class="position-relative mt-5">
                                 <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                     <nav aria-label="Page navigation example">

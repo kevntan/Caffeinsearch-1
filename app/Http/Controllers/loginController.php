@@ -21,9 +21,9 @@ class loginController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            "username" => "required|min:1|unique:users",
+            "username" => "required|min:3|unique:users",
             "email" => "required|unique:users",
-            "password" => "required|min:1",
+            "password" => "required|min:8",
             "daerah" => "required",
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);

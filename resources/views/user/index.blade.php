@@ -124,7 +124,7 @@
 
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $v->nama }}</h5>
-                                                Rating
+                                                {{$v->rating}}
                                                 <br>
                                                 {{ $v->lokasi }}
                                                 <br>

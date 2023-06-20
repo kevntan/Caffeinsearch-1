@@ -49,6 +49,9 @@ class homeController extends Controller
         $rating_cafe = DB::table('review_cafes')
             ->where('cafe_id', $id)
             ->avg('rating');
+        $cafe->update([
+            'rating' => $rating_cafe
+        ]);
 
         return view('user.details', [
             'cafe' => $cafe,
@@ -142,7 +145,7 @@ class homeController extends Controller
         if (!Auth::user()) {
             return redirect('sign-in');
         }
-        
+
         $query2 = DB::table('review_cafes');
         $cafe = DB::table('cafes')->get();
         $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->get();
@@ -163,7 +166,7 @@ class homeController extends Controller
     }
     public function storeReviewCafe(Request $request, $id)
     {
-            $fileName = NULL;
+        $fileName = NULL;
         if ($request->file('foto') != null) {
             $currFile = $request->file('foto');
             $fileName = time() . '_' . $currFile->getClientOriginalName();
@@ -181,6 +184,13 @@ class homeController extends Controller
             'user_id' => Auth::user()->id,
             "created_at" =>  \Carbon\Carbon::now(),
             "updated_at" => \Carbon\Carbon::now()
+        ]);
+        $rating = DB::table('review_cafes')
+            ->where('cafe_id', $id)
+            ->avg('rating');
+        $cafe = Cafe::findOrFail($id);
+        $cafe->update([
+            'rating' => $rating
         ]);
 
         if ($review == true) {
@@ -303,9 +313,11 @@ class homeController extends Controller
         if ($rating) {
             // $review_cafe->where('rating', $rating);
             if ($rating == 1) {
-                $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->orderBy('rating', 'ASC')->get();
+                // $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->orderBy('rating', 'ASC')->get();
+                $query->orderBy('rating', 'ASC');
             } else if ($rating == 2) {
-                $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->orderBy('rating', 'DESC')->get();
+                // $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->orderBy('rating', 'DESC')->get();
+                $query->orderBy('rating', 'DESC');
             }
         }
 

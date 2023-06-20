@@ -33,5 +33,6 @@ class Cafe extends Model
         'user_id',
         'created_at',
         'updated_at',
+        'rating'
     ];
 }
