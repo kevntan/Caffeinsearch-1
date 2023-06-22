@@ -72,7 +72,7 @@
                                 @endforeach
                             @else
                                 <div class="text-center">
-                                    tidak ada cafe
+                                    Tidak ada cafe
                                 </div>
                             @endif
                             {{ $results->appends(request()->input())->links() }}

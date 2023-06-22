@@ -148,7 +148,6 @@ class cafeHomeController extends Controller
             'nama' => $request->nama,
             'foto' => $fileName,
             'kategori' => $request->kategori,
-            'tanggal' => $request->tanggal,
             'waktu_mulai' => $request->waktu_mulai,
             'waktu_selesai' => $request->waktu_selesai,
             'cafe_id' => $id,
