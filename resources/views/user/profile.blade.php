@@ -8,7 +8,7 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h1>Detail Cafe</h1>
+                    <h1>Profile Page</h1>
                 </div>
                 <div class="card mb-5">
                     <div class="card-body">

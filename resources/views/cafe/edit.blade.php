@@ -35,9 +35,9 @@
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-5">
                                     {{-- @if ($cafe->wfc_friendly == 1) --}}
-                                    @if($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && $cafe->ambience = 'Tenang')
+                                    @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
                                         <h3>WFC Friendly</h3>
-                                        @endif
+                                    @endif
                                     {{-- @endif --}}
                                 </div>
                             </div>
@@ -156,9 +156,9 @@
                                     <br>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text">+62</div>
+                                            <div class="input-group-text me-2">+62</div>
                                         </div>
-                                        <input name="telepon" type="number" class="form-control"
+                                        <input name="telepon" type="text" class="form-control rounded"
                                             id="inlineFormInputGroup" placeholder="Phone Number"
                                             value="{{ $cafe->telepon }}">
                                     </div>

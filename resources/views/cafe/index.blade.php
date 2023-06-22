@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 {{-- @if ($cafe->wfc_friendly == 1) --}}
-                                @if($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && $cafe->ambience = 'Tenang')
+                                @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
                                     <h3>WFC Friendly</h3>
                                 @endif
                             </div>
@@ -208,12 +208,12 @@
                                             </div>
 
                                             <div class="col-lg-7 col-md-12 col-sm-12">
-                                                <h4>{{ $v->nama }}</h4>
+                                                <h4><strong>
+                                                        {{ $v->nama }}
+                                                    </strong></h4>
                                                 {{ $cafe->nama }}
                                                 <br>
                                                 {{ $v->kategori }}
-                                                <br>
-                                                {{ $v->tanggal }}
                                                 <br>
                                                 {{ $v->waktu_mulai }} - {{ $v->waktu_selesai }}
                                                 <br>
@@ -340,7 +340,7 @@
                             @endforeach
                         @else
                             <div class="text-center">
-                                tidak ada komentar
+                                Tidak ada komentar
                             </div>
                         @endif
                     </div>

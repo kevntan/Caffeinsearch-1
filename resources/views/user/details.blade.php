@@ -197,12 +197,14 @@
                                                         style="width: 200px;">
                                                 </div>
                                                 <div class="col-lg-7 col-md-12 col-sm-12">
-                                                    <h4>{{ $v->nama }}</h4>
+                                                    <h4>
+                                                        <strong>
+                                                            {{ $v->nama }}
+                                                        </strong>
+                                                    </h4>
                                                     {{ $cafe->nama }}
                                                     <br>
                                                     {{ $v->kategori }}
-                                                    <br>
-                                                    {{ $v->tanggal }}
                                                     <br>
                                                     {{ date('h:i A', strtotime($v->waktu_mulai)) }} -
                                                     {{ date('h:i A', strtotime($v->waktu_selesai)) }}
@@ -262,7 +264,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                review</a> -->
+                                                                                                                                                                                                                                                                                                                    review</a> -->
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">

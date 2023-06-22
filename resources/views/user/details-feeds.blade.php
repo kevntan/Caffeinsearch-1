@@ -38,17 +38,17 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
-                                <h3>{{ $event->nama }}</h3>
+                                <h3> <strong>
+                                        {{ $event->nama }}
+                                    </strong></h3>
+
+                                {{ $event->nama_cafe }}
                                 <br>
-                                <strong>{{ $event->nama_cafe }}</strong>
+                                {{ $event->alamat }}
                                 <br>
-                                <strong>{{ $event->alamat }}</strong>
+                                {{ $event->kategori }}
                                 <br>
-                                <strong>{{ $event->kategori }}</strong>
-                                <br>
-                                <strong>{{ $event->tanggal }}</strong>
-                                <br>
-                                <strong>{{ $event->waktu_mulai }} - {{ $event->waktu_selesai }}</strong>
+                                {{ $event->waktu_mulai }} - {{ $event->waktu_selesai }}
                                 <br>
                                 <br>
                                 {{ $event->keterangan }}
