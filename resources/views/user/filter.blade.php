@@ -62,6 +62,10 @@
                                                             {{-- @if ($v->wfc_friendly == 1) --}}
                                                             @if ($v->wifi == 1 && $v->charging_port == 1 && $v->toilet == 1 && ($v->ambience = 'Tenang'))
                                                                 WFC FRIENDLY
+                                                                <br>
+                                                            @endif
+                                                            @if($v->user_id != 0)
+                                                                Verified
                                                             @endif
                                                         </div>
                                                     </div>

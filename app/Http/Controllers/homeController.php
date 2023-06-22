@@ -329,22 +329,6 @@ class homeController extends Controller
 
         $results = $query->paginate(10);
 
-        // dd($review_cafe);
-
-        // dd($review_cafe[0]);
-
-        // dd($results);
-
-        // dd($query->join('review_cafes', 'cafes.id', '=', 'review_cafes.cafe_id')->select('cafes.*','review_cafes.cafe_id', DB::raw('AVG(review_cafes.rating) as rating'))->groupBy('cafes.id')->get());
-
-        // dd($query->join('review_cafes', 'cafes.id', '=', 'review_cafes.cafe_id')->select(DB::raw('AVG(rating) as rating'), 'cafes.*', 'review_cafes.cafe_id')->groupBy('review_cafes.cafe_id')->get());
-
-        // dd($results);
-        // dd($review_cafe);
-        // $cafe = DB::table('cafes')->get();
-
-        // $review_cafe = DB::table('review_cafes')
-
 
         return view('user.filter', [
             'results' => $results,

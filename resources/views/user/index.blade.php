@@ -24,47 +24,53 @@
                                         <?php $x = rand(0, $results->count() - 1); ?>
                                         @if ($n == 0)
                                             <div class="carousel-item active">
-                                                @if ($results[$x]->foto != null)
-                                                    @if (substr($results[$x]->foto, 0, 5) === 'https')
-                                                        <img src="<?= asset($results[$x]->foto) ?>" class="d-block w-100"
-                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                <a href="{{ url('details', $results[$x]->id) }}">
+                                                    @if ($results[$x]->foto != null)
+                                                        @if (substr($results[$x]->foto, 0, 5) === 'https')
+                                                            <img src="<?= asset($results[$x]->foto) ?>"
+                                                                class="d-block w-100"
+                                                                alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                        @else
+                                                            <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                                class="d-block w-100"
+                                                                alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                            {{-- <?php continue; ?> --}}
+                                                        @endif
                                                     @else
-                                                        <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                        <img src="<?= asset('user/assets/img/assets1.png') ?>"
                                                             class="d-block w-100"
-                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
-                                                        {{-- <?php continue; ?> --}}
+                                                            alt="<?= asset('user/assets/img/assets1.png') ?>">
                                                     @endif
-                                                @else
-                                                    <img src="<?= asset('user/assets/img/assets1.png') ?>"
-                                                        class="d-block w-100"
-                                                        alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                                @endif
-                                                <div class="carousel-caption">
-                                                    <p>{{ $results[$x]->nama }}</p>
-                                                    <p>{{ $results[$x]->lokasi }}</p>
-                                                </div>
+                                                    <div class="carousel-caption">
+                                                        <p>{{ $results[$x]->nama }}</p>
+                                                        <p>{{ $results[$x]->lokasi }}</p>
+                                                    </div>
+                                                </a>
                                             </div>
                                         @else
                                             <div class="carousel-item">
-                                                @if ($results[$x]->foto != null)
-                                                    @if (substr($results[$x]->foto, 0, 5) === 'https')
-                                                        <img src="<?= asset($results[$x]->foto) ?>" class="d-block w-100"
-                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                <a href="{{ url('details', $results[$x]->id) }}">
+                                                    @if ($results[$x]->foto != null)
+                                                        @if (substr($results[$x]->foto, 0, 5) === 'https')
+                                                            <img src="<?= asset($results[$x]->foto) ?>"
+                                                                class="d-block w-100"
+                                                                alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                        @else
+                                                            <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                                class="d-block w-100"
+                                                                alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
+                                                            {{-- <?php continue; ?> --}}
+                                                        @endif
                                                     @else
-                                                        <img src="<?= asset('storage/image/' . $results[$x]->foto) ?>"
+                                                        <img src="<?= asset('user/assets/img/assets1.png') ?>"
                                                             class="d-block w-100"
-                                                            alt="<?= asset('storage/image/' . $results[$x]->foto) ?>">
-                                                        {{-- <?php continue; ?> --}}
+                                                            alt="<?= asset('user/assets/img/assets1.png') ?>">
                                                     @endif
-                                                @else
-                                                    <img src="<?= asset('user/assets/img/assets1.png') ?>"
-                                                        class="d-block w-100"
-                                                        alt="<?= asset('user/assets/img/assets1.png') ?>">
-                                                @endif
-                                                <div class="carousel-caption">
-                                                    <p>{{ $results[$x]->nama }}</p>
-                                                    <p>{{ $results[$x]->lokasi }}</p>
-                                                </div>
+                                                    <div class="carousel-caption">
+                                                        <p>{{ $results[$x]->nama }}</p>
+                                                        <p>{{ $results[$x]->lokasi }}</p>
+                                                    </div>
+                                                </a>
                                             </div>
                                         @endif
                                     @endfor
@@ -115,7 +121,6 @@
                                                     <img src="<?= asset('storage/image/' . $v->foto) ?>"
                                                         class="d-block w-100"
                                                         alt="<?= asset('storage/image/' . $v->foto) ?>">
-                                                    
                                                 @endif
                                             @else
                                                 <img src="<?= asset('user/assets/img/assets1.png') ?>" class="d-block w-100"
@@ -124,7 +129,7 @@
 
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $v->nama }}</h5>
-                                                {{$v->rating}}
+                                                {{ $v->rating }}
                                                 <br>
                                                 {{ $v->lokasi }}
                                                 <br>
