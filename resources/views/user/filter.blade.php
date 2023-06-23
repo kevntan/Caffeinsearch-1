@@ -22,8 +22,8 @@
                                     <a href="{{ url('details/' . $v->id) }}"
                                         style="text-decoration: none;
                                     color: inherit;">
-                                        <div class="card-body">
-                                            <div class="card">
+                                        <div class="card-body pb-0">
+                                            <div class="card shadow-sm bg-light">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-lg-3 col-md-12 col-sm-12">
@@ -38,19 +38,21 @@
                                                             @endif
                                                         </div>
                                                         <div class="col-lg-7 col-md-12 col-sm-12">
-                                                            {{ $v->nama }}
-                                                            @for ($n = 0; $n < $review_cafe->count(); $n++)
-                                                                @if ($review_cafe[$n]->cafe_id == $v->id)
-                                                                    <br>
-                                                                    {{ number_format($review_cafe[$n]->rating, 1, '.', '') }}
-                                                                @endif
-                                                            @endfor
+                                                            <h5>
+                                                                <strong>{{ $v->nama }}
+                                                                </strong>
+                                                            </h5>
+
+                                                            <i class="fa-solid fa-star me-2" style="color:#666666"></i>
+                                                            {{ $v->rating }} / 5.0
                                                             <br>
+                                                            <i class="fa-solid fa-location-dot me-2"
+                                                                style="color:#666666"></i>
                                                             {{ $v->lokasi }}
                                                             <br>
+                                                            <i class="fa-solid fa-map-location-dot me-2"
+                                                                style="color: #666666"></i>
                                                             {{ $v->alamat }}
-                                                            <br>
-                                                            <strong>Rating</strong> {{ $v->rating }}
                                                             <br>
                                                             @if ($v->ambience != null)
                                                                 <strong>Ambience: </strong>
@@ -64,7 +66,7 @@
                                                                 WFC FRIENDLY
                                                                 <br>
                                                             @endif
-                                                            @if($v->user_id != 0)
+                                                            @if ($v->user_id != 0)
                                                                 Verified
                                                             @endif
                                                         </div>
@@ -79,7 +81,11 @@
                                     Tidak ada cafe
                                 </div>
                             @endif
-                            {{ $results->appends(request()->input())->links() }}
+
+                            <div class="container ps-5 pe-3 mt-3">
+
+                                {{ $results->links() }}
+                            </div>
                             {{-- <div class="position-relative mt-5">
                                 <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                     <nav aria-label="Page navigation example">

@@ -43,7 +43,6 @@
                                     <option value="South Jakarta">South Jakarta</option>
                                     <option value="West Jakarta">West Jakarta</option>
                                 </select>
-
                                 <label for="">Bio</label>
                                 <input type="text" class="form-control mb-3" name="bio"
                                     value="{{ Auth::user()->bio }}">

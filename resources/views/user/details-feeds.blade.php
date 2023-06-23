@@ -8,7 +8,10 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center">
-                    <h1>Detail Event</h1>
+                    <h1> <strong>
+                            Detail Event
+                        </strong>
+                    </h1>
                 </div>
                 <div class="card">
                     <div class="container">

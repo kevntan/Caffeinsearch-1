@@ -15,13 +15,17 @@
                 @elseif(\Session::has('error'))
                     <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
                 @endif
-                <div class="card">
+                <div class="card pb-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
-                                <h3>{{ $cafe->nama }}</h3>
+                                <h3>
+                                    <strong>
+                                        {{ $cafe->nama }}
+                                    </strong>
+                                </h3>
                                 @if ($rating_cafe)
-                                    <h5>{{ number_format($rating_cafe, 1, '.', '') }}/5</h5>
+                                    <h5>{{ number_format($rating_cafe, 1, '.', '') }} / 5.0 </h5>
                                 @endif
                                 <h5>{{ $cafe->lokasi }}</h5>
                             </div>
@@ -177,19 +181,19 @@
                             Toilet
                         @endif
                         <hr>
-                        <br>
-                        <br>
-                        <div class="position-relative">
-                            <div class="position-absolute bottom-0 end-0">
-                                <div class="mb-3 ">
-                                    <a href="{{ url('cafe/edit') }}" class="btn btn-primary">Edit Data</a>
-                                </div>
-                            </div>
+                        {{-- <br>
+                        <br> --}}
+                        {{-- <div class="position-relative"> --}}
+                        {{-- <div class="position-absolute bottom-0 end-0"> --}}
+                        <div class="d-flex flex-row-reverse">
+                            <a href="{{ url('cafe/edit') }}" class="btn btn-primary">Edit Data</a>
                         </div>
+                        {{-- </div> --}}
+                        {{-- </div> --}}
                     </div>
                 </div>
                 <div class="card mt-5">
-                    <div class="card-body mb-5">
+                    <div class="card-body">
                         <strong>Event</strong>
                         <br>
                         <hr>
@@ -207,10 +211,12 @@
                                                     style="width: 200px;">
                                             </div>
 
-                                            <div class="col-lg-7 col-md-12 col-sm-12">
-                                                <h4><strong>
+                                            <div class="col-lg-9 col-md-12 col-sm-12">
+                                                <h4>
+                                                    <strong>
                                                         {{ $v->nama }}
-                                                    </strong></h4>
+                                                    </strong>
+                                                </h4>
                                                 {{ $cafe->nama }}
                                                 <br>
                                                 {{ $v->kategori }}
@@ -220,10 +226,14 @@
                                                 <br>
                                                 {{ $v->keterangan }}
                                                 <br>
-                                                <a href="{{ url('cafe/event-edit/' . $v->id) }}"
-                                                    class="btn btn-primary px-4">Edit</a>
-                                                <a href="{{ url('cafe/event-delete/' . $v->id) }}"
-                                                    class="btn btn-danger px-4">Delete</a>
+                                                <hr>
+                                                <div class="d-flex flex-row-reverse">
+                                                    <a href="{{ url('cafe/event-edit/' . $v->id) }}"
+                                                        class="btn btn-primary px-4 ms-2">Edit</a>
+                                                    <a href="{{ url('cafe/event-delete/' . $v->id) }}"
+                                                        class="btn btn-danger px-4">Delete</a>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -233,10 +243,13 @@
                         @endif
                         <hr>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Tambahkan Event
-                        </button>
+                        <div class="d-flex flex-row-reverse">
+                            <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Tambahkan Event
+                            </button>
+                        </div>
+
 
                         <!-- Modal -->
 
@@ -313,7 +326,7 @@
                 </div>
 
                 <div class="card mt-5">
-                    <div class="card-body mb-5">
+                    <div class="card-body ">
                         <strong>Reviews</strong>
                         <br>
                         <hr>
@@ -322,6 +335,7 @@
                                 <div class="row mt-2">
                                     <div class="col-lg-10 col-md-10 col-sm-10">
                                         <strong>{{ $v->username }}</strong>
+                                        <br>
                                         {{ $v->rating }}
                                         <br>
                                         {{ $v->komentar }}
@@ -337,6 +351,7 @@
                                         {{ $v->created_at }}
                                     </div>
                                 </div>
+                                <hr>
                             @endforeach
                         @else
                             <div class="text-center">

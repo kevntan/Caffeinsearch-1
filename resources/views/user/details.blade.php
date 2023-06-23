@@ -8,16 +8,22 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center">
-                    <h1>Detail Cafe</h1>
+                    <h1>
+                        <strong>
+                            Detail Cafe
+                        </strong>
+                    </h1>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
-                                <h3>{{ $cafe->nama }}</h3>
+                                <h3><strong>
+                                        {{ $cafe->nama }}
+                                    </strong></h3>
                                 <h5>
                                     @if ($rating_cafe)
-                                        {{ number_format($rating_cafe, 1, '.', '') }}/5
+                                        {{ number_format($rating_cafe, 1, '.', '') }} / 5.0
                                     @endif
                                 </h5>
                                 <h5>{{ $cafe->lokasi }}</h5>
@@ -266,7 +272,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                        review</a> -->
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"

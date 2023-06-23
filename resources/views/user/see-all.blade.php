@@ -43,7 +43,7 @@
                                                                 </strong>
                                                             </h5>
                                                             <i class="fa-solid fa-star me-2" style="color:#666666"></i>
-                                                            {{ $v->rating }}
+                                                            {{ $v->rating }} / 5.0
 
                                                             <br>
                                                             <i class="fa-solid fa-location-dot me-2"

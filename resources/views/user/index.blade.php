@@ -13,12 +13,12 @@
                     <div class="col-lg-9 col-md-12 col-sm-12">
                         <h1>
                             <strong>
-                                Weekly Recomendation
+                                Recomendation
                             </strong>
                         </h1>
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
+                        <div id="carouselExampleControls" class="carousel slide rounded" data-bs-ride="carousel"
                             style="border-radius: 16px;">
-                            <div class="carousel-inner">
+                            <div class="carousel-inner rounded ">
                                 @if ($results->count() > 0)
                                     @for ($n = 0; $n < 3; $n++)
                                         <?php $x = rand(0, $results->count() - 1); ?>
@@ -41,9 +41,16 @@
                                                             class="d-block w-100"
                                                             alt="<?= asset('user/assets/img/assets1.png') ?>">
                                                     @endif
-                                                    <div class="carousel-caption">
-                                                        <p>{{ $results[$x]->nama }}</p>
-                                                        <p>{{ $results[$x]->lokasi }}</p>
+                                                    <div class="carousel-caption ">
+                                                        <h6><strong>
+                                                                {{ $results[$x]->nama }}
+                                                            </strong></h6>
+
+                                                        <i class="fa-solid fa-star me-2"></i>
+                                                        {{ $results[$x]->rating }} / 5.0
+                                                        <br>
+                                                        <i class="fa-solid fa-location-dot me-2"></i>
+                                                        {{ $results[$x]->lokasi }}
                                                     </div>
                                                 </a>
                                             </div>
@@ -67,8 +74,15 @@
                                                             alt="<?= asset('user/assets/img/assets1.png') ?>">
                                                     @endif
                                                     <div class="carousel-caption">
-                                                        <p>{{ $results[$x]->nama }}</p>
-                                                        <p>{{ $results[$x]->lokasi }}</p>
+                                                        <h6><strong>
+                                                                {{ $results[$x]->nama }}
+                                                            </strong></h6>
+
+                                                        <i class="fa-solid fa-star me-2"></i>
+                                                        {{ $results[$x]->rating }} / 5.0
+                                                        <br>
+                                                        <i class="fa-solid fa-location-dot me-2"></i>
+                                                        {{ $results[$x]->lokasi }}
                                                     </div>
                                                 </a>
                                             </div>
@@ -139,7 +153,7 @@
                                                 </p>
 
                                                 <i class="fa-solid fa-star me-2" style="color:#666666"></i>
-                                                {{ $v->rating }}
+                                                {{ $v->rating }} / 5.0
                                                 <br>
                                                 <i class="fa-solid fa-location-dot me-2"
                                                     style="color:#666666"></i>{{ $v->lokasi }}
