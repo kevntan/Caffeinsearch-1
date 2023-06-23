@@ -107,12 +107,16 @@
                             </button>
                         </div>
                         <br>
-                        <h1>Popular Cafe</h1>
-                        <div class="row mt-3">
+                        <h2>
+                            <strong>
+                                Popular Cafe
+                            </strong>
+                        </h2>
+                        <div class="row">
                             @if (count($cafe) > 0)
                                 @foreach ($cafe as $v)
-                                    <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
-                                        <div class="card mat-card">
+                                    <div class="col-lg-3 col-md-12 col-sm-12 mb-3">
+                                        <div class="card mat-card shadow-sm bg-white rounded">
                                             @if ($v->foto != null)
                                                 @if (substr($v->foto, 0, 5) === 'https')
                                                     <img src="<?= asset($v->foto) ?>" class="d-block w-100"
@@ -127,20 +131,28 @@
                                                     alt="<?= asset('user/assets/img/assets1.png') ?>">
                                             @endif
 
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $v->nama }}</h5>
+                                            <div class="card-body ">
+                                                <p class="card-title">
+                                                    <strong>
+                                                        {{ $v->nama }}
+                                                    </strong>
+                                                </p>
+
+                                                <i class="fa-solid fa-star me-2" style="color:#666666"></i>
                                                 {{ $v->rating }}
                                                 <br>
-                                                {{ $v->lokasi }}
+                                                <i class="fa-solid fa-location-dot me-2"
+                                                    style="color:#666666"></i>{{ $v->lokasi }}
                                                 <br>
-                                                <a href="{{ url('details/' . $v->id) }}" class="btn btn-primary text-center"
-                                                    style="width: 100%;">See
+                                                <a href="{{ url('details/' . $v->id) }}"
+                                                    class="btn btn-warning text-center mt-2" style="width: 100%;">See
                                                     Details</a>
+                                                <br>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
-                                <div class="col-lg-3 col-md-12 col-sm-12 mt-3">
+                                <div class="col-lg-3 col-md-12 col-sm-12">
                                     <a href="{{ url('see-all') }}">
                                         <div class="card mat-card">
                                             <img src="<?= asset('user/assets/img/see-all.png') ?>" class="card-img-top"

@@ -25,19 +25,33 @@
                                     @endif
                                     <br>
                                 </div>
-                                foto
+                                <label for="">Foto Profile</label>
                                 <input class="form-control mb-3" type="file" name="foto" id="formFile">
-                                username
+                                <label for="">Username</label>
                                 <input type="text" class="form-control mb-3" name="username"
                                     value="{{ Auth::user()->username }}" disabled>
-
-                                bio
+                                <label for="">Email</label>
+                                <input type="text" class="form-control mb-3" name="username"
+                                    value="{{ Auth::user()->email }}" disabled>
+                                <label for="">Daerah</label>
+                                <select class="form-control mb-3" name="daerah">
+                                    <option selected>{{ Auth::user()->daerah }}</option>
+                                    <option value="Central Jakarta">Central Jakarta</option>
+                                    <option value="East Jakarta">East Jakarta</option>
+                                    <option value="North Jakarta">North Jakarta</option>
+                                    <option value="South Jakarta">South Jakarta</option>
+                                    <option value="West Jakarta">West Jakarta</option>
+                                </select>
+                                <label for="">Bio</label>
                                 <input type="text" class="form-control mb-3" name="bio"
                                     value="{{ Auth::user()->bio }}">
                                 <label for="">New Password</label>
                                 <input type="password" class="form-control" name="password" value="">
                                 <hr>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="d-flex flex-row-reverse">
+                                    <button type="submit" class="btn btn-primary ">Submit</button>
+                                    <a href="{{ url('profile') }}" class="btn btn-link">Back</a>
+                                </div>
                             </form>
                         </div>
                     </div>

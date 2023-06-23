@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+@extends('user.layouts.assets')
 
 <head>
     <!-- Required meta tags -->
@@ -28,7 +29,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-12">
-                    <div class="form-block mx-auto" style="max-width: 420px;">
+                    <div class="form-block mx-auto rounded" style="max-width: 420px;">
                         <div class="text-center mb-5">
                             <h3><strong>Sign Up</strong></h3>
                             <h5>Silahkan Isi Data Diri Dengan Lengkap</h5>
@@ -72,6 +73,8 @@
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password"
                                     placeholder="Masukkan Password" id="password">
+                                <div class="text-dark text-opacity-50 fw-medium">* Minimal 9 karakter
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-block btn-primary"
                                 style="background: #C8B6A6; border-color: #C8B6A6;">

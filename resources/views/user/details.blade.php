@@ -226,7 +226,7 @@
                     </div>
                 </div>
                 <div class="card mt-5">
-                    <div class="card-body mb-5">
+                    <div class="card-body">
                         @if (\Session::has('success'))
                             <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
                         @elseif(\Session::has('error'))
@@ -237,40 +237,43 @@
                         <hr>
                         @if ($review_cafe->count() == 0)
                             <div class="text-center">
-                                tidak ada komentar
+                                Tidak ada komentar
                             </div>
                         @else
                             <div class="row">
                                 @foreach ($review_cafe as $v)
-                                    <div class="col-lg-10 col-md-10 col-sm-10">
-                                        <strong>{{ $v->username }}</strong>
-                                        <br>
-                                        {{ $v->rating }}
-                                        <br>
-                                        {{ $v->komentar }}
-                                        <br>
-                                        <div class="row mt-3">
-                                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                                <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
-                                                    style="width:100%">
+                                    <div class="d-flex mb-3 px-3">
+                                        <div class="col-lg-10 col-md-10 col-sm-10">
+                                            <strong>{{ $v->username }}</strong>
+                                            <br>
+                                            {{ $v->rating }}
+                                            <br>
+                                            {{ $v->komentar }}
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                                    <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
+                                                        style="width:70%">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-2">
-                                        {{ $v->created_at }}
+                                        <div class="col-lg-2 col-md-2 col-sm-2">
+                                            {{ $v->created_at }}
+                                        </div>
                                     </div>
                                 @endforeach
                             </div>
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                    review</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Write a Review
-                        </button>
-
+                        <div class="d-flex flex-row-reverse">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Write a Review
+                            </button>
+                        </div>
                         <!-- Modal -->
                         <form action="{{ url('details/store-review/' . $cafe->id) }}" method="post"
                             enctype="multipart/form-data">
@@ -288,7 +291,7 @@
                                             <div class="text-center">
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        rating
+                                                        Rating
                                                     </div>
                                                     <div class="col-4">
                                                         <select name="rating" id="" class="" required>

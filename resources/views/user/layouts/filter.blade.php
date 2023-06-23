@@ -5,7 +5,7 @@
                 Filter
             </strong>
         </h1>
-        <div class="card">
+        <div class="card shadow-sm bg-white border-0">
             <div class="card-body">
                 Location
                 <select class="form-select" aria-label="Default select example" name="lokasi">
@@ -28,8 +28,10 @@
                         <option value="">Open this select menu</option>
                     @endif
                     <option value="$ (< 25.000 untuk 1 orang)">$ (< 25.000 untuk 1 orang)</option>
-                    <option value="$$ (25.000 - 50.000 IDR untuk 1 orang)">$$ (25.000 - 50.000 IDR untuk 1 orang)</option>
-                    <option value="$$$ (51.000 - 75.000 IDR untuk 1 orang)">$$$ (51.000 - 75.000 IDR untuk 1 orang)</option>
+                    <option value="$$ (25.000 - 50.000 IDR untuk 1 orang)">$$ (25.000 - 50.000 IDR untuk 1 orang)
+                    </option>
+                    <option value="$$$ (51.000 - 75.000 IDR untuk 1 orang)">$$$ (51.000 - 75.000 IDR untuk 1 orang)
+                    </option>
                     <option value="$$$$ (> 75.000 IDR untuk 1 orang)">$$$$ (> 75.000 IDR untuk 1 orang)</option>
                 </select>
                 Rating

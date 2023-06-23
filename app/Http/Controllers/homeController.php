@@ -22,7 +22,7 @@ class homeController extends Controller
         }
         $cafe = DB::table('cafes')
             ->limit(7)
-            ->orderBy('nama', 'ASC')
+            ->orderBy('rating', 'DESC')
             ->get();
         $results = 0;
         $results = $this->search($request);

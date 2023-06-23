@@ -23,16 +23,19 @@
                                 @endif
                                 <h2><strong>{{ Auth::user()->username }}</strong></h2>
                                 <p>{{ Auth::user()->daerah }}</p>
-                                {{-- <p>User Cafe Admin at Nama Cafe</p> --}}
                                 <br>
                                 @if (Auth::user()->bio)
                                     <p>{{ Auth::user()->bio }}</p>
                                 @else
-                                    <p>Bio belum diisi</p>
+                                    <p class="text-dark text-opacity-25">Bio belum diisi</p>
                                 @endif
                             </div>
                             <hr>
-                            <a href="{{ url('profile/edit') }}" class="btn btn-primary">Edit profile</a>
+                            <div class="d-flex
+                                    flex-row-reverse">
+                                <a href="{{ url('profile/edit') }}" class="btn btn-primary">Edit Profile</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
