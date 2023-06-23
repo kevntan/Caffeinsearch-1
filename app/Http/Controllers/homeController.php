@@ -341,4 +341,7 @@ class homeController extends Controller
         ]);
         // return redirect('see-all');
     }
+    public function about(){
+        return view('user.about');
+    }
 }

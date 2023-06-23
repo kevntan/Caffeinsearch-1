@@ -27,6 +27,7 @@ Route::get('/sign-up', [loginController::class, "signup"]);
 Route::post('/sign-up/store', [loginController::class, "store"]);
 
 Route::get('/', [homeController::class, "index"]);
+Route::get('/about', [homeController::class, "about"])->middleware('auth', 'auth.role:user');
 Route::get('/details/{id}', [homeController::class, "details"])->middleware('auth', 'auth.role:user');
 Route::post('/details/store-review/{id}', [homeController::class, "storeReviewCafe"])->middleware('auth', 'auth.role:user');
 Route::get('/feeds', [homeController::class, "feeds"])->middleware('auth', 'auth.role:user');

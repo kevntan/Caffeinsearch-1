@@ -1,7 +1,7 @@
 @extends('user.layouts.assets')
 
 @section('content')
-    @include('user.layouts.navbar')
+    @include('user.layouts.navbar', ['home' => 'active', 'about' => false, 'feeds' => false])
     @include('user.layouts.bg')
 
     <main id="main">

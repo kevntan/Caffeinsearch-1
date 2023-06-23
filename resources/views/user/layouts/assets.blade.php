@@ -30,7 +30,7 @@
 </head>
 
 <body class="bg-light">
-
+    @props(['home' => false, 'about' => false, 'feeds' => false])
     {{-- @include('layouts.navbar') --}}
 
     @yield('content')

@@ -1,7 +1,7 @@
 @extends('user.layouts.assets')
 
 @section('content')
-    @include('user.layouts.navbar2')
+    @include('user.layouts.navbar2', ['home' => 'active', 'about' => false, 'feeds' => false])
 
     <main id="main">
         <!-- ======= About Section ======= -->
@@ -180,6 +180,15 @@
                         @if ($cafe->toilet == 1)
                             Toilet
                         @endif
+                        @if (
+                            $cafe->wifi == 0 &&
+                                $cafe->charging_port == 0 &&
+                                $cafe->lahan_parkir == 0 &&
+                                $cafe->smoking_area == 0 &&
+                                $cafe->mushola == 0 &&
+                                $cafe->toilet == 0)
+                                Tidak ada fasilitas
+                        @endif
                     </div>
                 </div>
                 <div class="card mt-5">
@@ -272,7 +281,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                                                                                                                                        review</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                            review</a> -->
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"

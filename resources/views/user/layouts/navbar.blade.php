@@ -5,10 +5,9 @@
          <h1 class="logo me-auto me-lg-0"><a href="{{ url('/') }}">Caffein<span>Search</span></a></h1>
          <nav id="navbar" class="navbar order-last order-lg-0">
              <ul>
-                 <li><a class="nav-link scrollto" href="{{ url('/') }}">Home</a></li>
-                 <li><a class="nav-link scrollto" href="#">About</a></li>
-                 <li><a class="nav-link scrollto" href="{{ url('/feeds') }}">Feeds</a></li>
-
+                 <li><a class="nav-link scrollto <?= $home ?>" href="{{ url('/') }}">Home</a></li>
+                 <li><a class="nav-link scrollto <?= $about ?>" href="{{ url('/about') }}">About</a></li>
+                 <li><a class="nav-link scrollto <?= $feeds ?>" href="{{ url('/feeds') }}">Feeds</a></li>
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->
