@@ -13,7 +13,7 @@
                     <div class="col-lg-9 col-md-12 col-sm-12">
                         <h1>
                             <strong>
-                                Recomendation
+                                Recommendation
                             </strong>
                         </h1>
                         <div id="carouselExampleControls" class="carousel slide rounded" data-bs-ride="carousel"
