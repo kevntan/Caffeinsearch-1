@@ -32,7 +32,11 @@
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 {{-- @if ($cafe->wfc_friendly == 1) --}}
                                 @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
-                                    <h3>WFC Friendly</h3>
+                                    <h4>WFC Friendly</h4>
+                                @endif
+                                @if ($cafe->user_id != 0)
+                                    <h4>Verified
+                                    </h4>
                                 @endif
                             </div>
                         </div>
@@ -162,23 +166,77 @@
                         <hr>
                         <strong>Facilities</strong>
                         <br>
-                        @if ($cafe->wifi == 1)
-                            Wi-Fi
-                        @endif
-                        @if ($cafe->charging_port == 1)
-                            Charging Port
-                        @endif
-                        @if ($cafe->lahan_parkir == 1)
-                            Lahan Parkir
-                        @endif
-                        @if ($cafe->smoking_area == 1)
-                            Smoking Area
-                        @endif
-                        @if ($cafe->mushola == 1)
-                            Mushola
-                        @endif
-                        @if ($cafe->toilet == 1)
-                            Toilet
+                        <div class="d-flex m-3">
+                            @if ($cafe->wifi == 1)
+                                <div class="me-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-wifi fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Wi-Fi
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->charging_port == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-plug fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Charging Port
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->lahan_parkir == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-square-parking fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Lahan Parkir
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->smoking_area == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-smoking fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Smoking Area
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->mushola == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-mosque fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Mushola
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->toilet == 1)
+                                <div class="ms-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-restroom fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Toilet
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
+                        @if (
+                            $cafe->wifi == 0 &&
+                                $cafe->charging_port == 0 &&
+                                $cafe->lahan_parkir == 0 &&
+                                $cafe->smoking_area == 0 &&
+                                $cafe->mushola == 0 &&
+                                $cafe->toilet == 0)
+                            Tidak ada fasilitas
                         @endif
                         <hr>
                         {{-- <br>

@@ -1,7 +1,7 @@
 @extends('user.layouts.assets')
 
 @section('content')
-<?php $about = 'active'; ?>
+    <?php $about = 'active'; ?>
     @include('user.layouts.navbar2', ['home' => false, 'about' => 'active', 'feeds' => false])
 
 
@@ -10,21 +10,29 @@
         <section id="about" class="about">
             <div class="container mt-5">
                 <div class="text-center mt-3 mb-3">
-                    <h1>About Us</h1>
+                    <h1> <strong>About Us
+                        </strong></h1>
                 </div>
-                <div class="shadow card text-white mb-3" style="color: #A4907C;">
+                <div class="shadow-sm card text-white mb-3" style="color: #A4907C;">
                     <img src="<?= asset('user/assets/img/about.png') ?>" class="card-img" alt="">
                     <div class="card-img-overlay text-center">
                         <div class="position-absolute top-50 start-50 translate-middle">
                             <h1 class="card-title"><strong>Caffeinsearch<span style="color: #FFC451">.</span></strong></h1>
                             <h2>Your cafe recomendation friends</h2>
+                            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
-                <div class="card mt-5 shadow">
+                <div class="card mt-5 shadow-sm">
                     <div class="card-body text-center ">
                         <div class="text-center mt-2 mb-3">
-                            <h4>Apa itu Caffeinsearch?</h4>
+                            <h5>
+                                <strong>Apa itu Caffeinsearch?
+                                </strong>
+                            </h5>
                         </div>
                         <div class="text-center">
                             <p>
@@ -38,16 +46,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-5 shadow">
+                <div class="card mt-5 shadow-sm">
                     <div class="card-body text-center ">
                         <div class="text-center mt-2 mb-3">
-                            <h4>Siapa saja membernya?</h4>
+                            <h5>
+                                <strong>Siapa saja membernya?
+                                </strong>
+                            </h5>
                         </div>
                         <hr>
                         <div class="text-center">
                             <div class="row mt-4">
                                 <div class="col-lg-4 col-md-12 col-sm-12 mt-4">
                                     <img src="<?= asset('user/assets/img/vector.png') ?>" alt="">
+                                    <br>
                                     <br>
                                     <strong>Octavionus Chandra</strong>
                                     <br>
@@ -60,6 +72,7 @@
                                 <div class="col-lg-4 col-md-12 col-sm-12 mt-4">
                                     <img src="<?= asset('user/assets/img/vector.png') ?>" alt="">
                                     <br>
+                                    <br>
                                     <strong>Kevin</strong>
                                     <br>
                                     <em class="text-muted">2301875603</em>
@@ -70,6 +83,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-12 col-sm-12 mt-4">
                                     <img src="<?= asset('user/assets/img/vector.png') ?>" alt="">
+                                    <br>
                                     <br>
                                     <strong>Matthew Tjiu</strong>
                                     <br>

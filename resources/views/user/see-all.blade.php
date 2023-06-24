@@ -16,7 +16,7 @@
                                 All Cafe
                             </strong>
                         </h1>
-                        <div class="card">
+                        <div class="card shadow-sm border-0">
                             @if (count($results) > 0)
                                 @foreach ($results as $i => $v)
                                     <a href="{{ url('details/' . $v->id) }}"
@@ -42,16 +42,15 @@
                                                                 <strong>{{ $v->nama }}
                                                                 </strong>
                                                             </h5>
-                                                            <i class="fa-solid fa-star me-2" style="color:#666666"></i>
+                                                            <i class="fa-solid fa-star me-2"></i>
                                                             {{ $v->rating }} / 5.0
 
                                                             <br>
-                                                            <i class="fa-solid fa-location-dot me-2"
-                                                                style="color:#666666"></i>
+                                                            <i class="fa-solid fa-location-dot me-2"></i>
                                                             {{ $v->lokasi }}
                                                             <br>
-                                                            <i class="fa-solid fa-map-location-dot me-2"
-                                                                style="color: #666666"></i>{{ $v->alamat }}
+                                                            <i
+                                                                class="fa-solid fa-map-location-dot me-2"></i>{{ $v->alamat }}
                                                             <br>
 
                                                             @if ($v->ambience != null)

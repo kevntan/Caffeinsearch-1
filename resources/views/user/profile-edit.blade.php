@@ -8,9 +8,11 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h1>Edit Profile</h1>
+                    <h1><strong>
+                            Edit Profile
+                        </strong></h1>
                 </div>
-                <div class="card mb-5">
+                <div class="card mb-5 shadow-sm bg-white border-0">
                     <div class="card-body">
                         <div class="container">
                             <form action="{{ url('profile/update') }}" method="post" enctype="multipart/form-data">
@@ -35,7 +37,7 @@
                                     value="{{ Auth::user()->email }}" disabled>
                                 {{-- <p>User / Cafe Admin at Nama Cafe</p> --}}
                                 <label for="">Daerah</label>
-                                <select class="form-control mb-3" name="daerah">
+                                <select class="form-select mb-3" name="daerah">
                                     <option selected>{{ Auth::user()->daerah }}</option>
                                     <option value="Central Jakarta">Central Jakarta</option>
                                     <option value="East Jakarta">East Jakarta</option>
@@ -43,11 +45,15 @@
                                     <option value="South Jakarta">South Jakarta</option>
                                     <option value="West Jakarta">West Jakarta</option>
                                 </select>
+
+
+
                                 <label for="">Bio</label>
-                                <input type="text" class="form-control mb-3" name="bio"
+                                <input type="text" class="form-control mb-3" name="bio" placeholder="Input your bio"
                                     value="{{ Auth::user()->bio }}">
                                 <label for="">New Password</label>
-                                <input type="password" class="form-control mb-3" name="password" value="">
+                                <input type="password" class="form-control mb-3" name="password"
+                                    placeholder="Input your new password" value="">
                                 <hr>
                                 <div class="d-flex flex-row-reverse">
                                     <button type="submit" class="btn btn-primary ">Submit</button>

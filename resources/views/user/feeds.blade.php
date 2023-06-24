@@ -14,7 +14,7 @@
                                 Filter
                             </strong>
                         </h1>
-                        <div class="card">
+                        <div class="card shadow-sm bg-white border-0">
                             <form action="{{ url('feeds') }}" method="get">
                                 <div class="card-body">
                                     Location
@@ -33,14 +33,16 @@
                                     Categories
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" value="Event" name="kategori"
-                                            id="kategori1" <?php $checked = ($kategori === "Event") ? "checked" : ""; echo $checked;?>>
+                                            id="kategori1" <?php $checked = $kategori === 'Event' ? 'checked' : '';
+                                            echo $checked; ?>>
                                         <label class="form-check-label" for="kategori1">
                                             Event
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" value="Promo" name="kategori"
-                                            id="kategori2" <?php $checked = ($kategori === "Promo") ? "checked" : ""; echo $checked;?>>
+                                            id="kategori2" <?php $checked = $kategori === 'Promo' ? 'checked' : '';
+                                            echo $checked; ?>>
                                         <label class="form-check-label" for="kategori2">
                                             Promo
                                         </label>
@@ -48,9 +50,10 @@
                                 </div>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-warning" style="width: 100%">Apply Filter</button>
+                            <button type="submit" class="btn btn-primary btn-block"
+                                style="width: 100%; background: #C8B6A6; border-color: #C8B6A6;">Apply Filter</button>
                             <a type="button" href="{{ url('feeds') }}" class="btn btn-light mt-2"
-                                style="width: 100%">Clear
+                                style="width: 100%; color: #C8B6A6;">Clear
                                 Filter</a>
                         </div>
                         </form>
@@ -63,31 +66,39 @@
                         </h1>
                         @if ($result->count() > 0)
                             @foreach ($result as $v)
-                                <div class="card mb-5" style="border-radius: 20px;">
+                                <div class="card mb-5 shadow-sm bg-white border-0" style="border-radius: 20px;">
                                     <img src="<?= asset('storage/image/' . $v->foto) ?>" class="card-img-top"
                                         alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $v->nama }}</h5>
-                                        {{ $v->alamat }}
+                                        <h5 class="card-title">
+                                            <strong>
+                                                {{ $v->nama }}
+                                            </strong>
+                                        </h5>
+                                        <i class="fa-solid fa-location-dot me-2"></i> {{ $v->nama_cafe }}
+                                        {{-- {{ $v->alamat }} za ini mo ganti jadi nama cafe bukan alamat event --}}
                                         <br>
+                                        {{-- <i class="fa-solid fa-tags me-2">  --}}
                                         {{ $v->kategori }}
                                         <br>
-                                        {{ $v->tanggal }}
-                                        <br>
+                                        {{-- <i class="fa-solid fa-calendar me-2"> --}}
                                         {{ $v->waktu_mulai }} - {{ $v->waktu_selesai }}
                                         <br>
+                                        <br>
+                                        <strong>Description</strong>
                                         <br>
                                         {{ $v->keterangan }}
                                         <br>
                                         <a href="{{ url('details-feeds/' . $v->id) }}"
-                                            class="btn btn-primary text-center mt-4" style="width: 100%;">See
+                                            class="btn btn-primary btn-block text-center mt-4 py-3"
+                                            style="width: 100%; background: #C8B6A6; border-color: #C8B6A6;">See
                                             Details</a>
                                     </div>
                                 </div>
                             @endforeach
                         @else
                             <div class="text-center">
-                                tidak ada event
+                                Tidak ada event
                             </div>
                         @endif
                     </div>

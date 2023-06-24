@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="Daerah">Daerah</label>
-                                <select class="custom-select" name="daerah">
+                                <select class="form-select" name="daerah">
                                     <option selected>Daerah</option>
                                     <option value="Central Jakarta">Central Jakarta</option>
                                     <option value="East Jakarta">East Jakarta</option>

@@ -7,6 +7,17 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check me-3"></i>{!! \Session::get('success') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(\Session::has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation me-3"></i>{!! \Session::get('error') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="text-center">
                     <h1>
                         <strong>
@@ -14,7 +25,7 @@
                         </strong>
                     </h1>
                 </div>
-                <div class="card">
+                <div class="card shadow-sm px-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
@@ -23,21 +34,28 @@
                                     </strong></h3>
                                 <h5>
                                     @if ($rating_cafe)
-                                        {{ number_format($rating_cafe, 1, '.', '') }} / 5.0
+                                        <i class="fa-solid fa-star me-2"></i>{{ number_format($rating_cafe, 1, '.', '') }} /
+                                        5.0
                                     @endif
                                 </h5>
-                                <h5>{{ $cafe->lokasi }}</h5>
+                                <h5><i class="fa-solid fa-location-dot me-2"></i>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 {{-- @if ($cafe->wfc_friendly == 1) --}}
                                 @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
-                                    <h3>WFC Friendly</h3>
+                                    <h4>WFC Friendly</h4>
+                                @endif
+                                @if ($cafe->user_id != 0)
+                                    <h4>Verified
+                                    </h4>
                                 @endif
                             </div>
                         </div>
-                    </div>
-                    <div class="container">
                         <hr>
+                    </div>
+
+                    <div class="container pb-3">
+
                         <div class="row mb-4">
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
@@ -153,46 +171,97 @@
                                     <br>
                                     -
                                 @endif
-                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-light" style="width: 100%">See
+                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-primary py-3 mt-3"
+                                    style="width: 100%">
+                                    <i class="fa-brands fa-google me-2"></i>
+                                    See
                                     Google Maps
-                                    Details</a>
+                                </a>
 
                             </div>
                         </div>
                         <hr>
                         <strong>Facilities</strong>
                         <br>
-                        @if ($cafe->wifi == 1)
-                            Wi-Fi
-                        @endif
-                        @if ($cafe->charging_port == 1)
-                            Charging Port
-                        @endif
-                        @if ($cafe->lahan_parkir == 1)
-                            Lahan Parkir
-                        @endif
-                        @if ($cafe->smoking_area == 1)
-                            Smoking Area
-                        @endif
-                        @if ($cafe->mushola == 1)
-                            Mushola
-                        @endif
-                        @if ($cafe->toilet == 1)
-                            Toilet
-                        @endif
-                        @if (
-                            $cafe->wifi == 0 &&
-                                $cafe->charging_port == 0 &&
-                                $cafe->lahan_parkir == 0 &&
-                                $cafe->smoking_area == 0 &&
-                                $cafe->mushola == 0 &&
-                                $cafe->toilet == 0)
+                        <div class="d-flex m-3">
+                            @if ($cafe->wifi == 1)
+                                <div class="me-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-wifi fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Wi-Fi
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->charging_port == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-plug fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Charging Port
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->lahan_parkir == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-square-parking fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Lahan Parkir
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->smoking_area == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-smoking fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Smoking Area
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->mushola == 1)
+                                <div class="mx-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-mosque fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Mushola
+                                    </div>
+                                </div>
+                            @endif
+                            @if ($cafe->toilet == 1)
+                                <div class="ms-5">
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <i class="fa-solid fa-restroom fa-2x" style="color: #A4907C"></i>
+                                    </div>
+                                    <div class="text-center fw-semibold">
+                                        Toilet
+                                    </div>
+                                </div>
+                            @endif
+                            @if (
+                                $cafe->wifi == 0 &&
+                                    $cafe->charging_port == 0 &&
+                                    $cafe->lahan_parkir == 0 &&
+                                    $cafe->smoking_area == 0 &&
+                                    $cafe->mushola == 0 &&
+                                    $cafe->toilet == 0)
                                 Tidak ada fasilitas
-                        @endif
+                            @endif
+                        </div>
+
+
                     </div>
                 </div>
-                <div class="card mt-5">
-                    <div class="card-body mb-5">
+
+                {{-- section event --}}
+                <div class="card mt-5 shadow-sm px-3">
+                    <div class="card-body ">
                         <strong>Event</strong>
                         <br>
                         <hr>
@@ -204,8 +273,8 @@
                             @foreach ($event as $v)
                                 <a href="{{ url('details-feeds/' . $v->id) }}"
                                     style=" text-decoration: none; color: inherit;">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
+                                    <div class="card mb-4 shadow-sm bg-light rounded">
+                                        <div class="card-body ">
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-12 col-sm-12">
                                                     <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
@@ -217,20 +286,19 @@
                                                             {{ $v->nama }}
                                                         </strong>
                                                     </h4>
+                                                    {{-- <i class="fa-solid fa-location-dot me-2"></i>
                                                     {{ $cafe->nama }}
-                                                    <br>
+                                                    <br> --}}
+                                                    <i class="fa-solid fa-tags me-2"></i>
                                                     {{ $v->kategori }}
                                                     <br>
-                                                    {{ date('h:i A', strtotime($v->waktu_mulai)) }} -
-                                                    {{ date('h:i A', strtotime($v->waktu_selesai)) }}
+                                                    <i class="fa-solid fa-calendar me-2"></i>{{ $v->waktu_mulai }} -
+                                                    {{ $v->waktu_selesai }}
                                                     <br>
+                                                    <br>
+                                                    <strong>Description</strong>
                                                     <br>
                                                     {{ $v->keterangan }}
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
-                                                        WFC FRIENDLY
-                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -240,13 +308,10 @@
                         @endif
                     </div>
                 </div>
-                <div class="card mt-5">
+
+                {{-- section review --}}
+                <div class="card mt-5 shadow-sm px-3">
                     <div class="card-body">
-                        @if (\Session::has('success'))
-                            <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
-                        @elseif(\Session::has('error'))
-                            <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
-                        @endif
                         <strong>Reviews</strong>
                         <br>
                         <hr>
@@ -272,7 +337,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 fs-6 font-monospace text-muted">
                                             {{ $v->created_at }}
                                         </div>
                                     </div>
@@ -281,11 +346,12 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                                                                                                                                            review</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" style=" background: #C8B6A6; border-color: #C8B6A6;">
+                                <i class="fa-solid fa-pen-to-square me-2"></i>
                                 Write a Review
                             </button>
                         </div>
@@ -298,7 +364,10 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Reviews</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                <strong>Reviews
+                                                </strong>
+                                            </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>

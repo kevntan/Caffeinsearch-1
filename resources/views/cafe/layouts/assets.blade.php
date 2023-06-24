@@ -46,6 +46,7 @@
     <script src="<?= asset('user/assets/vendor/php-email-form/validate.js') ?>"></script>
 
     <script src="<?= asset('user/assets/js/main.js') ?>"></script>
+    <script src="https://kit.fontawesome.com/0354e128bb.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

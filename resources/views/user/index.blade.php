@@ -152,14 +152,14 @@
                                                     </strong>
                                                 </p>
 
-                                                <i class="fa-solid fa-star me-2" style="color:#666666"></i>
+                                                <i class="fa-solid fa-star me-2"></i>
                                                 {{ $v->rating }} / 5.0
                                                 <br>
-                                                <i class="fa-solid fa-location-dot me-2"
-                                                    style="color:#666666"></i>{{ $v->lokasi }}
+                                                <i class="fa-solid fa-location-dot me-2"></i>{{ $v->lokasi }}
                                                 <br>
                                                 <a href="{{ url('details/' . $v->id) }}"
-                                                    class="btn btn-warning text-center mt-2" style="width: 100%;">See
+                                                    class="btn btn-block btn-primary mt-2"
+                                                    style="width: 100%; background: #C8B6A6; border-color: #C8B6A6;">See
                                                     Details</a>
                                                 <br>
                                             </div>

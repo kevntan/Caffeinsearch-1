@@ -7,13 +7,25 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-circle-check me-3"></i>{!! \Session::get('success') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(\Session::has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation me-3"></i>{!! \Session::get('error') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="text-center">
                     <h1> <strong>
                             Detail Event
                         </strong>
                     </h1>
                 </div>
-                <div class="card">
+                {{-- section profile --}}
+                <div class="card shadow-sm px-3">
                     <div class="container">
                         <div class="row mb-4 mt-4">
                             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -40,38 +52,42 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                                <h3> <strong>
+                            <div class="col-lg-6 col-md-12 col-sm-12 ">
+                                <h3>
+                                    <strong>
                                         {{ $event->nama }}
-                                    </strong></h3>
+                                    </strong>
+                                </h3>
 
+                                <i class="fa-solid fa-location-dot me-2"></i>
                                 {{ $event->nama_cafe }}
                                 <br>
+                                <i class="fa-solid fa-map-location-dot me-2"></i>
                                 {{ $event->alamat }}
                                 <br>
-                                {{ $event->kategori }}
+                                <i class="fa-solid fa-tags me-2"></i>{{ $event->kategori }}
                                 <br>
-                                {{ $event->waktu_mulai }} - {{ $event->waktu_selesai }}
+                                <i class="fa-solid fa-calendar me-2"></i>{{ $event->waktu_mulai }} -
+                                {{ $event->waktu_selesai }}
                                 <br>
+                                <br>
+                                <strong>Description</strong>
                                 <br>
                                 {{ $event->keterangan }}
                                 <br>
-                                <a href="{{ $cafe->maps }}" target="_blank" class="btn btn-light mt-5"
-                                    style="width: 100%">See Google
-                                    Maps
-                                    Details</a>
+                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-primary py-3 mt-3"
+                                    style="width: 100%">
+                                    <i class="fa-brands fa-google me-2"></i>
+                                    See
+                                    Google Maps</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mt-5">
+                {{-- section comment --}}
+                <div class="card mt-5 shadow-sm px-3">
                     <div class="card-body mb-2">
                         <strong>Comments</strong>
-                        @if (\Session::has('success'))
-                            <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
-                        @elseif(\Session::has('error'))
-                            <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
-                        @endif
                         <br>
                         <hr>
                         @if ($review_event->count() > 0)
@@ -81,32 +97,34 @@
                                         <strong>{{ $v->username }}</strong>
                                         {{ $v->komentar }}
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:right;">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 fs-6 font-monospace text-muted"
+                                        style="text-align:right;">
                                         {{ $v->created_at }}
                                     </div>
                                 </div>
                             @endforeach
                         @else
                             <div class="text-center">
-                                tidak ada komentar
+                                Tidak ada komentar
                             </div>
                         @endif
                         <div class="row gy-4 mt-3 justify-content-center">
                             <form action="{{ url('details-feeds/store/' . $event->id) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
+
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="komentar" placeholder="Write a Comment"
-                                        aria-label="Search" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
-                                            style="color: rgb(0, 0, 0); border-color:rgb(0, 0, 0); border-radius: 0px 5px 5px 0px">Submit</button>
-                                    </div>
+                                    <input type="text" class="form-control " name="komentar"
+                                        placeholder="Write a Comment" aria-label="Search" aria-describedby="button-addon2">
+                                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                        <i class="fa-regular fa-paper-plane me-2"></i>Submit</button>
                                 </div>
-                            </form>
                         </div>
+
+                        </form>
                     </div>
                 </div>
+            </div>
         </section>
     </main><!-- End #main -->
 
