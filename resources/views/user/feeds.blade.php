@@ -2,7 +2,7 @@
 
 @section('content')
     @include('user.layouts.navbar', ['home' => false, 'about' => false, 'feeds' => 'active'])
-    @include('user.layouts.bg')
+    @include('user.layouts.bg-feeds')
     <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
@@ -78,10 +78,10 @@
                                         <i class="fa-solid fa-location-dot me-2"></i> {{ $v->nama_cafe }}
                                         {{-- {{ $v->alamat }} za ini mo ganti jadi nama cafe bukan alamat event --}}
                                         <br>
-                                        {{-- <i class="fa-solid fa-tags me-2">  --}}
+                                        <i class="fa-solid fa-tags me-2"></i> 
                                         {{ $v->kategori }}
                                         <br>
-                                        {{-- <i class="fa-solid fa-calendar me-2"> --}}
+                                        <i class="fa-solid fa-calendar me-2"></i>
                                         {{ $v->waktu_mulai }} - {{ $v->waktu_selesai }}
                                         <br>
                                         <br>

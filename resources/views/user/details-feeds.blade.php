@@ -115,7 +115,7 @@
 
                                 <div class="input-group">
                                     <input type="text" class="form-control " name="komentar"
-                                        placeholder="Write a Comment" aria-label="Search" aria-describedby="button-addon2">
+                                        placeholder="Write a Comment" aria-label="Search" aria-describedby="button-addon2" required>
                                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                                         <i class="fa-regular fa-paper-plane me-2"></i>Submit</button>
                                 </div>

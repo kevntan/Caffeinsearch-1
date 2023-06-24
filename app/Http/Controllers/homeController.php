@@ -65,30 +65,34 @@ class homeController extends Controller
     {
         $lokasi = $request->input('lokasi');
         $kategori = $request->input('kategori');
+        if( $request->input('query') != null){
+            $nama = $request->input('query');
+        } else{
+            $nama = '';
+        }
 
         $query = Event::query();
 
         if ($lokasi) {
-            $query->join('cafes', 'events.cafe_id', 'cafes.id')->where('lokasi', $lokasi)->select('events.*', 'cafes.alamat');
+            $query->where('cafes.lokasi', $lokasi)->select('events.*', 'cafes.alamat');
         }
         if ($kategori) {
             $query->where('kategori', $kategori);
         }
 
-        $results = $query->orderBy('nama', 'ASC')->get();
+        $results = $query->where('events.nama', 'LIKE', '%' . $nama . '%')->orderBy('events.nama', 'ASC')->join('cafes', 'events.cafe_id', 'cafes.id')->select('events.*', 'cafes.nama as nama_cafe')->get();
+        // $results = 0;
+        // $results = $results->query;
+        // dd($results);
+
+        $old = $nama;
 
         return view('user.feeds', [
             'result' => $results,
             'lokasi' => $lokasi,
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            'old' => $old
         ]);
-        // $event = DB::table('events')
-        //     ->join('cafes', 'events.cafe_id', 'cafes.id')
-        //     ->select('events.*', 'cafes.alamat')
-        //     ->get();
-        // return view('user.feeds', [
-        //     'event' => $event,
-        // ]);
     }
     public function detailsFeeds($id)
     {
@@ -275,6 +279,14 @@ class homeController extends Controller
         }
     }
 
+    public function searchFeeds(Request $request)
+    {
+        $query = $request->input('query');
+        Paginator::useBootstrapFive();
+        $results = $query->where('nama', 'LIKE', '%' . $query . '%')->join('cafes', 'events.cafe_id', 'cafes.id')->select('events.*', 'cafes.nama as nama_cafe')->orderBy('nama', 'ASC')->paginate(10);
+        return $results;
+    }
+
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -341,7 +353,8 @@ class homeController extends Controller
         ]);
         // return redirect('see-all');
     }
-    public function about(){
+    public function about()
+    {
         return view('user.about');
     }
 }

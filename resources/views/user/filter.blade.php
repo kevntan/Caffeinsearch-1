@@ -81,8 +81,7 @@
                             @endif
 
                             <div class="container ps-5 pe-3 mt-3">
-
-                                {{ $results->links() }}
+                                {{ $results->appends(request()->input())->links() }}
                             </div>
                             {{-- <div class="position-relative mt-5">
                                 <div class="position-absolute bottom-0 start-50 translate-middle-x">

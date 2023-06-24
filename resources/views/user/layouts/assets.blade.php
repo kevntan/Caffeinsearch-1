@@ -27,10 +27,11 @@
     <link rel="stylesheet" href="<?= asset('user/assets/vendor/swiper/swiper-bundle.min.css') ?>">
 
     <link rel="stylesheet" href="<?= asset('user/assets/css/style.css') ?>">
+    @yield('font')
 </head>
 
 <body class="bg-light">
-    @props(['home' => false, 'about' => false, 'feeds' => false])
+    {{-- @props() --}}
     {{-- @include('layouts.navbar') --}}
 
     @yield('content')

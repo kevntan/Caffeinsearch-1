@@ -1,13 +1,13 @@
 @extends('user.layouts.assets')
+@section('font')
+@endsection
 
 @section('content')
     <?php $about = 'active'; ?>
     @include('user.layouts.navbar2', ['home' => false, 'about' => 'active', 'feeds' => false])
-
-
     <main id="main">
         <!-- ======= About Section ======= -->
-        <section id="about" class="about">
+        <section id="about" class="about" style="font-family: 'Open Sans', sans-serif;">
             <div class="container mt-5">
                 <div class="text-center mt-3 mb-3">
                     <h1> <strong>About Us
