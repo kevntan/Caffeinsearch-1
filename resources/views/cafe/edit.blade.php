@@ -110,7 +110,7 @@
                                     <strong>nama cafe</strong>
                                     <br>
                                     <input type="text" class="form-control" name="nama" id="inlineFormInputGroup"
-                                        placeholder="alamat" value="{{ $cafe->nama }}">
+                                        placeholder="alamat" value="{{ $cafe->nama }}" required>
                                     <br>
                                     <strong>Alamat</strong>
                                     <br>
