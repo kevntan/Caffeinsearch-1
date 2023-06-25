@@ -44,7 +44,7 @@
                                                             </h5>
 
                                                             <i class="fa-solid fa-star me-2"></i>
-                                                            {{ $v->rating }} / 5.0
+                                                            {{ number_format($v->rating, 1) }} / 5.0
                                                             <br>
                                                             <i class="fa-solid fa-location-dot me-2"></i>
                                                             {{ $v->lokasi }}

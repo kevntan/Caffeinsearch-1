@@ -47,7 +47,7 @@
                                                             </strong></h6>
 
                                                         <i class="fa-solid fa-star me-2"></i>
-                                                        {{ $results[$x]->rating }} / 5.0
+                                                        {{ number_format($results[$x]->rating, 1) }}/ 5.0
                                                         <br>
                                                         <i class="fa-solid fa-location-dot me-2"></i>
                                                         {{ $results[$x]->lokasi }}
@@ -79,7 +79,7 @@
                                                             </strong></h6>
 
                                                         <i class="fa-solid fa-star me-2"></i>
-                                                        {{ $results[$x]->rating }} / 5.0
+                                                        {{ number_format($results[$x]->rating, 1) }} / 5.0
                                                         <br>
                                                         <i class="fa-solid fa-location-dot me-2"></i>
                                                         {{ $results[$x]->lokasi }}
@@ -153,7 +153,7 @@
                                                 </p>
 
                                                 <i class="fa-solid fa-star me-2"></i>
-                                                {{ $v->rating }} / 5.0
+                                                {{ number_format($v->rating, 1) }}/ 5.0
                                                 <br>
                                                 <i class="fa-solid fa-location-dot me-2"></i>{{ $v->lokasi }}
                                                 <br>
