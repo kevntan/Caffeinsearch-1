@@ -107,15 +107,15 @@
                                         id="exampleFormControlFile1">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12">
-                                    <strong>nama cafe</strong>
+                                    <strong>Nama cafe</strong>
                                     <br>
                                     <input type="text" class="form-control" name="nama" id="inlineFormInputGroup"
-                                        placeholder="alamat" value="{{ $cafe->nama }}" required>
+                                        placeholder="Input nama cafe" value="{{ $cafe->nama }}" required>
                                     <br>
                                     <strong>Alamat</strong>
                                     <br>
                                     <input type="text" class="form-control" name="alamat" id="inlineFormInputGroup"
-                                        placeholder="alamat" value="{{ $cafe->alamat }}">
+                                        placeholder="Input alamat" value="{{ $cafe->alamat }}">
                                     <br>
                                     <strong>Operational Hours</strong>
                                     <br>
