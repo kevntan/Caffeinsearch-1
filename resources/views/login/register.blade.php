@@ -45,14 +45,14 @@
                             <div class="form-group first">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" name="username"
-                                    placeholder="Masukkan Username" id="username">
+                                    placeholder="Masukkan Username" id="username" value="{{ old('username') }}" required>
                                 @error('username')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="Daerah">Daerah</label>
-                                <select class="form-select" name="daerah">
+                                <select class="form-select" name="daerah" value="{{ old('daerah') }}" required>
                                     <option selected>Daerah</option>
                                     <option value="Central Jakarta">Central Jakarta</option>
                                     <option value="East Jakarta">East Jakarta</option>
@@ -63,8 +63,8 @@
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Masukkan Email"
-                                    id="email">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"
+                                    placeholder="Masukkan Email" id="email" required>
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -72,9 +72,12 @@
                             <div class="form-group last mb-3">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password"
-                                    placeholder="Masukkan Password" id="password">
+                                    placeholder="Masukkan Password" id="password" required>
                                 <div class="text-dark text-opacity-50 fw-medium">* Minimal 9 karakter
                                 </div>
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-block btn-primary"
                                 style="background: #C8B6A6; border-color: #C8B6A6;">

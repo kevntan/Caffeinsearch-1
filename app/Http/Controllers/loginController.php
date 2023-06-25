@@ -23,7 +23,7 @@ class loginController extends Controller
         $validatedData = $request->validate([
             "username" => "required|min:3|unique:users",
             "email" => "required|unique:users",
-            "password" => "required|min:8",
+            "password" => "required|min:9",
             "daerah" => "required",
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);

@@ -19,10 +19,18 @@
                      <li class="dropdown"><a href="#"><span>{{ Auth::user()->username }}</span> <i
                                  class="bi bi-chevron-down"></i></a>
                          <ul>
-                             <li><a href="{{ url('profile') }}">Profile</a></li>
+                             <li>
+                                 <form action="{{ url('profile') }}" method="GET" enctype="multipart/form-data">
+                                    <i class="fa-solid fa-user"></i>
+                                     <button type="submit" class="btn btn-link text-primary" name="">
+                                         Profile
+                                     </button>
+                                 </form>
+                             </li>
                              <li>
                                  <form action="{{ url('logout') }}" method="POST" enctype="multipart/form-data">
                                      @csrf
+                                     <i class="fa-solid fa-right-from-bracket"></i>
                                      <button type="submit" class="btn btn-link" name="">
                                          Logout
                                      </button>
