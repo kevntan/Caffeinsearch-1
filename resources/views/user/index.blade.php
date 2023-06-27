@@ -134,10 +134,11 @@
                                             @if ($v->foto != null)
                                                 @if (substr($v->foto, 0, 5) === 'https')
                                                     <img src="<?= asset($v->foto) ?>" class="d-block w-100"
+                                                        style="border-radius: 5px 5px 0px 0px"
                                                         alt="<?= asset('storage/image/' . $v->foto) ?>">
                                                 @else
                                                     <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                        class="d-block w-100"
+                                                        class="d-block w-100" style="border-radius: 5px 5px 0px 0px"
                                                         alt="<?= asset('storage/image/' . $v->foto) ?>">
                                                 @endif
                                             @else
@@ -146,7 +147,7 @@
                                             @endif
 
                                             <div class="card-body ">
-                                                <p class="card-title">
+                                                <p>
                                                     <strong>
                                                         {{ $v->nama }}
                                                     </strong>
@@ -158,8 +159,7 @@
                                                 <i class="fa-solid fa-location-dot me-2"></i>{{ $v->lokasi }}
                                                 <br>
                                                 <a href="{{ url('details/' . $v->id) }}"
-                                                    class="btn btn-block btn-primary mt-2"
-                                                    style="width: 100%; background: #C8B6A6; border-color: #C8B6A6;">See
+                                                    class="btn btn-block btn-solid mt-2">See
                                                     Details</a>
                                                 <br>
                                             </div>
@@ -168,7 +168,7 @@
                                 @endforeach
                                 <div class="col-lg-3 col-md-12 col-sm-12">
                                     <a href="{{ url('see-all') }}">
-                                        <div class="card mat-card">
+                                        <div class="card mat-card btn-card">
                                             <img src="<?= asset('user/assets/img/see-all.png') ?>" class="card-img-top"
                                                 alt="..." style="width: 100%; border-radius: 5px;">
                                             <p class="carousel-caption">
@@ -181,7 +181,7 @@
                                 </div>
                             @else
                                 <div class="text-center">
-                                    tidak ada cafe
+                                    Tidak ada cafe
                                 </div>
                             @endif
                         </div>

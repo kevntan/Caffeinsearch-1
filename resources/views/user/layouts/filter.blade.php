@@ -66,9 +66,8 @@
             </div>
         </div>
         <div class="mt-3">
-            <button type="submit" class="btn btn-block btn-primary"
-                style="width: 100%; background: #C8B6A6; border-color: #C8B6A6;">Apply Filter</button>
-            <a href="{{ url('see-all') }}" class="btn btn-light mt-2" style="color: #C8B6A6; width: 100%">Clear
+            <button type="submit" class="btn btn-solid btn-block ">Apply Filter</button>
+            <a href="{{ url('see-all') }}" class="btn btn-outline mt-2" style="width: 100%">Clear
                 Filter</a>
         </div>
     </form>

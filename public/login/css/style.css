@@ -241,4 +241,17 @@ h2 {
     color: rgba(255, 255, 255, 0.9);
     margin: 10px 0 0 0;
     font-size: 20px;
+    font-family: "Poppins", sans-serif;
+}
+.btn {
+    background-color: #ffc26f;
+    border-color: #ffc26f;
+    color: #f1f1f1;
+}
+
+.btn:hover {
+    background-color: #ffc26f;
+    border-color: #ffc26f;
+    color: #f1f1f1;
+    opacity: 75%;
 }

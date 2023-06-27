@@ -1580,6 +1580,52 @@ section {
     color: #fff;
 }
 
-.btn:hover {
-    opacity: 50%;
+.btn-solid {
+    background-color: #ffc26f;
+
+    color: #fcfcfd;
+    width: 100%;
+}
+
+.btn-solid:hover {
+    background-color: #ffc26f;
+
+    color: #fcfcfd;
+    opacity: 75%;
+}
+
+.btn-outline {
+    background-color: #fcfcfd;
+    border-color: #ffc26f;
+    color: #ffc26f;
+    width: 100%;
+}
+
+.btn-outline:hover {
+    background-color: #ffc26f;
+
+    color: #fcfcfd;
+    opacity: 75%;
+}
+
+.btn-card:hover {
+    opacity: 75%;
+}
+
+.btn-solid-hug {
+    background-color: #ffc26f;
+
+    color: #fcfcfd;
+}
+
+.btn-solid-hug:hover {
+    background-color: #ffc26f;
+
+    color: #fcfcfd;
+    opacity: 75%;
+}
+
+h1,
+h2 {
+    color: #30475e;
 }

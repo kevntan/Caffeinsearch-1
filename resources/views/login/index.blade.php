@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
-@extends('user.layouts.assets')
+{{-- @extends('user.layouts.assets') --}}
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="<?= asset('login/fonts/icomoon/style.css') ?>">
 
@@ -51,9 +53,19 @@
                                 <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                             </div>
                             @if (\Session::has('success'))
-                                <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
+                                <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
+                                    <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                             @elseif(\Session::has('error'))
-                                <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
+                                <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                                    <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                             @endif
                             <form action="{{ url('sign-in/post') }}" method="POST" class="login100-form validate-form"
                                 enctype="multipart/form-data">
@@ -69,18 +81,12 @@
                                         placeholder="Masukkan Password" id="password">
                                 </div>
 
-                                <button type="submit" class="btn btn-block btn-primary"
-                                    style="background: #C8B6A6; border-color: #C8B6A6;
-                ">
+                                <button type="submit" class="btn btn-block ">
                                     Login
                                 </button>
-                                {{-- <button type="submit" class="btn btn-block btn-primary"
-                                    style="background: #C8B6A6; border-color: #C8B6A6;
-                ">
-                                    Login As Cafe Management
-                                </button> --}}
+
                                 <div class="text-center mt-2">
-                                    <a href="{{ url('/sign-up') }}" style="color: #C8B6A6;">Tidak Punya Akun?</a>
+                                    <a href="{{ url('/sign-up') }}" style="color: #ffc26f;">Tidak Punya Akun?</a>
                                 </div>
                             </form>
                         </div>

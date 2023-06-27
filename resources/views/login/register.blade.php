@@ -6,7 +6,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="<?= asset('login/fonts/icomoon/style.css') ?>">
 
@@ -45,9 +47,15 @@
                             <div class="form-group first">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" name="username"
-                                    placeholder="Masukkan Username" id="username" value="{{ old('username') }}" required>
+                                    placeholder="Masukkan Username" id="username" value="{{ old('username') }}"
+                                    required>
                                 @error('username')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                                 @enderror
                             </div>
                             <div class="form-group last mb-3">
@@ -66,7 +74,12 @@
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}"
                                     placeholder="Masukkan Email" id="email" required>
                                 @error('email')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                                 @enderror
                             </div>
                             <div class="form-group last mb-3">
@@ -76,16 +89,21 @@
                                 <div class="text-dark text-opacity-50 fw-medium">* Minimal 9 karakter
                                 </div>
                                 @error('password')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-block btn-primary"
-                                style="background: #C8B6A6; border-color: #C8B6A6;">
+                                style="background: #ffc26f; border-color: #ffc26f;">
                                 Daftar
                             </button>
                         </form>
                         <div class="text-center mt-2">
-                            <a href="{{ url('/sign-in') }}" style="color: #C8B6A6;">Sudah Punya Akun</a>
+                            <a href="{{ url('/sign-in') }}" style="color: #ffc26f;">Sudah Punya Akun</a>
                         </div>
                     </div>
                 </div>

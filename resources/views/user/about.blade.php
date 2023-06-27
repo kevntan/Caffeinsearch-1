@@ -7,7 +7,7 @@
     @include('user.layouts.navbar2', ['home' => false, 'about' => 'active', 'feeds' => false])
     <main id="main">
         <!-- ======= About Section ======= -->
-        <section id="about" class="about" style="font-family: 'Open Sans', sans-serif;">
+        <section id="about" class="about" style="font-family: 'Poppins', sans-serif;">
             <div class="container mt-5">
                 <div class="text-center mt-3 mb-3">
                     <h1> <strong>About Us
@@ -17,11 +17,13 @@
                     <img src="<?= asset('user/assets/img/about.png') ?>" class="card-img" alt="">
                     <div class="card-img-overlay text-center">
                         <div class="position-absolute top-50 start-50 translate-middle">
-                            <h1 class="card-title"><strong>Caffeinsearch<span style="color: #FFC451">.</span></strong></h1>
-                            <h2>Your cafe recomendation friends</h2>
-                            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+                            <h1 class="card-title text-light"><strong
+                                    style="font-family: Poppins; font-size: 150%">Caffeinsearch<span
+                                        style="color: #FFC451">.</span></strong></h1>
+                            <h4 class="text-light">Your cafe recomendation friends</h2>
+                                <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
 
-                            </div>
+                                </div>
                         </div>
 
                     </div>
@@ -34,6 +36,7 @@
                                 </strong>
                             </h5>
                         </div>
+                        <hr>
                         <div class="text-center">
                             <p>
                                 Caffeinsearch adalah sebuah aplikasi berbasis website yang bertujuan untuk membantu

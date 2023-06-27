@@ -68,7 +68,7 @@
                                                         alt="{{ $cafe->foto }}">
                                                 @else
                                                     <img src="<?= asset('storage/image/' . $cafe->foto) ?>"
-                                                        style="width:100%" class="d-block w-100"
+                                                        style="width:100%" class="d-block w-100 rounded"
                                                         alt="<?= asset('storage/image/' . $cafe->foto) ?>">
                                                     {{-- <?php continue; ?> --}}
                                                 @endif
@@ -82,7 +82,7 @@
                                         @if ($cafe->foto2)
                                             <div class="carousel-item">
                                                 <img src="<?= asset('storage/image/' . $cafe->foto2) ?>" style="width:100%"
-                                                    class="d-block w-100"
+                                                    class="d-block w-100 rounded"
                                                     alt="<?= asset('storage/image/' . $cafe->foto2) ?>">
                                                 {{-- <div class="carousel-caption">
                                                     <p>{{ $cafe->nama }}</p>
@@ -94,7 +94,7 @@
                                         @if ($cafe->foto3)
                                             <div class="carousel-item">
                                                 <img src="<?= asset('storage/image/' . $cafe->foto3) ?>" style="width:100%"
-                                                    class="d-block w-100"
+                                                    class="d-block w-100 rounded"
                                                     alt="<?= asset('storage/image/' . $cafe->foto3) ?>">
                                                 {{-- <div class="carousel-caption">
                                                     <p>{{ $cafe->nama }}</p>
@@ -171,7 +171,7 @@
                                     <br>
                                     -
                                 @endif
-                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-primary py-3 mt-3"
+                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-solid py-3 mt-3"
                                     style="width: 100%">
                                     <i class="fa-brands fa-google me-2"></i>
                                     See
@@ -187,7 +187,7 @@
                             @if ($cafe->wifi == 1)
                                 <div class="me-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-wifi fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-wifi fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Wi-Fi
@@ -197,7 +197,7 @@
                             @if ($cafe->charging_port == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-plug fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-plug fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Charging Port
@@ -207,7 +207,7 @@
                             @if ($cafe->lahan_parkir == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-square-parking fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-square-parking fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Lahan Parkir
@@ -217,7 +217,7 @@
                             @if ($cafe->smoking_area == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-smoking fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-smoking fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Smoking Area
@@ -227,7 +227,7 @@
                             @if ($cafe->mushola == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-mosque fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-mosque fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Mushola
@@ -237,7 +237,7 @@
                             @if ($cafe->toilet == 1)
                                 <div class="ms-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-restroom fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-restroom fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Toilet
@@ -276,11 +276,11 @@
                                     <div class="card mb-4 shadow-sm bg-light rounded">
                                         <div class="card-body ">
                                             <div class="row">
-                                                <div class="col-lg-3 col-md-12 col-sm-12">
+                                                <div class="col-lg-3 col-md-12 col-sm-12  d-flex  align-items-center">
                                                     <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
-                                                        style="width: 200px;">
+                                                        class="rounded " style="width: 200px;">
                                                 </div>
-                                                <div class="col-lg-7 col-md-12 col-sm-12">
+                                                <div class="col-lg-9 col-md-12 col-sm-12">
                                                     <h4>
                                                         <strong>
                                                             {{ $v->nama }}
@@ -346,11 +346,11 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
-                            <button type="button" class="btn btn-primary btn-block" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" style=" background: #C8B6A6; border-color: #C8B6A6;">
+                            <button type="button" class="btn btn-solid-hug btn-block" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
                                 <i class="fa-solid fa-pen-to-square me-2"></i>
                                 Write a Review
                             </button>
@@ -401,9 +401,9 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-solid-hug"
+                                                style="background-color: #30475E" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-solid-hug">Save changes</button>
                                         </div>
                                     </div>
                                 </div>
