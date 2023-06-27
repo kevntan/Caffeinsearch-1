@@ -8,14 +8,15 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center">
-                    <h1>My Cafe</h1>
+                    <h1><strong>My Cafe
+                        </strong></h1>
                 </div>
                 @if (\Session::has('success'))
                     <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
                 @elseif(\Session::has('error'))
                     <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
                 @endif
-                <div class="card pb-3">
+                <div class="card pb-3 px-3 shadow-sm px-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
@@ -25,9 +26,10 @@
                                     </strong>
                                 </h3>
                                 @if ($rating_cafe)
-                                    <h5>{{ number_format($rating_cafe, 1, '.', '') }} / 5.0 </h5>
+                                    <h5><i class="fa-solid fa-star me-2"></i>{{ number_format($rating_cafe, 1, '.', '') }} /
+                                        5.0 </h5>
                                 @endif
-                                <h5>{{ $cafe->lokasi }}</h5>
+                                <h5><i class="fa-solid fa-location-dot me-2"></i>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 {{-- @if ($cafe->wfc_friendly == 1) --}}
@@ -40,26 +42,20 @@
                                 @endif
                             </div>
                         </div>
+                        <hr>
                     </div>
                     <div class="container">
-                        <hr>
+
                         <div class="row mb-4">
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                                     style="border-radius: 16px;">
-                                    <div class="carousel-inner">
+                                    <div class="carousel-inner rounded">
                                         @if ($cafe->foto)
                                             <div class="carousel-item active">
                                                 <img src="<?= asset('storage/image/' . $cafe->foto) ?>" style="width:100%"
-                                                    class="d-block w-100"
+                                                    class="d-block w-100 "
                                                     alt="<?= asset('storage/image/{{ $cafe->foto }}') ?>">
-                                                <div class="carousel-caption">
-                                                    {{-- <p>{{ $cafe->nama }}</p>
-                                                    @if ($rating_cafe)
-                                                        <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
-                                                    @endif
-                                                    <p>{{ $cafe->lokasi }}</p> --}}
-                                                </div>
                                             </div>
                                         @endif
                                         @if ($cafe->foto2)
@@ -67,13 +63,6 @@
                                                 <img src="<?= asset('storage/image/' . $cafe->foto2) ?>" style="width:100%"
                                                     class="d-block w-100"
                                                     alt="<?= asset('storage/image/{{ $cafe->foto2 }}') ?>">
-                                                <div class="carousel-caption">
-                                                    {{-- <p>{{ $cafe->nama }}</p>
-                                                    @if ($rating_cafe)
-                                                        <p>{{ number_format($rating_cafe, 1, '.', '') }}/5</p>
-                                                    @endif
-                                                    <p>{{ $cafe->lokasi }}</p> --}}
-                                                </div>
                                             </div>
                                         @endif
                                         @if ($cafe->foto3)
@@ -158,9 +147,9 @@
                                     <br>
                                     -
                                 @endif
-                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-light" style="width: 100%">See
-                                    Google Maps
-                                    Details</a>
+                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-solid py-3 mt-3"><i
+                                        class="fa-brands fa-google me-2"></i>See
+                                    Google Maps</a>
                             </div>
                         </div>
                         <hr>
@@ -170,7 +159,7 @@
                             @if ($cafe->wifi == 1)
                                 <div class="me-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-wifi fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-wifi fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Wi-Fi
@@ -180,7 +169,7 @@
                             @if ($cafe->charging_port == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-plug fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-plug fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Charging Port
@@ -190,7 +179,7 @@
                             @if ($cafe->lahan_parkir == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-square-parking fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-square-parking fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Lahan Parkir
@@ -200,7 +189,7 @@
                             @if ($cafe->smoking_area == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-smoking fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-smoking fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Smoking Area
@@ -210,7 +199,7 @@
                             @if ($cafe->mushola == 1)
                                 <div class="mx-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-mosque fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-mosque fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Mushola
@@ -220,7 +209,7 @@
                             @if ($cafe->toilet == 1)
                                 <div class="ms-5">
                                     <div class="d-flex justify-content-center mb-2">
-                                        <i class="fa-solid fa-restroom fa-2x" style="color: #A4907C"></i>
+                                        <i class="fa-solid fa-restroom fa-2x" style="color: #30475E"></i>
                                     </div>
                                     <div class="text-center fw-semibold">
                                         Toilet
@@ -244,13 +233,13 @@
                         {{-- <div class="position-relative"> --}}
                         {{-- <div class="position-absolute bottom-0 end-0"> --}}
                         <div class="d-flex flex-row-reverse">
-                            <a href="{{ url('cafe/edit') }}" class="btn btn-primary">Edit Data</a>
+                            <a href="{{ url('cafe/edit') }}" class="btn btn-solid-hug">Edit Data</a>
                         </div>
                         {{-- </div> --}}
                         {{-- </div> --}}
                     </div>
                 </div>
-                <div class="card mt-5">
+                <div class="card mt-5 px-3 shadow-sm px-3">
                     <div class="card-body">
                         <strong>Event</strong>
                         <br>
@@ -261,10 +250,10 @@
                             </div>
                         @else
                             @foreach ($event as $v)
-                                <div class="card mb-4">
+                                <div class="card mb-4 shadow-sm bg-light rounded">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                            <div class="col-lg-3 col-md-12 col-sm-12 d-flex align-items-center">
                                                 <img src="<?= asset('storage/image/' . $v->foto) ?>" alt=""
                                                     style="width: 200px;">
                                             </div>
@@ -275,12 +264,14 @@
                                                         {{ $v->nama }}
                                                     </strong>
                                                 </h4>
-                                                {{ $cafe->nama }}
+
+                                                <i class="fa-solid fa-tags me-2"></i>{{ $v->kategori }}
                                                 <br>
-                                                {{ $v->kategori }}
+                                                <i class="fa-solid fa-calendar me-2"></i>{{ $v->waktu_mulai }} -
+                                                {{ $v->waktu_selesai }}
                                                 <br>
-                                                {{ $v->waktu_mulai }} - {{ $v->waktu_selesai }}
                                                 <br>
+                                                <strong>Description</strong>
                                                 <br>
                                                 {{ $v->keterangan }}
                                                 <br>
@@ -302,7 +293,7 @@
                         <hr>
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
-                            <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                            <button type="button" class="btn btn-solid-hug " data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Tambahkan Event
                             </button>
@@ -316,7 +307,8 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tambahkan Event/Promo</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel"><strong>Tambahkan Event/Promo
+                                            </strong></h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -324,15 +316,17 @@
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
-                                            <label for="exampleFormControlFile1">Gambar*</label>
+                                            <label for="exampleFormControlFile1"><span
+                                                    style="color: #DC3545">*</span>Gambar</label>
                                             <br>
-                                            <input type="file" class="form-control-file" name="foto"
+                                            <input type="file" class="form-control" name="foto"
                                                 id="exampleFormControlFile1" required>
-                                            <br>
-                                            <label for="">Nama Event*</label>
+                                            <label for="" class="mt-2"><span
+                                                    style="color: #DC3545">*</span>Nama Event</label>
                                             <input class="form-control" type="text" name="nama"
                                                 placeholder="Nama Event" aria-label="default input example" required>
-                                            <label for="">Kategori*</label>
+                                            <label for="" class="mt-2"><span
+                                                    style="color: #DC3545">*</span>Kategori </label>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 col-sm-3">
                                                     <div class="form-check">
@@ -354,7 +348,8 @@
                                                 </div>
                                             </div>
 
-                                            <label for="">Time*</label>
+                                            <label for="" class="mt-1"><span
+                                                    style="color: #DC3545">*</span>Time</label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <input class="form-control" name="waktu_mulai" type="datetime-local"
@@ -366,15 +361,15 @@
                                                 </div>
                                             </div>
                                             <div class="form-floating mt-3">
-                                                <label for="floatingTextarea2">Keterangan</label>
                                                 <textarea class="form-control" placeholder="Leave a comment here" name="keterangan" id="floatingTextarea2"
                                                     style="height: 100px"></textarea>
+                                                <label for="floatingTextarea2">Keterangan</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-solid-cancel"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-solid-hug">Tambahkan</button>
                                         </div>
                                     </form>
                                 </div>
@@ -383,7 +378,7 @@
                     </div>
                 </div>
 
-                <div class="card mt-5">
+                <div class="card mt-5 px-3 shadow-sm px-3">
                     <div class="card-body ">
                         <strong>Reviews</strong>
                         <br>

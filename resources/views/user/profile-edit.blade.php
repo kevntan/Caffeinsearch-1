@@ -56,8 +56,8 @@
                                     placeholder="Input your new password" value="">
                                 <hr>
                                 <div class="d-flex flex-row-reverse">
-                                    <button type="submit" class="btn btn-primary ">Submit</button>
-                                    <a href="{{ url('profile') }}" class="btn btn-link">Back</a>
+                                    <button type="submit" class="btn btn-solid-hug ">Submit</button>
+                                    <a href="{{ url('profile') }}" class="btn btn-link" style="color: #ffc26f">Back</a>
                                 </div>
 
                             </form>

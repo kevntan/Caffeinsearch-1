@@ -15,21 +15,21 @@
                  <ul>
                      <li class="dropdown"><a href="#"><span>{{ Auth::user()->username }}</span> <i
                                  class="bi bi-chevron-down"></i></a>
-                         <ul>
+                         <ul class="rounded">
                              <li>
                                  <form action="{{ url('profile') }}" method="GET" enctype="multipart/form-data">
-                                    <i class="fa-solid fa-user"></i>
-                                     <button type="submit" class="btn btn-link text-primary" name="">
-                                         Profile
+
+                                     <button type="submit" class="btn btn-profile  ms-2" name="">
+                                         <i class="fa-solid fa-user me-2"></i> Profile
                                      </button>
                                  </form>
                              </li>
                              <li>
                                  <form action="{{ url('logout') }}" method="POST" enctype="multipart/form-data">
                                      @csrf
-                                     <i class="fa-solid fa-right-from-bracket"></i>
-                                     <button type="submit" class="btn btn-link" name="">
-                                         Logout
+
+                                     <button type="submit" class="btn btn-logout ms-2" name="">
+                                         <i class="fa-solid fa-right-from-bracket me-2"></i> Logout
                                      </button>
                                  </form>
                              </li>

@@ -60,7 +60,7 @@
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                                     style="border-radius: 16px;">
-                                    <div class="carousel-inner">
+                                    <div class="carousel-inner rounded">
                                         <div class="carousel-item active">
                                             @if ($cafe->foto != null)
                                                 @if (substr($cafe->foto, 0, 4) === 'http')
@@ -72,11 +72,6 @@
                                                         alt="<?= asset('storage/image/' . $cafe->foto) ?>">
                                                     {{-- <?php continue; ?> --}}
                                                 @endif
-                                                {{-- <div class="carousel-caption">
-                                                <p>{{ $cafe->nama }}</p>
-                                                <p>* rating/5</p>
-                                                <p>{{ $cafe->lokasi }}</p>
-                                            </div> --}}
                                             @endif
                                         </div>
                                         @if ($cafe->foto2)
@@ -346,7 +341,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    review</a> -->
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
                             <button type="button" class="btn btn-solid-hug btn-block" data-bs-toggle="modal"
@@ -378,7 +373,8 @@
                                                         Rating
                                                     </div>
                                                     <div class="col-4">
-                                                        <select name="rating" id="" class="" required>
+                                                        <select name="rating" id="" class="form-select"
+                                                            required>
                                                             <option value="5">5</option>
                                                             <option value="4">4</option>
                                                             <option value="3">3</option>
@@ -393,7 +389,8 @@
                                                     style="height: 100px" required></textarea>
                                                 <label for="floatingTextarea2">Comments</label>
                                             </div>
-                                            <div class="input-group mt-3">
+                                            <div class="mt-3">Gambar</div>
+                                            <div class="input-group ">
                                                 <input type="file" name="foto" class="form-control"
                                                     id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
                                                     aria-label="Upload">
@@ -401,9 +398,9 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-solid-hug"
-                                                style="background-color: #30475E" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-solid-hug">Save changes</button>
+                                            <button type="button" class="btn btn-solid-cancel"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-solid-hug">Post Review</button>
                                         </div>
                                     </div>
                                 </div>

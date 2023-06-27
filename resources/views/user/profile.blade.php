@@ -8,10 +8,20 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center mb-5">
+                    @if (\Session::has('success'))
+                        <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
+                            <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
+                        </div>
+                    @elseif(\Session::has('error'))
+                        <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                            <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                        </div>
+                    @endif
                     <h1>
                         <strong>Profile Page
                         </strong>
                     </h1>
+
                 </div>
                 <div class="card mb-5">
                     <div class="card-body">
@@ -36,7 +46,7 @@
                             <hr>
                             <div class="d-flex
                                     flex-row-reverse">
-                                <a href="{{ url('profile/edit') }}" class="btn btn-primary">Edit Profile</a>
+                                <a href="{{ url('profile/edit') }}" class="btn btn-solid-hug">Edit Profile</a>
                             </div>
 
                         </div>

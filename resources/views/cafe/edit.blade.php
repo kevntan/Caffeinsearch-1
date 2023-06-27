@@ -8,7 +8,8 @@
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
                 <div class="text-center">
-                    <h1>My Cafe</h1>
+                    <h1><strong>My Cafe
+                        </strong></h1>
                     @if (\Session::has('success'))
                         <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
                     @elseif(\Session::has('error'))
@@ -18,13 +19,20 @@
                 <form action="{{ url('cafe/edit/update') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="card">
+                    <div class="card shadow-sm px-3">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-10 col-md-6 col-sm-6">
-                                    <h3>{{ $cafe->nama }}</h3>
-                                    <h5>Rating</h5>
-                                    <select name="lokasi" class="custom-select" id="">
+                                    <h3><strong>{{ $cafe->nama }}
+                                        </strong></h3>
+                                    @if ($cafe->rating)
+                                        <h5><i
+                                                class="fa-solid fa-star me-2"></i>{{ number_format($cafe->rating, 1, '.', '') }}
+                                            /
+                                            5.0 </h5>
+                                    @endif
+
+                                    <select name="lokasi" class="form-select" id="" style="width: auto">
                                         <option selected>{{ $cafe->lokasi }}</option>
                                         <option value="Central Jakarta">Central Jakarta</option>
                                         <option value="East Jakarta">East Jakarta</option>
@@ -36,19 +44,24 @@
                                 <div class="col-lg-2 col-md-6 col-sm-5">
                                     {{-- @if ($cafe->wfc_friendly == 1) --}}
                                     @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
-                                        <h3>WFC Friendly</h3>
+                                        <h4>WFC Friendly</h4>
                                     @endif
                                     {{-- @endif --}}
+                                    @if ($cafe->user_id != 0)
+                                        <h4>Verified
+                                        </h4>
+                                    @endif
                                 </div>
                             </div>
+                            <hr>
                         </div>
                         <div class="container">
-                            <hr>
+
                             <div class="row mb-4">
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                                         style="border-radius: 16px;">
-                                        <div class="carousel-inner">
+                                        <div class="carousel-inner rounded">
                                             @if ($cafe->foto)
                                                 <div class="carousel-item active">
                                                     <img src="<?= asset('storage/image/' . $cafe->foto) ?>"
@@ -98,25 +111,27 @@
                                         </button>
                                     </div>
                                     <br>
-                                    <select name="pilih" id="">
-                                        <option value="foto">foto1</option>
-                                        <option value="foto2">foto2</option>
-                                        <option value="foto3">foto3</option>
+                                    <strong>Foto</strong>
+                                    <select name="pilih" class="form-select" id="">
+                                        <option value="foto">Foto1</option>
+                                        <option value="foto2">Foto2</option>
+                                        <option value="foto3">Foto3</option>
                                     </select>
-                                    <input type="file" name="foto" class="form-control-file"
+                                    <input type="file" name="foto" class="form-control mt-2"
                                         id="exampleFormControlFile1">
+
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12">
-                                    <strong>Nama cafe</strong>
+                                    <strong>Nama Cafe</strong>
                                     <br>
                                     <input type="text" class="form-control" name="nama" id="inlineFormInputGroup"
                                         placeholder="Input nama cafe" value="{{ $cafe->nama }}" required>
-                                    <br>
+
                                     <strong>Alamat</strong>
                                     <br>
                                     <input type="text" class="form-control" name="alamat" id="inlineFormInputGroup"
                                         placeholder="Input alamat" value="{{ $cafe->alamat }}">
-                                    <br>
+
                                     <strong>Operational Hours</strong>
                                     <br>
                                     <div class="row">
@@ -162,24 +177,26 @@
                                             id="inlineFormInputGroup" placeholder="Phone Number"
                                             value="{{ $cafe->telepon }}">
                                     </div>
-                                    <br>
+
                                     <strong>Description</strong>
                                     <br>
                                     <div class="form-group">
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a Description"
                                             name="deskripsi">{{ $cafe->deskripsi }}</textarea>
                                     </div>
-                                    <br>
+
                                     <strong>Google Maps</strong>
                                     <br>
                                     <input type="text" class="form-control" name="maps" id="inlineFormInputGroup"
                                         placeholder="Url Google Maps" value="{{ $cafe->maps }}">
-                                    <br>
+
                                 </div>
                             </div>
                             <hr>
                             <strong>Facilities</strong>
+
                             <br>
+
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4">
                                     <div class="form-check">
@@ -292,8 +309,8 @@
                             <div class="position-relative">
                                 <div class="position-absolute bottom-0 end-0">
                                     <div class="mb-3 ">
-                                        <a href="{{ url('/') }}" class="btn btn-light ">Cancel</a>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <a href="{{ url('/') }}" class="btn btn-solid-cancel ">Cancel</a>
+                                        <button type="submit" class="btn btn-solid-hug">Save</button>
                                     </div>
                                 </div>
                             </div>

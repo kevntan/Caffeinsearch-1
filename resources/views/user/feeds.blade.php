@@ -50,10 +50,8 @@
                                 </div>
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-primary btn-block"
-                                style="width: 100%; background: #C8B6A6; border-color: #C8B6A6;">Apply Filter</button>
-                            <a type="button" href="{{ url('feeds') }}" class="btn btn-light mt-2"
-                                style="width: 100%; color: #C8B6A6;">Clear
+                            <button type="submit" class="btn btn-solid btn-block">Apply Filter</button>
+                            <a type="button" href="{{ url('feeds') }}" class="btn btn-outline mt-2">Clear
                                 Filter</a>
                         </div>
                         </form>
@@ -78,7 +76,7 @@
                                         <i class="fa-solid fa-location-dot me-2"></i> {{ $v->nama_cafe }}
                                         {{-- {{ $v->alamat }} za ini mo ganti jadi nama cafe bukan alamat event --}}
                                         <br>
-                                        <i class="fa-solid fa-tags me-2"></i> 
+                                        <i class="fa-solid fa-tags me-2"></i>
                                         {{ $v->kategori }}
                                         <br>
                                         <i class="fa-solid fa-calendar me-2"></i>
@@ -90,8 +88,7 @@
                                         {{ $v->keterangan }}
                                         <br>
                                         <a href="{{ url('details-feeds/' . $v->id) }}"
-                                            class="btn btn-primary btn-block text-center mt-4 py-3"
-                                            style="width: 100%; background: #C8B6A6; border-color: #C8B6A6;">See
+                                            class="btn btn-solid btn-block text-center mt-4 py-3">See
                                             Details</a>
                                     </div>
                                 </div>

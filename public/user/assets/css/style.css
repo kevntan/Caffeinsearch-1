@@ -1603,7 +1603,6 @@ section {
 
 .btn-outline:hover {
     background-color: #ffc26f;
-
     color: #fcfcfd;
     opacity: 75%;
 }
@@ -1623,6 +1622,46 @@ section {
 
     color: #fcfcfd;
     opacity: 75%;
+}
+
+.btn-solid-cancel {
+    background-color: #30475e;
+    color: #fcfcfd;
+}
+
+.btn-solid-cancel:hover {
+    background-color: #30475e;
+    color: #fcfcfd;
+    opacity: 75%;
+}
+
+.btn-outline-hug {
+    background-color: #fcfcfd;
+    border-color: #ffc26f;
+    color: #ffc26f;
+}
+
+.btn-outline-hug:hover {
+    background-color: #ffc26f;
+    color: #fcfcfd;
+    opacity: 75%;
+}
+
+.btn-profile {
+    width: 92%;
+    color: #ffc26f;
+}
+.btn-profile:hover {
+    background-color: #ffc26f;
+    color: #fcfcfd;
+}
+.btn-logout {
+    width: 92%;
+    color: #dc3545;
+}
+.btn-logout:hover {
+    background-color: #dc3545;
+    color: #fcfcfd;
 }
 
 h1,

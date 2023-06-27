@@ -75,7 +75,7 @@
                                 <br>
                                 {{ $event->keterangan }}
                                 <br>
-                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-primary py-3 mt-3"
+                                <a href="{{ $cafe->maps }}" target="blank" class="btn btn-solid py-3 mt-3"
                                     style="width: 100%">
                                     <i class="fa-brands fa-google me-2"></i>
                                     See
@@ -115,7 +115,8 @@
 
                                 <div class="input-group">
                                     <input type="text" class="form-control " name="komentar"
-                                        placeholder="Write a Comment" aria-label="Search" aria-describedby="button-addon2" required>
+                                        placeholder="Write a Comment" aria-label="Search" aria-describedby="button-addon2"
+                                        required>
                                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                                         <i class="fa-regular fa-paper-plane me-2"></i>Submit</button>
                                 </div>

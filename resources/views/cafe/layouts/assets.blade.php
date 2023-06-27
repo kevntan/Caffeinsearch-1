@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="<?= asset('user/assets/css/style.css') ?>">
 </head>
 
-<body>
+<body class="bg-light">
 
     {{-- @include('layouts.navbar') --}}
 
