@@ -4,7 +4,11 @@
 
 @section('content')
     <?php $about = 'active'; ?>
-    @include('user.layouts.navbar2', ['home' => false, 'about' => 'active', 'feeds' => false])
+    @if (Auth::user()->role_id == 1)
+        @include('user.layouts.navbar2', ['home' => false, 'about' => 'active', 'feeds' => false])
+    @else
+        @include('cafe.layouts.navbar2', ['about' => 'active'])
+    @endif
     <main id="main">
         <!-- ======= About Section ======= -->
         <section id="about" class="about" style="font-family: 'Poppins', sans-serif;">

@@ -295,12 +295,46 @@
                                                 <div class="d-flex flex-row-reverse">
                                                     <a href="{{ url('cafe/event-edit/' . $v->id) }}"
                                                         class="btn btn-primary px-4 ms-2">Edit</a>
-                                                    <a href="{{ url('cafe/event-delete/' . $v->id) }}"
-                                                        class="btn btn-danger px-4">Delete</a>
+                                                    <form action="{{ url('cafe/event-delete/' . $v->id) }}"
+                                                        method="POST" id="deleteForm">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button onclick="showSweetAlert(event)"
+                                                            class="btn btn-danger px-4">Delete</button>
+                                                    </form>
+                                                    <script>
+                                                        function showSweetAlert(event) {
+                                                            event.preventDefault();
+
+                                                            Swal.fire({
+                                                                title: 'Are you sure?',
+                                                                text: "You won't be able to revert this!",
+                                                                icon: 'warning',
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: '#3085d6',
+                                                                cancelButtonColor: '#d33',
+                                                                confirmButtonText: 'Yes, delete it!'
+                                                            }).then((result) => {
+                                                                if (result.isConfirmed) {
+                                                                    document.getElementById('deleteForm').submit();
+                                                                }
+                                                            })
+                                                        }
+                                                        // Redirect setelah form terkirim dan penghapusan berhasil
+                                                        document.getElementById('deleteForm').addEventListener('submit', function() {
+                                                            Swal.fire(
+                                                                'Deleted!',
+                                                                'Your file has been deleted.',
+                                                                'success'
+                                                            ).then(() => {
+                                                                window.location.href =
+                                                                '{{ url('cafe') }}'; // Ganti dengan URL tujuan redirect setelah penghapusan berhasil
+                                                            });
+                                                        });
+                                                    </script>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

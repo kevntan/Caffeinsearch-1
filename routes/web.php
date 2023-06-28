@@ -40,11 +40,12 @@ Route::put('/profile/update', [homeController::class, "profileUpdate"])->middlew
 Route::get('/search', [homeController::class, "search"])->middleware('auth', 'auth.role:user');
 Route::get('/filter', [homeController::class, "filter"])->middleware('auth', 'auth.role:user');
 
+Route::get('/about', [homeController::class, "about"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe', [cafeHomeController::class, "index"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe/edit', [cafeHomeController::class, "edit"])->middleware('auth', 'auth.role:cafe');
 Route::put('/cafe/edit/update', [cafeHomeController::class, "update"])->middleware('auth', 'auth.role:cafe');
 Route::post('/cafe/event/store/{id}', [cafeHomeController::class, "eventStore"])->middleware('auth', 'auth.role:cafe');
-Route::get('/cafe/event-delete/{id}', [cafeHomeController::class, "eventDelete"])->middleware('auth', 'auth.role:cafe');
+Route::delete('/cafe/event-delete/{id}', [cafeHomeController::class, "eventDelete"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe/profile', [cafeHomeController::class, "profile"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe/profile/edit', [cafeHomeController::class, "profileEdit"])->middleware('auth', 'auth.role:cafe');
 Route::put('/cafe/profile/update', [cafeHomeController::class, "profileUpdate"])->middleware('auth', 'auth.role:cafe');

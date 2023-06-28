@@ -5,7 +5,10 @@
          <h1 class="logo me-auto me-lg-0"><a href="{{ url('cafe/') }}">Caffein<span>Search</span></a></h1>
          <nav id="navbar" class="navbar order-last order-lg-0">
              <ul>
-                 <li><a class="nav-link scrollto active" href="#">My Cafe</a></li>
+                 <li><a class="nav-link scrollto 
+                    @if (!isset($about)) active @endif"
+                         href="{{ url('cafe') }}">My Cafe</a></li>
+                 <li><a class="nav-link scrollto @if (isset($about)) active @endif" href="{{ url('about') }}">About</a></li>
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->
@@ -17,7 +20,7 @@
                                  class="bi bi-chevron-down"></i></a>
                          <ul class="rounded">
                              <li>
-                                 <form action="{{ url('profile') }}" method="GET" enctype="multipart/form-data">
+                                 <form action="{{ url('cafe/profile') }}" method="GET" enctype="multipart/form-data">
 
                                      <button type="submit" class="btn btn-profile  ms-2" name="">
                                          <i class="fa-solid fa-user me-2"></i> Profile

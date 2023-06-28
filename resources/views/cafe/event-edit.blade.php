@@ -30,7 +30,7 @@
                                     <input type="file" value="{{ $event->nama }}" name="foto" class="form-control "
                                         id="foto" aria-describedby="foto">
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6 mt-2">
                                     <div class="mb-2">
                                         <label for="nama"><strong>Nama Event<span style="color: #DC3545">*</span>
                                             </strong></label>
@@ -52,11 +52,11 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <input type="datetime-local" class="form-control"
-                                                    value="{{ $event->waktu_mulai }}" name="waktu_mulai" id="">
+                                                    value="{{ $event->waktu_mulai }}" name="waktu_mulai" id="" required>
                                             </div>
                                             <div class="col-6">
                                                 <input type="datetime-local" class="form-control"
-                                                    value="{{ $event->waktu_selesai }}" name="waktu_selesai" id="">
+                                                    value="{{ $event->waktu_selesai }}" name="waktu_selesai" id="" required>
                                             </div>
                                         </div>
                                     </div>

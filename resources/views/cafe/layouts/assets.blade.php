@@ -47,6 +47,7 @@
 
     <script src="<?= asset('user/assets/js/main.js') ?>"></script>
     <script src="https://kit.fontawesome.com/0354e128bb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
