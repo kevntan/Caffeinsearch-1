@@ -332,7 +332,37 @@
                                         <div class="col-lg-10 col-md-10 col-sm-10">
                                             <strong>{{ $v->username }}</strong>
                                             <br>
-                                            {{ $v->rating }}
+                                            @if ($v->rating == 1)
+                                                <i class="fa-solid fa-star" style="color: #FFC26F"></i>
+                                                <i class="fa-regular fa-star text-secondary"></i><i
+                                                    class="fa-regular fa-star text-secondary"></i><i
+                                                    class="fa-regular fa-star text-secondary"></i><i
+                                                    class="fa-regular fa-star text-secondary"></i>
+                                            @elseif ($v->rating == 2)
+                                                <i class="fa-solid fa-star" style="color: #FFC26F"></i>
+                                                <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-regular fa-star text-secondary"></i><i
+                                                    class="fa-regular fa-star text-secondary"></i><i
+                                                    class="fa-regular fa-star text-secondary"></i>
+                                            @elseif ($v->rating == 3)
+                                                <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-regular fa-star text-secondary"></i><i
+                                                    class="fa-regular fa-star text-secondary"></i>
+                                            @elseif ($v->rating == 4)
+                                                <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-regular fa-star text-secondary"></i>
+                                            @else
+                                                <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                    class="fa-solid fa-star" style="color: #FFC26F"></i>
+                                            @endif
                                             <br>
                                             {{ $v->komentar }}
                                             <br>
@@ -351,8 +381,7 @@
                             </div>
                         @endif
                         <hr>
-                        <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
+                        <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a review</a> -->
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
                             <button type="button" class="btn btn-solid-hug btn-block" data-bs-toggle="modal"

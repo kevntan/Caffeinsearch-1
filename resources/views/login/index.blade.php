@@ -61,7 +61,10 @@
                                 </div>
                             @elseif(\Session::has('error'))
                                 <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
-                                    <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                                    <strong> <i class="fa-solid fa-triangle-exclamation"></i> {!! \Session::get('error') !!}
+                                    </strong>
+                                    <div>Please enter a correct username and password
+                                    </div>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -104,6 +107,7 @@
     <script src="<?= asset('login/js/popper.min.js') ?>"></script>
     <script src="<?= asset('login/js/bootstrap.min.js') ?>"></script>
     <script src="<?= asset('login/js/main.js') ?>"></script>
+    <script src="https://kit.fontawesome.com/0354e128bb.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

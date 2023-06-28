@@ -20,7 +20,7 @@
                     </div>
                 @elseif(\Session::has('error'))
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
-                        <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                        <i class="fa-solid fa-triangle-exclamation"></i> {!! \Session::get('error') !!}
                     </div>
                 @endif
                 <div class="card pb-3 px-3">
@@ -329,7 +329,7 @@
                                                                 'success'
                                                             ).then(() => {
                                                                 window.location.href =
-                                                                '{{ url('cafe') }}'; // Ganti dengan URL tujuan redirect setelah penghapusan berhasil
+                                                                    '{{ url('cafe') }}'; // Ganti dengan URL tujuan redirect setelah penghapusan berhasil
                                                             });
                                                         });
                                                     </script>
@@ -444,7 +444,38 @@
                                     <div class="col-lg-10 col-md-10 col-sm-10">
                                         <strong>{{ $v->username }}</strong>
                                         <br>
-                                        {{ $v->rating }}
+                                        @if ($v->rating == 1)
+                                            <i class="fa-solid fa-star" style="color: #FFC26F"></i>
+                                            <i class="fa-regular fa-star text-secondary"></i><i
+                                                class="fa-regular fa-star text-secondary"></i><i
+                                                class="fa-regular fa-star text-secondary"></i><i
+                                                class="fa-regular fa-star text-secondary"></i>
+                                        @elseif ($v->rating == 2)
+                                            <i class="fa-solid fa-star" style="color: #FFC26F"></i>
+                                            <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-regular fa-star text-secondary"></i><i
+                                                class="fa-regular fa-star text-secondary"></i><i
+                                                class="fa-regular fa-star text-secondary"></i>
+                                        @elseif ($v->rating == 3)
+                                            <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-regular fa-star text-secondary"></i><i
+                                                class="fa-regular fa-star text-secondary"></i>
+                                        @elseif ($v->rating == 4)
+                                            <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-regular fa-star text-secondary"></i>
+                                        @else
+                                            <i class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i> <i
+                                                class="fa-solid fa-star" style="color: #FFC26F"></i>
+                                        @endif
+
                                         <br>
                                         {{ $v->komentar }}
                                         <br>

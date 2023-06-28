@@ -39,7 +39,7 @@
                                     value="{{ Auth::user()->email }}" disabled>
                                 <label for=""><strong>Daerah
                                     </strong></label>
-                                <select class="form-control mb-2" name="daerah">
+                                <select class="form-select mb-2" name="daerah">
                                     <option selected>{{ Auth::user()->daerah }}</option>
                                     <option value="Central Jakarta">Central Jakarta</option>
                                     <option value="East Jakarta">East Jakarta</option>

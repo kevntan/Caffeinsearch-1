@@ -120,6 +120,7 @@
     <script src="<?= asset('login/js/popper.min.js') ?>"></script>
     <script src="<?= asset('login/js/bootstrap.min.js') ?>"></script>
     <script src="<?= asset('login/js/main.js') ?>"></script>
+    <script src="https://kit.fontawesome.com/0354e128bb.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
