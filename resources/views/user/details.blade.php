@@ -29,9 +29,21 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
-                                <h3><strong>
-                                        {{ $cafe->nama }}
-                                    </strong></h3>
+                                @if ($cafe->user_id != 0)
+                                    <h3><strong>
+                                            {{ $cafe->nama }} <i class="bi bi-patch-check-fill"
+                                                style="color: #3a9bdc"></i>
+                                        </strong></h3>
+                                @else
+                                    <h3><strong>
+                                            {{ $cafe->nama }}
+                                        </strong></h3>
+                                @endif
+
+
+
+
+
                                 <h5>
                                     @if ($rating_cafe)
                                         <i class="fa-solid fa-star me-2"></i>{{ number_format($rating_cafe, 1, '.', '') }} /
@@ -43,12 +55,11 @@
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 {{-- @if ($cafe->wfc_friendly == 1) --}}
                                 @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
-                                    <h4>WFC Friendly</h4>
+                                    <div class="status-wfc disabled text-center rounded p-2 py-3">
+                                        <i class="fa-solid fa-briefcase me-2"></i> WFC
+                                    </div>
                                 @endif
-                                @if ($cafe->user_id != 0)
-                                    <h4>Verified
-                                    </h4>
-                                @endif
+
                             </div>
                         </div>
                         <hr>
@@ -341,7 +352,7 @@
                         @endif
                         <hr>
                         <!-- <a href="" class="btn btn-primary position-absolute bottom-0 end-0 mb-3 mx-3">Write a
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    review</a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                review</a> -->
                         <!-- Button trigger modal -->
                         <div class="d-flex flex-row-reverse">
                             <button type="button" class="btn btn-solid-hug btn-block" data-bs-toggle="modal"
@@ -370,7 +381,8 @@
                                             <div class="text-center">
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        Rating
+                                                        <strong>Rating
+                                                        </strong>
                                                     </div>
                                                     <div class="col-4">
                                                         <select name="rating" id="" class="form-select"
@@ -389,7 +401,10 @@
                                                     style="height: 100px" required></textarea>
                                                 <label for="floatingTextarea2">Comments</label>
                                             </div>
-                                            <div class="mt-3">Gambar</div>
+                                            <div class="mt-3">
+                                                <strong>Gambar
+                                                </strong>
+                                            </div>
                                             <div class="input-group ">
                                                 <input type="file" name="foto" class="form-control"
                                                     id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
@@ -400,7 +415,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-solid-cancel"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-solid-hug">Post Review</button>
+                                            <button type="submit" class="btn btn-solid-hug">Post</button>
                                         </div>
                                     </div>
                                 </div>

@@ -41,7 +41,8 @@
                                                             class="d-block w-100"
                                                             alt="<?= asset('user/assets/img/assets1.png') ?>">
                                                     @endif
-                                                    <div class="carousel-caption ">
+                                                    <div class="carousel-caption rounded-5"
+                                                        style="background-color: #30475E; color: #FFC26F">
                                                         <h6><strong>
                                                                 {{ $results[$x]->nama }}
                                                             </strong></h6>
@@ -73,7 +74,8 @@
                                                             class="d-block w-100"
                                                             alt="<?= asset('user/assets/img/assets1.png') ?>">
                                                     @endif
-                                                    <div class="carousel-caption">
+                                                    <div class="carousel-caption rounded-5"
+                                                        style="background-color: #30475E; color: #FFC26F">
                                                         <h6><strong>
                                                                 {{ $results[$x]->nama }}
                                                             </strong></h6>
@@ -148,9 +150,17 @@
 
                                             <div class="card-body ">
                                                 <p>
-                                                    <strong>
-                                                        {{ $v->nama }}
-                                                    </strong>
+                                                    @if ($v->user_id != 0)
+                                                        <strong>
+                                                            {{ $v->nama }} <i class="bi bi-patch-check-fill"
+                                                                style="color: #3a9bdc"></i>
+                                                        </strong>
+                                                    @else
+                                                        <strong>
+                                                            {{ $v->nama }}
+                                                        </strong>
+                                                    @endif
+
                                                 </p>
 
                                                 <i class="fa-solid fa-star me-2"></i>

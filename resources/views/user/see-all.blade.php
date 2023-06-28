@@ -28,20 +28,31 @@
                                                     <div class="row">
                                                         <div class="col-lg-3 col-md-12 col-sm-12">
                                                             @if (substr($v->foto, 0, 5) === 'https')
-                                                                <img src="<?= asset($v->foto) ?>" class="d-block w-100"
+                                                                <img src="<?= asset($v->foto) ?>"
+                                                                    class="d-block w-100 rounded"
                                                                     alt="<?= asset('storage/image/' . $v->foto) ?>">
                                                             @else
                                                                 <img src="<?= asset('storage/image/' . $v->foto) ?>"
-                                                                    class="d-block w-100"
+                                                                    class="d-block w-100 rounded"
                                                                     alt="<?= asset('storage/image/' . $v->foto) ?>">
                                                                 {{-- <?php continue; ?> --}}
                                                             @endif
                                                         </div>
                                                         <div class="col-lg-7 col-md-12 col-sm-12">
-                                                            <h5>
-                                                                <strong>{{ $v->nama }}
-                                                                </strong>
-                                                            </h5>
+                                                            @if ($v->user_id != 0)
+                                                                <h5>
+                                                                    <strong>{{ $v->nama }} <i
+                                                                            class="bi bi-patch-check-fill"
+                                                                            style="color: #3a9bdc"></i>
+                                                                    </strong>
+                                                                </h5>
+                                                            @else
+                                                                <h5>
+                                                                    <strong>{{ $v->nama }}
+                                                                    </strong>
+                                                                </h5>
+                                                            @endif
+
                                                             <i class="fa-solid fa-star me-2"></i>
                                                             {{ number_format($v->rating, 1) }}/ 5.0
 
@@ -53,20 +64,20 @@
                                                                 class="fa-solid fa-map-location-dot me-2"></i>{{ $v->alamat }}
                                                             <br>
 
-                                                            @if ($v->ambience != null)
+                                                            {{-- @if ($v->ambience != null)
                                                                 <strong>Ambience: </strong>
                                                                 {{ $v->ambience }}
                                                                 <br>
-                                                            @endif
+                                                            @endif --}}
                                                         </div>
                                                         <div class="col-lg-2">
                                                             {{-- @if ($v->wfc_friendly == 1) --}}
                                                             @if ($v->wifi == 1 && $v->charging_port == 1 && $v->toilet == 1 && ($v->ambience = 'Tenang'))
-                                                                WFC FRIENDLY
+                                                                <div class="status-wfc disabled text-center rounded p-2">
+                                                                    <i class="fa-solid fa-briefcase me-2"></i> WFC
+                                                                </div>
                                                             @endif
-                                                            @if ($v->user_id != 0)
-                                                                Verified
-                                                            @endif
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -75,8 +86,9 @@
                                     </a>
                                 @endforeach
                             @else
-                                <div class="text-center">
+                                <div class="text-center mt-3">
                                     Tidak ada cafe
+
                                 </div>
                             @endif
 

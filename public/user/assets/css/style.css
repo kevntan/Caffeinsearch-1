@@ -1664,6 +1664,13 @@ section {
     color: #fcfcfd;
 }
 
+.status-wfc {
+    background-color: #d1eedd;
+    color: #18a957;
+    font-family: Poppins;
+    border-radius: 50%;
+}
+
 h1,
 h2 {
     color: #30475e;

@@ -31,7 +31,7 @@
                             <div class="col-lg-6 col-md-12 col-sm-12">
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
                                     style="border-radius: 16px;">
-                                    <div class="carousel-inner">
+                                    <div class="carousel-inner rounded">
                                         @if ($event->foto)
                                             <div class="carousel-item active">
                                                 <img src="<?= asset('storage/image/' . $event->foto) ?>" style="width:100%"
@@ -40,16 +40,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
+
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 ">

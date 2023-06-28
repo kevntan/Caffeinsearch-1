@@ -94,8 +94,11 @@
                                 </div>
                             @endforeach
                         @else
-                            <div class="text-center">
-                                Tidak ada event
+                            <div class="card shadow-sm border-0 pb-3">
+                                <div class="text-center mt-3">
+                                    Tidak ada event
+
+                                </div>
                             </div>
                         @endif
                     </div>

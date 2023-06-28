@@ -124,17 +124,17 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                     <strong>Nama Cafe</strong>
                                     <br>
-                                    <input type="text" class="form-control" name="nama" id="inlineFormInputGroup"
+                                    <input type="text" class="form-control mb-2" name="nama" id="inlineFormInputGroup"
                                         placeholder="Input nama cafe" value="{{ $cafe->nama }}" required>
 
                                     <strong>Alamat</strong>
                                     <br>
-                                    <input type="text" class="form-control" name="alamat" id="inlineFormInputGroup"
+                                    <input type="text" class="form-control mb-2" name="alamat" id="inlineFormInputGroup"
                                         placeholder="Input alamat" value="{{ $cafe->alamat }}">
 
                                     <strong>Operational Hours</strong>
                                     <br>
-                                    <div class="row">
+                                    <div class="row mb-2">
                                         <div class="col-lg-6 col-md-12 col-sm-12">
                                             <input class="form-control" type="time" name="operasional_buka"
                                                 placeholder="Default input" value="{{ $cafe->operasional_buka }}">
@@ -146,7 +146,7 @@
                                     </div>
                                     <strong>Price Range</strong>
                                     <br>
-                                    <select name="range_harga" class="form-control">
+                                    <select name="range_harga" class="form-control mb-2">
                                         <option value="{{ $cafe->range_harga }}">
                                             {{ $cafe->range_harga }}
                                         </option>
@@ -160,7 +160,7 @@
                                     </select>
                                     <strong>Suasana Cafe</strong>
                                     <br>
-                                    <select name="ambience" class="form-control">
+                                    <select name="ambience" class="form-control mb-2">
                                         <option value="{{ $cafe->ambience }}">
                                             {{ $cafe->ambience }}
                                         </option>
@@ -169,7 +169,7 @@
                                     </select>
                                     <strong>Phone</strong>
                                     <br>
-                                    <div class="input-group">
+                                    <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text me-2">+62</div>
                                         </div>
@@ -180,15 +180,16 @@
 
                                     <strong>Description</strong>
                                     <br>
-                                    <div class="form-group">
+                                    <div class="form-group mb-2">
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a Description"
                                             name="deskripsi">{{ $cafe->deskripsi }}</textarea>
                                     </div>
 
                                     <strong>Google Maps</strong>
                                     <br>
-                                    <input type="text" class="form-control" name="maps" id="inlineFormInputGroup"
-                                        placeholder="Url Google Maps" value="{{ $cafe->maps }}">
+                                    <input type="text" class="form-control mb-2" name="maps"
+                                        id="inlineFormInputGroup" placeholder="Url Google Maps"
+                                        value="{{ $cafe->maps }}">
 
                                 </div>
                             </div>

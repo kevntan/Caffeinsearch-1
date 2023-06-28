@@ -122,7 +122,7 @@ class cafeHomeController extends Controller
         if ($update == true) {
             return redirect('/cafe')
                 ->with([
-                    'success' => 'Post has been updated successfully'
+                    'success' => 'Profile has been updated successfully'
                 ]);
         } else {
             return redirect('/cafe')
@@ -159,7 +159,7 @@ class cafeHomeController extends Controller
         if ($post == true) {
             return redirect('/cafe')
                 ->with([
-                    'success' => 'Event has been Added successfully'
+                    'success' => 'Event has been added successfully'
                 ]);
         } else {
             return redirect('/cafe')

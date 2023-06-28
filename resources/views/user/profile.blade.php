@@ -29,14 +29,14 @@
                             <div class="text-center">
                                 @if (Auth::user()->foto)
                                     <img src="<?= asset('storage/image/' . Auth::user()->foto) ?>" alt=""
-                                        class="rounded-circle " style="max-width:50%; max-height:50%;">
+                                        class="rounded" style="max-width:25%;">
                                 @else
                                     <img src="<?= asset('user/assets/img/Vector.png') ?>" class="rounded-circle"
                                         alt="">
                                 @endif
                                 <h2><strong>{{ Auth::user()->username }}</strong></h2>
                                 <p>{{ Auth::user()->daerah }}</p>
-                                <br>
+
                                 @if (Auth::user()->bio)
                                     <p>{{ Auth::user()->bio }}</p>
                                 @else
@@ -46,7 +46,8 @@
                             <hr>
                             <div class="d-flex
                                     flex-row-reverse">
-                                <a href="{{ url('profile/edit') }}" class="btn btn-solid-hug">Edit Profile</a>
+                                <a href="{{ url('profile/edit') }}" class="btn btn-solid-hug"><i
+                                        class="fa-solid fa-user-pen me-2"></i>Edit Profile</a>
                             </div>
 
                         </div>

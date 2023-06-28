@@ -12,18 +12,33 @@
                         </strong></h1>
                 </div>
                 @if (\Session::has('success'))
-                    <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
+                    <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
+                        {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button> --}}
+                    </div>
                 @elseif(\Session::has('error'))
-                    <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                    </div>
                 @endif
-                <div class="card pb-3 px-3 shadow-sm px-3">
+                <div class="card pb-3 px-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-10 col-md-6 col-sm-6">
                                 <h3>
-                                    <strong>
-                                        {{ $cafe->nama }}
-                                    </strong>
+                                    @if ($cafe->user_id != 0)
+                                        <strong>
+                                            {{ $cafe->nama }} <i class="bi bi-patch-check-fill"
+                                                style="color: #3a9bdc"></i>
+                                        </strong>
+                                    @else
+                                        <strong>
+                                            {{ $cafe->nama }}
+                                        </strong>
+                                    @endif
+
                                 </h3>
                                 @if ($rating_cafe)
                                     <h5><i class="fa-solid fa-star me-2"></i>{{ number_format($rating_cafe, 1, '.', '') }} /
@@ -34,12 +49,11 @@
                             <div class="col-lg-2 col-md-6 col-sm-5">
                                 {{-- @if ($cafe->wfc_friendly == 1) --}}
                                 @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
-                                    <h4>WFC Friendly</h4>
+                                    <div class="status-wfc disabled text-center rounded p-2 py-3">
+                                        <i class="fa-solid fa-briefcase me-2"></i> WFC
+                                    </div>
                                 @endif
-                                @if ($cafe->user_id != 0)
-                                    <h4>Verified
-                                    </h4>
-                                @endif
+
                             </div>
                         </div>
                         <hr>
@@ -233,7 +247,9 @@
                         {{-- <div class="position-relative"> --}}
                         {{-- <div class="position-absolute bottom-0 end-0"> --}}
                         <div class="d-flex flex-row-reverse">
-                            <a href="{{ url('cafe/edit') }}" class="btn btn-solid-hug">Edit Data</a>
+                            <a href="{{ url('cafe/edit') }}" class="btn btn-solid-hug"> <i
+                                    class="fa-solid fa-pen me-2"></i>Edit
+                                Data</a>
                         </div>
                         {{-- </div> --}}
                         {{-- </div> --}}
@@ -295,7 +311,7 @@
                         <div class="d-flex flex-row-reverse">
                             <button type="button" class="btn btn-solid-hug " data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
-                                Tambahkan Event
+                                <i class="fa-solid fa-plus me-2"></i>Tambahkan Event
                             </button>
                         </div>
 
@@ -316,17 +332,20 @@
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
-                                            <label for="exampleFormControlFile1"><span
-                                                    style="color: #DC3545">*</span>Gambar</label>
+                                            <label for="exampleFormControlFile1"><strong>Gambar<span
+                                                        style="color: #DC3545">*</span>
+                                                </strong></label>
                                             <br>
                                             <input type="file" class="form-control" name="foto"
                                                 id="exampleFormControlFile1" required>
-                                            <label for="" class="mt-2"><span
-                                                    style="color: #DC3545">*</span>Nama Event</label>
+                                            <label for="" class="mt-2"><strong>Nama Event<span
+                                                        style="color: #DC3545">*</span>
+                                                </strong></label>
                                             <input class="form-control" type="text" name="nama"
                                                 placeholder="Nama Event" aria-label="default input example" required>
-                                            <label for="" class="mt-2"><span
-                                                    style="color: #DC3545">*</span>Kategori </label>
+                                            <label for="" class="mt-2"><strong>Kategori<span
+                                                        style="color: #DC3545">*</span>
+                                                </strong></label>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-4 col-sm-3">
                                                     <div class="form-check">
@@ -348,8 +367,9 @@
                                                 </div>
                                             </div>
 
-                                            <label for="" class="mt-1"><span
-                                                    style="color: #DC3545">*</span>Time</label>
+                                            <label for="" class="mt-1"><strong>Time<span
+                                                        style="color: #DC3545">*</span>
+                                                </strong></label>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <input class="form-control" name="waktu_mulai" type="datetime-local"
@@ -369,7 +389,8 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-solid-cancel"
                                                 data-bs-dismiss="modal">Batal</button>
-                                            <button type="submit" class="btn btn-solid-hug">Tambahkan</button>
+                                            <button type="submit" class="btn btn-solid-hug"><i
+                                                    class="fa-solid fa-plus me-2"></i>Tambahkan</button>
                                         </div>
                                     </form>
                                 </div>

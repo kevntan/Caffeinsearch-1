@@ -27,17 +27,21 @@
                                     @endif
                                 </div>
                                 {{-- <br> --}}
-                                <label for="">Foto Profile</label>
-                                <input class="form-control mb-3" type="file" name="foto" id="formFile">
-                                <label for="">Username</label>
-                                <input type="text" class="form-control mb-3" name="username"
+                                <label for=""><strong>Foto Profile
+                                    </strong></label>
+                                <input class="form-control mb-2" type="file" name="foto" id="formFile">
+                                <label for=""><strong>Username
+                                    </strong></label>
+                                <input type="text" class="form-control mb-2" name="username"
                                     value="{{ Auth::user()->username }}" disabled>
-                                <label for="">Email</label>
-                                <input type="text" class="form-control mb-3" name="username"
+                                <label for=""><strong>Email
+                                    </strong></label>
+                                <input type="text" class="form-control mb-2" name="username"
                                     value="{{ Auth::user()->email }}" disabled>
                                 {{-- <p>User / Cafe Admin at Nama Cafe</p> --}}
-                                <label for="">Daerah</label>
-                                <select class="form-select mb-3" name="daerah">
+                                <label for=""><strong>Daerah
+                                    </strong></label>
+                                <select class="form-select mb-2" name="daerah">
                                     <option selected>{{ Auth::user()->daerah }}</option>
                                     <option value="Central Jakarta">Central Jakarta</option>
                                     <option value="East Jakarta">East Jakarta</option>
@@ -48,16 +52,18 @@
 
 
 
-                                <label for="">Bio</label>
-                                <input type="text" class="form-control mb-3" name="bio" placeholder="Input your bio"
+                                <label for=""><strong>Bio
+                                    </strong></label>
+                                <input type="text" class="form-control mb-2" name="bio" placeholder="Input your bio"
                                     value="{{ Auth::user()->bio }}">
-                                <label for="">New Password</label>
+                                <label for=""><strong>New Password
+                                    </strong></label>
                                 <input type="password" class="form-control mb-3" name="password"
                                     placeholder="Input your new password" value="">
                                 <hr>
                                 <div class="d-flex flex-row-reverse">
-                                    <button type="submit" class="btn btn-solid-hug ">Submit</button>
-                                    <a href="{{ url('profile') }}" class="btn btn-link" style="color: #ffc26f">Back</a>
+                                    <button type="submit" class="btn btn-solid-hug ">Save</button>
+                                    <a href="{{ url('profile') }}" class="btn btn-solid-cancel me-2">Cancel</a>
                                 </div>
 
                             </form>

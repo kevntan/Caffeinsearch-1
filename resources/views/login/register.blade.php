@@ -45,7 +45,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group first">
-                                <label for="username">Username</label>
+                                <label for="username">Username<span style="color: #DC3545">*</span></label>
                                 <input type="text" class="form-control" name="username"
                                     placeholder="Masukkan Username" id="username" value="{{ old('username') }}"
                                     required>
@@ -59,7 +59,7 @@
                                 @enderror
                             </div>
                             <div class="form-group last mb-3">
-                                <label for="Daerah">Daerah</label>
+                                <label for="Daerah">Daerah<span style="color: #DC3545">*</span></label>
                                 <select class="form-select" name="daerah" value="{{ old('daerah') }}" required>
                                     <option selected>Daerah</option>
                                     <option value="Central Jakarta">Central Jakarta</option>
@@ -70,7 +70,7 @@
                                 </select>
                             </div>
                             <div class="form-group last mb-3">
-                                <label for="email">Email</label>
+                                <label for="email">Email<span style="color: #DC3545">*</span></label>
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}"
                                     placeholder="Masukkan Email" id="email" required>
                                 @error('email')
@@ -83,7 +83,7 @@
                                 @enderror
                             </div>
                             <div class="form-group last mb-3">
-                                <label for="password">Password</label>
+                                <label for="password">Password<span style="color: #DC3545">*</span></label>
                                 <input type="password" class="form-control" name="password"
                                     placeholder="Masukkan Password" id="password" required>
                                 <div class="text-dark text-opacity-50 fw-medium">* Minimal 9 karakter
