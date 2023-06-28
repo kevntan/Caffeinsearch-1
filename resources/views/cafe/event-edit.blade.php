@@ -52,18 +52,20 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <input type="datetime-local" class="form-control"
-                                                    value="{{ $event->waktu_mulai }}" name="waktu_mulai" id="" required>
+                                                    value="{{ $event->waktu_mulai }}" name="waktu_mulai" id=""
+                                                    required>
                                             </div>
                                             <div class="col-6">
                                                 <input type="datetime-local" class="form-control"
-                                                    value="{{ $event->waktu_selesai }}" name="waktu_selesai" id="" required>
+                                                    value="{{ $event->waktu_selesai }}" name="waktu_selesai" id=""
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for=""><strong>Keterangan
                                             </strong></label>
-                                        <textarea name="keterangan" class="form-control" id="">{{ $event->keterangan }}</textarea>
+                                        <textarea name="keterangan" class="form-control" id="" placeholder="Input keterangan">{{ $event->keterangan }}</textarea>
                                     </div>
                                     <div class="d-flex flex-row-reverse ">
                                         <button type="submit" class="btn btn-solid-hug">Save</button>

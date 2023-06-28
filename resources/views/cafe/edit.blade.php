@@ -23,8 +23,14 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-10 col-md-6 col-sm-6">
-                                    <h3><strong>{{ $cafe->nama }}
-                                        </strong></h3>
+                                    @if ($cafe->user_id != 0)
+                                        <h3><strong>{{ $cafe->nama }} <i class="bi bi-patch-check-fill"
+                                                    style="color: #3a9bdc"></i>
+                                            </strong></h3>
+                                    @else
+                                        <h3><strong>{{ $cafe->nama }}
+                                            </strong></h3>
+                                    @endif
                                     @if ($cafe->rating)
                                         <h5><i
                                                 class="fa-solid fa-star me-2"></i>{{ number_format($cafe->rating, 1, '.', '') }}
@@ -44,13 +50,12 @@
                                 <div class="col-lg-2 col-md-6 col-sm-5">
                                     {{-- @if ($cafe->wfc_friendly == 1) --}}
                                     @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
-                                        <h4>WFC Friendly</h4>
+                                        <div class="status-wfc disabled text-center rounded p-2 py-3">
+                                            <i class="fa-solid fa-briefcase me-2"></i> WFC
+                                        </div>
                                     @endif
                                     {{-- @endif --}}
-                                    @if ($cafe->user_id != 0)
-                                        <h4>Verified
-                                        </h4>
-                                    @endif
+
                                 </div>
                             </div>
                             <hr>
