@@ -105,6 +105,7 @@ class homeController extends Controller
         $user = User::find($cafe->user_id);
         $review_event = ReviewEvent::where('event_id', $event->id)
             ->join('users', 'user_id', 'users.id')
+            ->select('users.username', 'review_events.komentar', 'review_events.created_at')
             ->get();
         $review_cafe = ReviewCafe::where('cafe_id', $cafe->id)
             ->avg('rating');
@@ -123,7 +124,9 @@ class homeController extends Controller
         $review = ReviewEvent::insert([
             'komentar' => $request->komentar,
             'user_id' => Auth::user()->id,
-            'event_id' => $id
+            'event_id' => $id,
+            "created_at" =>  \Carbon\Carbon::now(),
+            "updated_at" => \Carbon\Carbon::now()
         ]);
         if ($review == true) {
             return redirect('/details-feeds/' . $id)
