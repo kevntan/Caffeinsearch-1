@@ -10,13 +10,12 @@
                 @if (\Session::has('success'))
                     <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
                         <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
-                        {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button> --}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @elseif(\Session::has('error'))
                     <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
                         <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
                 <div class="text-center mb-5">
