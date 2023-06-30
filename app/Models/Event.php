@@ -15,6 +15,9 @@ class Event extends Model
         'waktu_mulai',
         'waktu_selesai',
         'keterangan',
-        'foto'
+        'foto',
+        'cafe_id',
+        'created_at',
+        'updated_at',
     ];
 }

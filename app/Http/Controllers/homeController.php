@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cafe;
 use App\Models\Event;
+use App\Models\ReviewCafe;
+use App\Models\ReviewEvent;
 use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
@@ -20,8 +22,7 @@ class homeController extends Controller
                 return redirect('cafe');
             }
         }
-        $cafe = DB::table('cafes')
-            ->limit(7)
+        $cafe = Cafe::limit(7)
             ->orderBy('rating', 'DESC')
             ->get();
         $results = 0;
@@ -40,14 +41,12 @@ class homeController extends Controller
     public function details($id)
     {
         $cafe = Cafe::findOrFail($id);
-        $event = DB::table('events')->where('cafe_id', $cafe->id)->get();
-        $review_cafe = DB::table('review_cafes')
-            ->where('cafe_id', $cafe->id)
+        $event = Event::where('cafe_id', $cafe->id)->get();
+        $review_cafe = ReviewCafe::where('cafe_id', $cafe->id)
             ->join('users', 'user_id', 'users.id')
             ->select('review_cafes.*', 'users.username')
             ->get();
-        $rating_cafe = DB::table('review_cafes')
-            ->where('cafe_id', $id)
+        $rating_cafe = ReviewCafe::where('cafe_id', $id)
             ->avg('rating');
         $cafe->update([
             'rating' => $rating_cafe
@@ -65,9 +64,9 @@ class homeController extends Controller
     {
         $lokasi = $request->input('lokasi');
         $kategori = $request->input('kategori');
-        if( $request->input('query') != null){
+        if ($request->input('query') != null) {
             $nama = $request->input('query');
-        } else{
+        } else {
             $nama = '';
         }
 
@@ -96,8 +95,7 @@ class homeController extends Controller
     }
     public function detailsFeeds($id)
     {
-        $event = DB::table('events')
-            ->join('cafes', 'events.cafe_id', 'cafes.id')
+        $event = Event::join('cafes', 'events.cafe_id', 'cafes.id')
             ->where('events.id', $id)
             ->select('events.*', 'cafes.alamat', 'cafes.nama as nama_cafe')
             ->get();
@@ -105,12 +103,10 @@ class homeController extends Controller
 
         $cafe = Cafe::find($event->cafe_id);
         $user = User::find($cafe->user_id);
-        $review_event = DB::table('review_events')
-            ->where('event_id', $event->id)
+        $review_event = ReviewEvent::where('event_id', $event->id)
             ->join('users', 'user_id', 'users.id')
             ->get();
-        $review_cafe = DB::table('review_cafes')
-            ->where('cafe_id', $cafe->id)
+        $review_cafe = ReviewCafe::where('cafe_id', $cafe->id)
             ->avg('rating');
 
         return view('user.details-feeds', [
@@ -124,7 +120,7 @@ class homeController extends Controller
 
     public function storeReviewEvent(Request $request, $id)
     {
-        $review = DB::table('review_events')->insert([
+        $review = ReviewEvent::insert([
             'komentar' => $request->komentar,
             'user_id' => Auth::user()->id,
             'event_id' => $id
@@ -150,8 +146,8 @@ class homeController extends Controller
             return redirect('sign-in');
         }
 
-        $query2 = DB::table('review_cafes');
-        $cafe = DB::table('cafes')->get();
+        $query2 = ReviewCafe::query();
+        $cafe = Cafe::get();
         $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->get();
 
         $results = 0;
@@ -180,7 +176,7 @@ class homeController extends Controller
             // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
         }
 
-        $review = DB::table('review_cafes')->insert([
+        $review = ReviewCafe::insert([
             'rating' => $request->rating,
             'foto' => $fileName,
             'komentar' => $request->komentar,
@@ -189,8 +185,7 @@ class homeController extends Controller
             "created_at" =>  \Carbon\Carbon::now(),
             "updated_at" => \Carbon\Carbon::now()
         ]);
-        $rating = DB::table('review_cafes')
-            ->where('cafe_id', $id)
+        $rating = ReviewCafe::where('cafe_id', $id)
             ->avg('rating');
         $cafe = Cafe::findOrFail($id);
         $cafe->update([
@@ -292,8 +287,7 @@ class homeController extends Controller
         $query = $request->input('query');
         Paginator::useBootstrapFive();
 
-        $results = DB::table('cafes')
-            ->where('nama', 'LIKE', '%' . $query . '%')
+        $results = Cafe::where('nama', 'LIKE', '%' . $query . '%')
             // ->limit(9)
             // ->get();
             ->orderBy('nama', 'ASC')
@@ -311,7 +305,7 @@ class homeController extends Controller
 
         $query = Cafe::query();
 
-        $query2 = DB::table('review_cafes');
+        $query2 = ReviewCafe::query();
         $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->get();
 
         if ($lokasi) {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cafe;
 use App\Models\Event;
+use App\Models\ReviewCafe;
+use App\Models\ReviewEvent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,13 +17,12 @@ class cafeHomeController extends Controller
 {
     public function index()
     {
-        $cafe = DB::table('cafes')
-            ->where('user_id', Auth::user()->id)
+        $cafe = Cafe::where('user_id', Auth::user()->id)
             ->get();
         $cafes =  $cafe->count();
 
         if ($cafes == 0) {
-            DB::table('cafes')->insert([
+            Cafe::insert([
                 'nama' => 'Cafe ' . Auth::user()->username,
                 'lokasi' => Auth::user()->daerah,
                 'alamat' => 'Alamat belum dilengkapi',
@@ -31,20 +32,16 @@ class cafeHomeController extends Controller
             ]);
         }
 
-        $cafe = DB::table('cafes')
-            ->where('user_id', Auth::user()->id)
+        $cafe = Cafe::where('user_id', Auth::user()->id)
             ->get();
 
-        $rating_cafe = DB::table('review_cafes')
-            ->where('cafe_id', $cafe[0]->id)
+        $rating_cafe = ReviewCafe::where('cafe_id', $cafe[0]->id)
             ->avg('rating');
 
-        $event = DB::table('events')
-            ->where('cafe_id', $cafe[0]->id)
+        $event = Event::where('cafe_id', $cafe[0]->id)
             ->get();
 
-        $review_cafe = DB::table('review_cafes')
-            ->join('users', 'user_id', 'users.id')
+        $review_cafe = ReviewCafe::join('users', 'user_id', 'users.id')
             ->where('cafe_id', $cafe[0]->id)
             ->select('review_cafes.*', 'users.username')
             ->get();
@@ -59,15 +56,11 @@ class cafeHomeController extends Controller
     }
     public function edit()
     {
-        $cafe = DB::table('cafes')
-            ->where('user_id', Auth::user()->id)
+        $cafe = Cafe::where('user_id', Auth::user()->id)
             ->get();
 
-        $event = DB::table('events')
-            ->where('cafe_id', $cafe[0]->id)
+        $event = Event::where('cafe_id', $cafe[0]->id)
             ->get();
-
-
         return view('cafe.edit', [
             'cafe' => $cafe[0],
             'event' => $event
@@ -76,8 +69,7 @@ class cafeHomeController extends Controller
 
     public function update(Request $request)
     {
-        $cafe = DB::table('cafes')
-            ->where('user_id', Auth::user()->id)
+        $cafe = Cafe::where('user_id', Auth::user()->id)
             ->get();
         $cafe = Cafe::findOrFail($cafe[0]->id);
 
@@ -144,7 +136,7 @@ class cafeHomeController extends Controller
         // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
 
 
-        $post = DB::table('events')->insert([
+        $post = Event::insert([
             'nama' => $request->nama,
             'foto' => $fileName,
             'kategori' => $request->kategori,
@@ -173,8 +165,7 @@ class cafeHomeController extends Controller
 
     public function profile()
     {
-        $cafe = DB::table('cafes')
-            ->where('user_id', Auth::user()->id)
+        $cafe = Cafe::where('user_id', Auth::user()->id)
             ->get();
         return view(
             'cafe.profile',
@@ -185,10 +176,8 @@ class cafeHomeController extends Controller
     }
     public function profileEdit()
     {
-        $cafe = DB::table('cafes')
-            ->where('user_id', Auth::user()->id)
+        $cafe = Cafe::where('user_id', Auth::user()->id)
             ->get();
-
         return view('cafe.profile-edit', [
             'cafe' => $cafe[0]
         ]);
@@ -283,8 +272,7 @@ class cafeHomeController extends Controller
     public function eventDelete($id)
     {
         $event = Event::findOrFail($id);
-        $review_events = DB::table('review_events')
-            ->where('event_id', $event->id);
+        $review_events = ReviewEvent::where('event_id', $event->id);
         if ($review_events->count() > 0) {
             $review_events->delete();
         }
