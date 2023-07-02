@@ -7,22 +7,25 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
-                <div class="text-center mb-5">
+                <div class=" mb-5">
                     @if (\Session::has('success'))
                         <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
                             <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @elseif(\Session::has('error'))
                         <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
-                            <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                            <i class="fa-solid fa-triangle-exclamation"></i> {!! \Session::get('error') !!}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <h1>
+                    <h1 class="text-center">
                         <strong>Profile Page
                         </strong>
                     </h1>
 
                 </div>
+
                 <div class="card mb-5">
                     <div class="card-body">
                         <div class="container">
