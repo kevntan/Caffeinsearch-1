@@ -303,13 +303,14 @@ class homeController extends Controller
         $harga = $request->input('harga');
         $rating = $request->input('rating');
         $wfcfriendly = $request->input('wfcfriendly');
-
+    // dd($wfcfriendly);
         Paginator::useBootstrapFive();
 
         $query = Cafe::query();
 
         $query2 = ReviewCafe::query();
         $review_cafe = $query2->select('cafe_id', DB::raw('AVG(rating) as rating'))->groupBy('cafe_id')->get();
+// dd($query->orderBy('rating', 'ASC')->get());
 
         if ($lokasi) {
             $query->where('lokasi', $lokasi);
@@ -329,14 +330,15 @@ class homeController extends Controller
                 $query->orderBy('rating', 'DESC');
             }
         }
-
-        if ($wfcfriendly) {
-            $query->where('wfc_friendly', $wfcfriendly);
+        if(isset($wfcfriendly)){
+            if ($wfcfriendly == 0 || $wfcfriendly == 1) {
+                $query->where('wfc_friendly', '=', $wfcfriendly);
+            }
         }
 
         // dd($review_cafe);
-
         $results = $query->paginate(10);
+        // dd($results);
 
 
         return view('user.filter', [
