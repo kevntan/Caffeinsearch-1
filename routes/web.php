@@ -27,8 +27,8 @@ Route::get('/sign-up', [loginController::class, "signup"]);
 Route::post('/sign-up/store', [loginController::class, "store"]);
 
 Route::get('/', [homeController::class, "index"]);
-Route::get('/about', [homeController::class, "about"])->middleware('auth', 'auth.role:user');
-Route::get('/details/{id}', [homeController::class, "details"])->middleware('auth');
+Route::get('/about', [homeController::class, "about"])->middleware('auth');
+Route::get('/details/{id}', [homeController::class, "details"])->middleware('auth', 'auth.role:user');
 Route::post('/details/store-review/{id}', [homeController::class, "storeReviewCafe"])->middleware('auth', 'auth.role:user');
 Route::get('/feeds', [homeController::class, "feeds"])->middleware('auth', 'auth.role:user');
 Route::get('/details-feeds/{id}', [homeController::class, "detailsFeeds"])->middleware('auth', 'auth.role:user');
@@ -40,8 +40,8 @@ Route::put('/profile/update', [homeController::class, "profileUpdate"])->middlew
 Route::get('/search', [homeController::class, "search"])->middleware('auth', 'auth.role:user');
 Route::get('/filter', [homeController::class, "filter"])->middleware('auth', 'auth.role:user');
 
-// Route::get('/about', [homeController::class, "about"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe', [cafeHomeController::class, "index"])->middleware('auth', 'auth.role:cafe');
+Route::get('/cafe/about', [cafeHomeController::class, "about"])->middleware('auth', 'auth.role:cafe');
 Route::get('/cafe/edit', [cafeHomeController::class, "edit"])->middleware('auth', 'auth.role:cafe');
 Route::put('/cafe/edit/update', [cafeHomeController::class, "update"])->middleware('auth', 'auth.role:cafe');
 Route::post('/cafe/event/store/{id}', [cafeHomeController::class, "eventStore"])->middleware('auth', 'auth.role:cafe');

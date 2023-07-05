@@ -8,7 +8,7 @@
                  <li><a class="nav-link scrollto 
                     @if (!isset($about)) active @endif"
                          href="{{ url('cafe') }}">My Cafe</a></li>
-                 <li><a class="nav-link scrollto @if (isset($about)) active @endif" href="{{ url('about') }}">About</a></li>
+                 <li><a class="nav-link scrollto @if (isset($about)) active @endif" href="{{ url('cafe/about') }}">About</a></li>
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->
