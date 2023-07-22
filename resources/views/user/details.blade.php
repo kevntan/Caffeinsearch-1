@@ -53,8 +53,8 @@
                                 <h5><i class="fa-solid fa-location-dot me-2"></i>{{ $cafe->lokasi }}</h5>
                             </div>
                             <div class="col-lg-2 col-md-6 col-sm-5">
-                                {{-- @if ($cafe->wfc_friendly == 1) --}}
-                                @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
+                                {{-- @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang')) --}}
+                                @if ($cafe->wfc_friendly == 1)
                                     <div class="status-wfc disabled text-center rounded p-2 py-3">
                                         <i class="fa-solid fa-briefcase me-2"></i> WFC
                                     </div>
