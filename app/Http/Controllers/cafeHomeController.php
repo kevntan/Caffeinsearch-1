@@ -19,6 +19,7 @@ class cafeHomeController extends Controller
     {
         $cafe = Cafe::where('user_id', Auth::user()->id)
             ->get();
+            $ambience = $cafe[0]->ambience;
         $cafes =  $cafe->count();
 
         if ($cafes == 0) {
@@ -49,6 +50,7 @@ class cafeHomeController extends Controller
         // dd($review_cafe);
         return view('cafe.index', [
             'cafe' => $cafe[0],
+            'ambience'=> $ambience,
             'rating_cafe' => $rating_cafe,
             'event' => $event,
             'review_cafe' => $review_cafe
@@ -63,6 +65,7 @@ class cafeHomeController extends Controller
             ->get();
         return view('cafe.edit', [
             'cafe' => $cafe[0],
+            'ambience' => $cafe[0]->ambience,
             'event' => $event
         ]);
     }
@@ -91,8 +94,8 @@ class cafeHomeController extends Controller
             'lahan_parkir' => $request->lahan_parkir,
             'toilet' => $request->toilet,
         ]);
-
-        if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && $cafe->ambience = 'Tenang') {
+        if (($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1) && $request->ambience == 'Tenang') {
+            // dd($cafe->ambience);
             $cafe->update(['wfc_friendly' => 1]);
         } else {
             $cafe->update(['wfc_friendly' => 0]);

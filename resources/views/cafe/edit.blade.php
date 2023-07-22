@@ -48,8 +48,8 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-2 col-md-6 col-sm-5">
-                                    {{-- @if ($cafe->wfc_friendly == 1) --}}
-                                    @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang'))
+                                    @if ($cafe->wfc_friendly == 1)
+                                    {{-- @if ($cafe->wifi == 1 && $cafe->charging_port == 1 && $cafe->toilet == 1 && ($cafe->ambience = 'Tenang')) --}}
                                         <div class="status-wfc disabled text-center rounded p-2 py-3">
                                             <i class="fa-solid fa-briefcase me-2"></i> WFC
                                         </div>
@@ -166,8 +166,8 @@
                                     <strong>Suasana Cafe</strong>
                                     <br>
                                     <select name="ambience" class="form-select mb-2">
-                                        <option value="{{ $cafe->ambience }}">
-                                            {{ $cafe->ambience }}
+                                        <option value="{{ $ambience }}">
+                                            {{ $ambience }}
                                         </option>
                                         <option value="Ramai">Ramai</option>
                                         <option value="Tenang">Tenang</option>
