@@ -62,9 +62,15 @@
                                 {{ $event->waktu_selesai }}
                                 <br>
                                 <br>
-                                <strong>Description</strong>
-                                <br>
-                                {{ $event->keterangan }}
+                                @if ($event->keterangan != null)
+                                    <strong>Description</strong>
+                                    <br>
+                                    {{ $event->keterangan }}
+                                @else
+                                    <strong>Description</strong>
+                                    <br>
+                                    -
+                                @endif
                                 <br>
                                 <a href="{{ $cafe->maps }}" target="blank" class="btn btn-solid py-3 mt-3"
                                     style="width: 100%">

@@ -12,9 +12,15 @@
                         </strong></h1>
                 </div>
                 @if (\Session::has('success'))
-                    <div class="p-3 mb-2 bg-success text-white rounded-3">{!! \Session::get('success') !!}</div>
+                    <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @elseif(\Session::has('error'))
-                    <div class="p-3 mb-2 bg-danger text-white rounded-3">{!! \Session::get('error') !!}</div>
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i> {!! \Session::get('error') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @endif
                 <div class="card shadow-sm px-3">
                     <div class="card-body">

@@ -27,13 +27,13 @@ Route::get('/sign-up', [loginController::class, "signup"]);
 Route::post('/sign-up/store', [loginController::class, "store"]);
 
 Route::get('/', [homeController::class, "index"]);
-Route::get('/about', [homeController::class, "about"])->middleware('auth');
+Route::get('/about', [homeController::class, "about"])->middleware('auth', 'auth.role:user');
 Route::get('/details/{id}', [homeController::class, "details"])->middleware('auth', 'auth.role:user');
 Route::post('/details/store-review/{id}', [homeController::class, "storeReviewCafe"])->middleware('auth', 'auth.role:user');
 Route::get('/feeds', [homeController::class, "feeds"])->middleware('auth', 'auth.role:user');
 Route::get('/details-feeds/{id}', [homeController::class, "detailsFeeds"])->middleware('auth', 'auth.role:user');
 Route::post('/details-feeds/store/{id}', [homeController::class, "storeReviewEvent"])->middleware('auth', 'auth.role:user');
-Route::get('/see-all', [homeController::class, "seeAll"]);
+Route::get('/see-all', [homeController::class, "seeAll"])->middleware('auth', 'auth.role:user');
 Route::get('/profile', [homeController::class, "profile"])->middleware('auth', 'auth.role:user');
 Route::get('/profile/edit', [homeController::class, "profileEdit"])->middleware('auth', 'auth.role:user');
 Route::put('/profile/update', [homeController::class, "profileUpdate"])->middleware('auth', 'auth.role:user');

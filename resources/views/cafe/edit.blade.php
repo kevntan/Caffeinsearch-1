@@ -151,7 +151,7 @@
                                     </div>
                                     <strong>Price Range</strong>
                                     <br>
-                                    <select name="range_harga" class="form-control mb-2">
+                                    <select name="range_harga" class="form-select mb-2">
                                         <option value="{{ $cafe->range_harga }}">
                                             {{ $cafe->range_harga }}
                                         </option>
@@ -165,7 +165,7 @@
                                     </select>
                                     <strong>Suasana Cafe</strong>
                                     <br>
-                                    <select name="ambience" class="form-control mb-2">
+                                    <select name="ambience" class="form-select mb-2">
                                         <option value="{{ $cafe->ambience }}">
                                             {{ $cafe->ambience }}
                                         </option>

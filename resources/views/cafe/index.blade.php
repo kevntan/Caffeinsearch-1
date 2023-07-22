@@ -14,9 +14,6 @@
                 @if (\Session::has('success'))
                     <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
                         <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
-                        {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button> --}}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @elseif(\Session::has('error'))
@@ -289,9 +286,15 @@
                                                 {{ $v->waktu_selesai }}
                                                 <br>
                                                 <br>
-                                                <strong>Description</strong>
-                                                <br>
-                                                {{ $v->keterangan }}
+                                                @if ($v->keterangan != null)
+                                                    <strong>Description</strong>
+                                                    <br>
+                                                    {{ $v->keterangan }}
+                                                @else
+                                                    <strong>Description</strong>
+                                                    <br>
+                                                    -
+                                                @endif
                                                 <br>
                                                 <hr>
                                                 <div class="d-flex flex-row-reverse">

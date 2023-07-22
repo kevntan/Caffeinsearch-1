@@ -302,9 +302,15 @@
                                                     {{ $v->waktu_selesai }}
                                                     <br>
                                                     <br>
-                                                    <strong>Description</strong>
-                                                    <br>
-                                                    {{ $v->keterangan }}
+                                                    @if ($v->keterangan != null)
+                                                        <strong>Description</strong>
+                                                        <br>
+                                                        {{ $v->keterangan }}
+                                                    @else
+                                                        <strong>Description</strong>
+                                                        <br>
+                                                        -
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -74,7 +74,6 @@
                                             </strong>
                                         </h5>
                                         <i class="fa-solid fa-location-dot me-2"></i> {{ $v->nama_cafe }}
-                                        {{-- {{ $v->alamat }} za ini mo ganti jadi nama cafe bukan alamat event --}}
                                         <br>
                                         <i class="fa-solid fa-tags me-2"></i>
                                         {{ $v->kategori }}
@@ -83,9 +82,15 @@
                                         {{ $v->waktu_mulai }} - {{ $v->waktu_selesai }}
                                         <br>
                                         <br>
-                                        <strong>Description</strong>
-                                        <br>
-                                        {{ $v->keterangan }}
+                                        @if ($v->keterangan != null)
+                                            <strong>Description</strong>
+                                            <br>
+                                            {{ $v->keterangan }}
+                                        @else
+                                            <strong>Description</strong>
+                                            <br>
+                                            -
+                                        @endif
                                         <br>
                                         <a href="{{ url('details-feeds/' . $v->id) }}"
                                             class="btn btn-solid btn-block text-center mt-4 py-3">See

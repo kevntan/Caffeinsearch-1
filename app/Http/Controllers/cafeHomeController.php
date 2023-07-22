@@ -136,6 +136,22 @@ class cafeHomeController extends Controller
         // $currFile->move(public_path('../../public_html/storage/image'), $fileName);
 
 
+        if($request->waktu_mulai <= now()){
+            return redirect('/cafe')
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+       }
+
+        if($request->waktu_mulai >= $request->waktu_selesai){
+             return redirect('/cafe')
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
+
         $post = Event::insert([
             'nama' => $request->nama,
             'foto' => $fileName,
@@ -235,6 +251,23 @@ class cafeHomeController extends Controller
     public function eventUpdate(Request $request, $id)
     {
         $event = Event::findOrFail($id);
+
+        if($request->waktu_mulai <= now()){
+            return redirect('/cafe/event-edit/'.$id)
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+       }
+
+        if($request->waktu_mulai >= $request->waktu_selesai){
+             return redirect('/cafe/event-edit/'.$id)
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
+        }
+
         $update = $event->update([
             'nama' => $request->nama,
             'kategori' => $request->kategori,

@@ -79,7 +79,7 @@ class homeController extends Controller
             $query->where('kategori', $kategori);
         }
 
-        $results = $query->where('events.nama', 'LIKE', '%' . $nama . '%')->orderBy('events.nama', 'ASC')->join('cafes', 'events.cafe_id', 'cafes.id')->select('events.*', 'cafes.nama as nama_cafe')->get();
+        $results = $query->where('events.nama', 'LIKE', '%' . $nama . '%')->orderBy('events.waktu_mulai', 'ASC')->where('events.waktu_selesai', '>=', now())->join('cafes', 'events.cafe_id', 'cafes.id')->select('events.*', 'cafes.nama as nama_cafe')->get();
         // $results = 0;
         // $results = $results->query;
         // dd($results);
@@ -145,9 +145,9 @@ class homeController extends Controller
     public function seeAll(Request $request)
     {
 
-        if (!Auth::user()) {
-            return redirect('sign-in');
-        }
+        // if (!Auth::user()) {
+        //     return redirect('sign-in');
+        // }
 
         $query2 = ReviewCafe::query();
         $cafe = Cafe::get();
