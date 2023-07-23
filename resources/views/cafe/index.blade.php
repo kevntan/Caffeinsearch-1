@@ -306,15 +306,15 @@
                                                     <a href="{{ url('cafe/event-edit/' . $v->id) }}"
                                                         class="btn btn-primary px-4 ms-2">Edit</a>
                                                     <form action="{{ url('cafe/event-delete/' . $v->id) }}"
-                                                        method="POST" id="deleteForm">
+                                                        method="POST" id="deleteForm{{ $v->id }}">
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button onclick="showSweetAlert(event)"
+                                                        <button onclick="showSweetAlert{{ $v->id }}(event)"
                                                             class="btn btn-danger px-4">Delete</button>
                                                     </form>
                                                     <script>
-                                                        function showSweetAlert(event) {
+                                                        function showSweetAlert{{ $v->id }}(event) {
                                                             event.preventDefault();
 
                                                             Swal.fire({
@@ -327,12 +327,12 @@
                                                                 confirmButtonText: 'Yes, delete it!'
                                                             }).then((result) => {
                                                                 if (result.isConfirmed) {
-                                                                    document.getElementById('deleteForm').submit();
+                                                                    document.getElementById('deleteForm{{ $v->id }}').submit();
                                                                 }
                                                             })
                                                         }
                                                         // Redirect setelah form terkirim dan penghapusan berhasil
-                                                        document.getElementById('deleteForm').addEventListener('submit', function() {
+                                                        document.getElementById('deleteForm{{ $v->id }}').addEventListener('submit', function() {
                                                             Swal.fire(
                                                                 'Deleted!',
                                                                 'Your file has been deleted.',
