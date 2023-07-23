@@ -229,6 +229,9 @@ class homeController extends Controller
             'daerah' => $request->daerah
         ]);
 
+        $user->password = $request->validate([
+            "password" => "min:9|nullable",
+        ]);
         if ($request->password) {
             $user->password = Hash::make($request->password);
             $user->save();

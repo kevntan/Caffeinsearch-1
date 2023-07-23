@@ -211,6 +211,10 @@ class cafeHomeController extends Controller
             'bio' => $request->bio
         ]);
 
+
+        $user->password = $request->validate([
+            "password" => "min:9|nullable",
+        ]);
         if ($request->password) {
             $user->password = Hash::make($request->password);
             $user->save();

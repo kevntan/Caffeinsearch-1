@@ -55,6 +55,8 @@
                                     </strong></label>
                                 <input type="password" class="form-control" name="password" value=""
                                     placeholder="Input new password">
+                                <div class="text-dark text-opacity-50 fw-medium">* Minimal 9 karakter
+                                </div>
                                 <hr>
                                 <div class="d-flex flex-row-reverse">
                                     <button type="submit" class="btn btn-solid-hug ">Save</button>

@@ -58,8 +58,10 @@
                                     value="{{ Auth::user()->bio }}">
                                 <label for=""><strong>New Password
                                     </strong></label>
-                                <input type="password" class="form-control mb-3" name="password"
+                                <input type="password" class="form-control" name="password"
                                     placeholder="Input your new password" value="">
+                                <div class="text-dark text-opacity-50 fw-medium">* Minimal 9 karakter
+                                </div>
                                 <hr>
                                 <div class="d-flex flex-row-reverse">
                                     <button type="submit" class="btn btn-solid-hug ">Save</button>
