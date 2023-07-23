@@ -54,6 +54,11 @@ h2 {
 .half .bg {
     width: 80%;
 }
+@media (min-width: 991.98px) {
+    .auth-nav {
+        display: none;
+    }
+}
 
 @media (max-width: 767.98px) {
     .half .bg {

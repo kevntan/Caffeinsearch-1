@@ -8,7 +8,23 @@
                  <li><a class="nav-link scrollto <?= $home ?>" href="{{ url('/') }}">Home</a></li>
                  <li><a class="nav-link scrollto <?= $about ?>" href="{{ url('/about') }}">About</a></li>
                  <li><a class="nav-link scrollto <?= $feeds ?>" href="{{ url('/feeds') }}">Feeds</a></li>
-
+                 @if (Auth::user())
+                     <li>
+                         <form action="{{ url('profile') }}" method="GET" enctype="multipart/form-data">
+                             <button type="submit" class="btn d-lg-none" name="" style="border: transparent">
+                                 <i class="fa-solid fa-user ms-2"></i> Profile
+                             </button>
+                         </form>
+                     </li>
+                     <li>
+                         <form action="{{ url('logout') }}" method="POST" enctype="multipart/form-data">
+                             @csrf
+                             <button type="submit" class="btn d-lg-none" name="" style="border: transparent">
+                                 <i class="fa-solid fa-right-from-bracket ms-2"></i> Logout
+                             </button>
+                         </form>
+                     </li>
+                 @endif
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->

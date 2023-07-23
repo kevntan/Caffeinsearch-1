@@ -5,10 +5,28 @@
          <h1 class="logo me-auto me-lg-0"><a href="{{ url('cafe/') }}">Caffein<span>Search</span></a></h1>
          <nav id="navbar" class="navbar order-last order-lg-0">
              <ul>
-                 <li><a class="nav-link scrollto 
+                 <li><a class="nav-link scrollto
                     @if (!isset($about)) active @endif"
                          href="{{ url('cafe') }}">My Cafe</a></li>
-                 <li><a class="nav-link scrollto @if (isset($about)) active @endif" href="{{ url('cafe/about') }}">About</a></li>
+                 <li><a class="nav-link scrollto @if (isset($about)) active @endif"
+                         href="{{ url('cafe/about') }}">About</a></li>
+                 @if (Auth::user())
+                     <li>
+                         <form action="{{ url('cafe/profile') }}" method="GET" enctype="multipart/form-data">
+                             <button type="submit" class="btn d-lg-none" name="" style="border: transparent">
+                                 <i class="fa-solid fa-user ms-2"></i> Profile
+                             </button>
+                         </form>
+                     </li>
+                     <li>
+                         <form action="{{ url('logout') }}" method="POST" enctype="multipart/form-data">
+                             @csrf
+                             <button type="submit" class="btn d-lg-none" name="" style="border: transparent">
+                                 <i class="fa-solid fa-right-from-bracket ms-2"></i> Logout
+                             </button>
+                         </form>
+                     </li>
+                 @endif
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->
