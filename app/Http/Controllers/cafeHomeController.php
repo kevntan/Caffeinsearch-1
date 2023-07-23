@@ -213,7 +213,7 @@ class cafeHomeController extends Controller
 
 
         $user->password = $request->validate([
-            "password" => "min:9|nullable",
+            "password" => "required|min:9",
         ]);
         if ($request->password) {
             $user->password = Hash::make($request->password);

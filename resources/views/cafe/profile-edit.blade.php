@@ -7,6 +7,23 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about mt-5" style="margin-top: 100px;">
             <div class="container">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success alert-dismissible fade show mt-1" role="alert">
+                        <i class="fa-solid fa-circle-check"></i> {!! \Session::get('success') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(\Session::has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i></i> {!! \Session::get('error') !!}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @error('password')
+                <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i></i>{{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @enderror
                 <div class="text-center mb-5">
                     <h1><strong>Edit Profile
                         </strong></h1>
