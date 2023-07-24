@@ -208,12 +208,13 @@ class cafeHomeController extends Controller
 
         $update = $user->update([
             // 'username' => $request->username,
-            'bio' => $request->bio
+            'bio' => $request->bio,
+            'daerah' => $request->daerah
         ]);
 
 
         $user->password = $request->validate([
-            "password" => "min:9|nullable",
+            "password" => "nullable|min:9",
         ]);
         if ($request->password) {
             $user->password = Hash::make($request->password);
@@ -312,6 +313,7 @@ class cafeHomeController extends Controller
     public function eventDelete($id)
     {
         $event = Event::findOrFail($id);
+
         $review_events = ReviewEvent::where('event_id', $event->id);
         if ($review_events->count() > 0) {
             $review_events->delete();

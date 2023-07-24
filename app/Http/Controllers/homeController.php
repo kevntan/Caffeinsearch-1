@@ -41,7 +41,7 @@ class homeController extends Controller
     public function details($id)
     {
         $cafe = Cafe::findOrFail($id);
-        $event = Event::where('cafe_id', $cafe->id)->get();
+        $event = Event::where('cafe_id', $cafe->id)->where('waktu_selesai', '>=', now())->get();
         $review_cafe = ReviewCafe::where('cafe_id', $cafe->id)
             ->join('users', 'user_id', 'users.id')
             ->select('review_cafes.*', 'users.username')
@@ -230,7 +230,7 @@ class homeController extends Controller
         ]);
 
         $user->password = $request->validate([
-            "password" => "min:9|nullable",
+            "password" => "nullable|min:9",
         ]);
         if ($request->password) {
             $user->password = Hash::make($request->password);
